@@ -9,7 +9,8 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'Apathetic Guide to IdleOn',
-			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/Apathetic-Tools/IdleOn' }],
+			description: 'Gameplay guide to the IdleOn game.',
+			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/apathetic-idleon/apathetic-idleon.github.io' }],
 			sidebar: [
 				{
 					label: 'Guides',
@@ -23,6 +24,10 @@ export default defineConfig({
 					autogenerate: { directory: 'reference' },
 				},
 			],
+			editLink: {
+    			baseUrl: 'https://github.com/apathetic-idleon/apathetic-idleon.github.io/edit/main/',
+  			},
+			lastUpdated: true,
 		}),
 	],
 	vite: {
