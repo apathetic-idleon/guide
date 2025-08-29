@@ -5,9 +5,10 @@ import isWsl from 'is-wsl';
 
 // https://astro.build/config
 export default defineConfig({
+	site: 'https://apathetic-idleon.github.io',
 	integrations: [
 		starlight({
-			title: 'Apathetic Guide to IdleOn ',
+			title: 'Apathetic Guide to IdleOn',
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/Apathetic-Tools/IdleOn' }],
 			sidebar: [
 				{
