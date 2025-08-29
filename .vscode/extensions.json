@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "astro-build.astro-vscode",
+    "unifiedjs.vscode-mdx",
+    "editorconfig.editorconfig",
+    "ms-vscode-remote.remote-wsl"
+  ],
+  "unwantedRecommendations": []
+}
