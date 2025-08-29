@@ -10,7 +10,10 @@ export default defineConfig({
 		starlight({
 			title: 'Apathetic Guide to IdleOn',
 			description: 'Gameplay guide to the IdleOn game.',
-			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/apathetic-idleon/apathetic-idleon.github.io' }],
+			social: [
+				{ icon: 'discord', label: 'Discord', href: 'https://discord.gg/PW6GahZ7'},
+				{ icon: 'github', label: 'GitHub', href: 'https://github.com/apathetic-idleon/apathetic-idleon.github.io' }
+			],
 			sidebar: [
 				{
 					label: 'Guides',
