@@ -16,11 +16,36 @@ export default defineConfig({
 			],
 			sidebar: [
 				{
-					label: 'Guides',
-					items: [
-						// Each item here is one entry in the navigation menu.
-						{ label: 'Example Guide', slug: 'guides/example' },
-					],
+					label: 'Map',
+					autogenerate: { directory: 'map' },
+				},
+				{
+					label: 'Global Mechanics',
+					autogenerate: { directory: 'global-mechanics' },
+				},
+				{
+					label: 'World 1 – Mechanics',
+					autogenerate: { directory: 'w1-mechanics' },
+				},
+				{
+					label: 'World 2 – Mechanics',
+					autogenerate: { directory: 'w2-mechanics' },
+				},
+				{
+					label: 'World 3 – Mechanics',
+					autogenerate: { directory: 'w2-mechanics' },
+				},
+				{
+					label: 'World 4 – Mechanics',
+					autogenerate: { directory: 'w2-mechanics' },
+				},
+				{
+					label: 'World 5 – Mechanics',
+					autogenerate: { directory: 'w2-mechanics' },
+				},
+				{
+					label: 'World 6 – Mechanics',
+					autogenerate: { directory: 'w2-mechanics' },
 				},
 				{
 					label: 'Reference',
