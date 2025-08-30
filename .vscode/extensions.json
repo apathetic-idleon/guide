@@ -3,7 +3,8 @@
     "astro-build.astro-vscode",
     "unifiedjs.vscode-mdx",
     "editorconfig.editorconfig",
-    "ms-vscode-remote.remote-wsl"
+    "ms-vscode-remote.remote-wsl",
+    "github.vscode-github-actions"
   ],
   "unwantedRecommendations": []
 }
