@@ -1,5 +1,5 @@
 ---
-title: Post Office
+title: Scientific Notation
 description: A guide in my new Starlight docs site.
 sidebar:
     badge: 
