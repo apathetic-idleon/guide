@@ -4,18 +4,18 @@
 
 export const sidebar = [
     {
-        id: 'walkthrough',		
-        label: 'Walkthrough',
-        link: 'walkthrough/world/world-1',
+        id: 'journey',
+        label: 'Journey',
+        link: 'journey/getting-started/install',
         icon: 'rocket',
         items: [
             {
                 label: 'Getting Started',
-                autogenerate: { directory: 'walkthrough/getting-started' },
+                autogenerate: { directory: 'journey/getting-started' },
             },
             {
                 label: 'Unlock Worlds',
-                autogenerate: { directory: 'walkthrough/world' },
+                autogenerate: { directory: 'journey/world' },
             },
         ],
     },
