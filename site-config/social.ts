@@ -1,5 +1,5 @@
 // Ref: https://starlight.astro.build/reference/configuration/#social
-export const socials = [
+export const social = [
 	/// community chat
 	{ icon: 'discord', label: 'Discord', href: 'https://discord.gg/PW6GahZ7'},
 
