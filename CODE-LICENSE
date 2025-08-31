@@ -8,6 +8,7 @@ They are only reproduced, hosted, or used within this website and codebase with 
 
 ---
 
+
 On other tools:
 
 Each respective tool developed and distributed by their respective authors retain their own copyright, and is included in this distribution through their license. When appropriate, we include their license under our own bellow.
@@ -15,7 +16,9 @@ Each respective tool developed and distributed by their respective authors retai
 Notable tools include:
 - Astro Starlight Documentation Framework https://astro.build/
 
+
 ---
+
 
 The following license pertains to code used to generate and deploy the website or application that we ourselves have produced or modified. It does not cover the content the website displays, like text, images, videos, and the like. It does not cover anything already covered above.
 
@@ -26,6 +29,7 @@ Copyright (c) 2025, Apathetic Tools, all rights reserved.
 We retain copyright on everything we ourselves produce for the website; which includes any code, text, images, videos, and other assets; so contact us if you have different licensing needs.
 
 We provide the following license on the code for your use. The intent is that armed with this license, if we are no longer able to host the website, a community of fans and users would be able tostep up and keep it running if they so choose.
+
 
 ---
                     
@@ -691,14 +695,16 @@ if any, to sign a "copyright disclaimer" for the program, if necessary.
 For more information on this, and how to apply and follow the GNU AGPL, see
 <https://www.gnu.org/licenses/>.
 
+
 ---
+
 
 Astro Starlight Documentation Framework 
 https://astro.build/
 
 https://github.com/withastro/astro/blob/main/LICENSE
 
-MIT
+MIT License
 
 Copyright (c) 2021 Fred K. Schott
 
