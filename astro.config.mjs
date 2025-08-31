@@ -7,6 +7,7 @@ import { base, site, source } from './site-config/hosting';
 import { social } from './site-config/social';
 import { defaultLocale, locales } from './site-config/translation';
 import { sidebar } from './site-config/sidebar';
+import { watchSiteConfig } from './src/watch-site-config'
 import isWsl from 'is-wsl';
 
 // https://astro.build/config
@@ -14,6 +15,7 @@ export default defineConfig({
 	site,
   	base,
 	integrations: [
+		watchSiteConfig(),
 		starlight({
 			title,
 			description,
