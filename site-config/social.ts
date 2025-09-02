@@ -1,14 +1,16 @@
 // Ref: https://starlight.astro.build/reference/configuration/#social
 
-import type { StarlightIcon } from "@astrojs/starlight/types";
+// import type { StarlightIcon } from "@astrojs/starlight/types";
 
-type SocialLink = {
-	label: string;
-	icon: StarlightIcon;
-	href: string;
-};
+import type { StarlightUserConfig } from "@astrojs/starlight/types";
 
-export const social: SocialLink[] = [
+// type SocialLink = {
+// 	label: string;
+// 	icon: StarlightIcon;
+// 	href: string;
+// };
+
+export const social = [
 	/// community chat
 	{ icon: "discord", label: "Discord", href: "https://discord.gg/PW6GahZ7" },
 
@@ -20,4 +22,4 @@ export const social: SocialLink[] = [
 	// bitbucket
 
 	/// more in reference above
-];
+] satisfies StarlightUserConfig["social"];

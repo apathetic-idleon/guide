@@ -1,7 +1,9 @@
 // icons must be from: https://starlight.astro.build/reference/icons/#all-icons
 // careful not to use trademarked logos for other purposes
 
-export const sidebar = [
+import type { StarlightSidebarTopicsUserConfig } from "starlight-sidebar-topics";
+
+export const sidebar: StarlightSidebarTopicsUserConfig = [
 	{
 		id: "journey",
 		label: "Journey",
