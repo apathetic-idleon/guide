@@ -1,4 +1,6 @@
-export function watchSiteConfig() {
+import type { AstroIntegration  } from 'astro';
+
+export function watchSiteConfig() : AstroIntegration {
   return {
     name: 'watch-site-config',
     hooks: {
