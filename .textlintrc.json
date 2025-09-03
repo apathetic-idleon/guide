@@ -1,0 +1,38 @@
+{
+  "plugins": ["mdx"],
+  "filters": {},
+  "rules": {
+    "no-todo": true,
+    "alive-link": true,
+    "editorconfig": false,
+    "terminology": {
+      "defaultTerms": false,
+      "terms": []
+    },
+    "period-in-list-item": true,
+    "period-in-header": true,
+    "@textlint-rule/no-unmatched-pair": true,
+    "footnote-order": true,
+    "doubled-spaces": true,
+    "unexpanded-acronym": {
+      "ignore_Acronyms": []
+    },
+    "spelling": {
+      "language": "en"
+    },
+    "abbr-within-parentheses": true,
+    "alex": {
+      "allow": []
+    },
+    "common-misspellings": {
+      "ignore": []
+    },
+    "diacritics": true,
+    "stop-words": {
+      "exclude": []
+    },
+    "en-capitalization": {
+      "allowWords": []
+    }
+  }
+}
