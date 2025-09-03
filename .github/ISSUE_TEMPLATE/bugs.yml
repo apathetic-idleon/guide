@@ -1,5 +1,5 @@
 name: "Bug Report 🐛"
-description: Report an issue or possible bug with the functionality of the guidewebsite. (Not related to the content of the guide.)
+description: Report an issue or possible bug with the functionality of the guide website. (Not related to the content of the guide.)
 labels: [
   "bug"
 ]
@@ -11,9 +11,9 @@ body:
       description: |
         *Thread Licenses do not override the IdleOn game or project licenses.*
         - Any diff, additions, changes, deletions, or contributions to code within this thread is licensed under the [MIT License](https://opensource.org/license/mit).
-        - Any diff, additions, changes, deletions, or contributions of text, animations, images, videos, or other assets within this thread is licensed under the [Creative Commons Attribution 4.0 Internaltion](https://creativecommons.org/licenses/by/4.0/deed.en) license."      
+        - Any diff, additions, changes, deletions, or contributions of text, animations, images, videos, or other assets within this thread is licensed under the [Creative Commons Attribution 4.0 Internaltion](https://creativecommons.org/licenses/by/4.0/deed.en) license.      
       options:
-        - label: "I agree to and understand the licensing"
+        - label: "I agree to and understand the thread licensing"
           required: true
   - type: textarea
     id: description
@@ -34,7 +34,7 @@ body:
   - type: textarea
     id: screenshots
     attributes:
-      label: "Screenshots"
+      label: "Screenshots (optional)"
       description: If applicable, add screenshots to help illustrate the problem.
     validations:
         required: false        
@@ -65,7 +65,14 @@ body:
   - type: textarea
     id: additional
     attributes:
-      label: "📄 Additional Information"
+      label: "📄 Additional Information (optional)"
       description: Any additional information that may be relevant for the issue.
+    validations:
+      required: false
+  - type: input
+    id: contact
+    attributes:
+      label: Discord Contact (optional)
+      description: If you are a member of the Apathetic Tools Discord (https://discord.gg/PW6GahZ7), please add your username bellow so we can welcome you there!
     validations:
       required: false
