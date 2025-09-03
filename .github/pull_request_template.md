@@ -2,8 +2,8 @@
 
 #### PR License (required)
 
-[x] I am my licensing my diff, additions, changes, deletions, or contributions to code using the [MIT License](https://opensource.org/license/mit).
-[x] I am licensing any diff, additions, changes, deletions, or contributions of text, animations, images, videos, or other assets in my PR using the [Creative Commons Attribution 4.0 Internaltion](https://creativecommons.org/licenses/by/4.0/deed.en) license.
+[x] I am licensing my diff, additions, changes, deletions, or contributions to code within this PR using the [MIT License](https://opensource.org/license/mit).
+[x] I am licensing any diff, additions, changes, deletions, or contributions of text, animations, images, videos, or other assets within this PR using the [Creative Commons Attribution 4.0 Internaltion](https://creativecommons.org/licenses/by/4.0/deed.en) license.
 
 #### Description (required)
 
