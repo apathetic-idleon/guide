@@ -1,42 +1,42 @@
 {
-  "plugins": ["mdx"],
   "filters": {},
+  "plugins": [
+    "mdx"
+  ],
   "rules": {
-    "no-todo": true,
-    "alive-link": true,
-    "editorconfig": false,
-    "terminology": {
-      "defaultTerms": false,
-      "terms": []
-    },
-    "period-in-list-item": true,
-    "period-in-header": true,
     "@textlint-rule/no-unmatched-pair": true,
-    "footnote-order": true,
-    "doubled-spaces": true,
-    "unexpanded-acronym": {
-      "ignore_Acronyms": []
-    },
-    "spelling": {
-      "language": "en"
-    },
     "abbr-within-parentheses": true,
     "alex": {
       "allow": []
     },
+    "alive-link": true,
     "common-misspellings": {
       "ignore": []
     },
     "diacritics": true,
-    "stop-words": {
-      "exclude": []
-    },
+    "doubled-spaces": true,
+    "editorconfig": false,
     "en-capitalization": {
       "allowWords": []
     },
-    "write-good": {
+    "footnote-order": true,
+    "no-todo": true,
+    "period-in-header": true,
+    "period-in-list-item": true,
+    "rousseau": {},
+    "spelling": {
+      "language": "en"
     },
-    "rousseau": {
-    }
+    "stop-words": {
+      "exclude": []
+    },
+    "terminology": {
+      "defaultTerms": false,
+      "terms": []
+    },
+    "unexpanded-acronym": {
+      "ignore_Acronyms": []
+    },
+    "write-good": {}
   }
 }
