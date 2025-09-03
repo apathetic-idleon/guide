@@ -11,11 +11,12 @@ body:
     id: license
     attributes:
       label: "Thread License (required)"
-      description: "*Thread Licenses do not override the IdleOn game or project licenses.*
-      - Any diff, additions, changes, deletions, or contributions to code within this thread is licensed under the [MIT License](https://opensource.org/license/mit).
-      - Any diff, additions, changes, deletions, or contributions of text, animations, images, videos, or other assets within this thread is licensed under the [Creative Commons Attribution 4.0 Internaltion](https://creativecommons.org/licenses/by/4.0/deed.en) license."      
+      description: |
+        *Thread Licenses do not override the IdleOn game or project licenses.*
+        - Any diff, additions, changes, deletions, or contributions to code within this thread is licensed under the [MIT License](https://opensource.org/license/mit).
+        - Any diff, additions, changes, deletions, or contributions of text, animations, images, videos, or other assets within this thread is licensed under the [Creative Commons Attribution 4.0 Internaltion](https://creativecommons.org/licenses/by/4.0/deed.en) license."      
       options:
-        - label: "I agree and understand the licensing"
+        - label: "I agree to and understand the licensing"
           required: true
   - type: input
     id: subject
@@ -30,7 +31,7 @@ body:
     attributes:
       label: "📋 Page(s) affected (or suggested, for new content)"
       description: Please provide the URL of the page(s) affected.
-      placeholder: https://apathetic-idleon.github.io/journey/getting-started/install/
+      placeholder: https://apathetic-idleon.github.io/journey/getting-started/
     validations:
         required: true
   - type: textarea
@@ -54,17 +55,15 @@ body:
     attributes:
       label: "Screenshots"
       description: If applicable, add screenshots to help corroborate your source.
-      placeholder: "..."
     validations:
         required: false
   - type: textarea
-    id: additionalDesc
+    id: additional
     attributes:
-      label: "Additional information"
-      description: Add any other information about the problem here.
-      placeholder: "..."
+      label: "📄 Additional Information"
+      description: Any additional information that may be relevant for the issue.
     validations:
-        required: false
+      required: false  
   - type: input
     id: contact
     attributes:

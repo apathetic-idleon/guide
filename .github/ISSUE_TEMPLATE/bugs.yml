@@ -1,0 +1,71 @@
+name: "Bug Report 🐛"
+description: Report an issue or possible bug with the functionality of the guidewebsite. (Not related to the content of the guide.)
+labels: [
+  "bug"
+]
+body:
+  - type: checkboxes
+    id: license
+    attributes:
+      label: "Thread License (required)"
+      description: |
+        *Thread Licenses do not override the IdleOn game or project licenses.*
+        - Any diff, additions, changes, deletions, or contributions to code within this thread is licensed under the [MIT License](https://opensource.org/license/mit).
+        - Any diff, additions, changes, deletions, or contributions of text, animations, images, videos, or other assets within this thread is licensed under the [Creative Commons Attribution 4.0 Internaltion](https://creativecommons.org/licenses/by/4.0/deed.en) license."      
+      options:
+        - label: "I agree to and understand the licensing"
+          required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: "📝 Issue Description"
+      description: Please describe the issue you are experiencing while using the guide website.
+      placeholder: Description of your observation...
+    validations:
+      required: true
+  - type: textarea
+    id: page
+    attributes:
+      label: "📋 On which page(s) it occurs"
+      description: Please indicate on which page(s) the issue occurs.
+      placeholder: https://apathetic-idleon.github.io/journey/getting-started/
+    validations:
+        required: true
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: "Screenshots"
+      description: If applicable, add screenshots to help illustrate the problem.
+    validations:
+        required: false        
+  - type: textarea
+    id: expected
+    attributes:
+      label: "🤔 Expected Behavior"
+      description: Please describe what the expected behavior should be.
+      placeholder: When on this page, I expected . . . 
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: "👀 Current Behavior"
+      description: Please describe what the current behavior is.
+      placeholder: But instead, on this page I'm noticing . . . 
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: 🖥️ Browser
+      description: Indicate which browser and version you are using.
+      placeholder: Chrome X
+    validations:
+      required: true
+  - type: textarea
+    id: additional
+    attributes:
+      label: "📄 Additional Information"
+      description: Any additional information that may be relevant for the issue.
+    validations:
+      required: false
