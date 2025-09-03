@@ -10,7 +10,9 @@
     "astro": "astro",
     "check": "astro check",
     "format": "pnpm run format:code",
+    "format:ci": "pnpm run format:imports && pnpm run format:code",
     "format:code": "prettier -w . --cache --plugin-search-dir=.",
+    "format:imports": "echo 'Skipped formatting imports'",
     "lint:eslint": "eslint .",
     "lint:text": "textlint --cache src/content/docs/**/*.{md,mdx}",
     "lint:text:fix": "textlint --fix --cache src/content/docs/**/*.{md,mdx}"
