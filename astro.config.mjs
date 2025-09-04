@@ -1,22 +1,25 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
+import sitemap from "@astrojs/sitemap";
 import starlightSidebarTopics from "starlight-sidebar-topics";
-import { title, description } from "./site-config/header";
-import { base, site, source } from "./site-config/hosting";
-import { social } from "./site-config/social";
-import { defaultLocale, locales } from "./site-config/translation";
-import { sidebar } from "./site-config/sidebar";
-import { watchSiteConfig } from "./src/watch-site-config";
 import isWsl from "is-wsl";
 
-import sitemap from "@astrojs/sitemap";
+import { title, description } from "./config/header";
+import { base, site, source } from "./config/hosting";
+import { social } from "./config/social";
+import { defaultLocale, locales } from "./config/translation";
+import { sidebar } from "./config/sidebar";
+
+import { watchSiteConfig } from "./src/watch-site-config";
 
 // https://astro.build/config
 export default defineConfig({
     site,
     base,
-    integrations: [watchSiteConfig(), starlight({
+    integrations: [
+			watchSiteConfig(), 
+			starlight({
         title,
         description,
         defaultLocale,
@@ -27,7 +30,9 @@ export default defineConfig({
         },
         lastUpdated: true,
         plugins: [starlightSidebarTopics(sidebar)],
-		}), sitemap()],
+			}), 
+			sitemap(),
+		],
     vite: {
         server: {
             watch: {
