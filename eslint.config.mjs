@@ -2,20 +2,14 @@
 
 // based on https://github.com/withastro/docs/blob/main/eslint.config.mjs, MIT
 
-import eslint from "@eslint/js";
-import eslintPluginAstro from "eslint-plugin-astro";
-import globals from "globals";
-import tseslint from "typescript-eslint";
+import eslint from '@eslint/js';
+import eslintPluginAstro from 'eslint-plugin-astro';
+import globals from 'globals';
+import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
 	{
-		ignores: [
-			"**/dist",
-			"**/node_modules",
-			"**/.astro",
-			"**/.github",
-			"**/.changeset",
-		],
+		ignores: ['**/dist', '**/node_modules', '**/.astro', '**/.github', '**/.changeset'],
 	},
 
 	// Global config
@@ -25,14 +19,14 @@ export default tseslint.config(
 	...tseslint.configs.recommended,
 	{
 		rules: {
-			"@typescript-eslint/no-explicit-any": "off",
+			'@typescript-eslint/no-explicit-any': 'off',
 		},
 	},
 	// Allow triple-slash references in `*.d.ts` files.
 	{
-		files: ["**/*.d.ts"],
+		files: ['**/*.d.ts'],
 		rules: {
-			"@typescript-eslint/triple-slash-reference": "off",
+			'@typescript-eslint/triple-slash-reference': 'off',
 		},
 	},
 
@@ -41,9 +35,9 @@ export default tseslint.config(
 
 	// Set globals for Node scripts.
 	{
-		files: ["scripts/**"],
+		files: ['scripts/**'],
 		languageOptions: {
 			globals: globals.node,
 		},
-	},
+	},	
 );

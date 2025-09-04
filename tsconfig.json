@@ -11,5 +11,5 @@
       "@config/*": ["config/*"],
       "@assets/*": ["src/assets/*"]
     }
-  } 
+  }
 }

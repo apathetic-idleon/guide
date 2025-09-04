@@ -2,7 +2,7 @@
 
 // import type { StarlightIcon } from "@astrojs/starlight/types";
 
-import type { StarlightUserConfig } from "@astrojs/starlight/types";
+import type { StarlightUserConfig } from '@astrojs/starlight/types';
 
 // type SocialLink = {
 // 	label: string;
@@ -12,7 +12,7 @@ import type { StarlightUserConfig } from "@astrojs/starlight/types";
 
 export const social = [
 	/// community chat
-	{ icon: "discord", label: "Discord", href: "https://discord.gg/PW6GahZ7" },
+	{ icon: 'discord', label: 'Discord', href: 'https://discord.gg/PW6GahZ7' },
 
 	/// code hosting
 	// 		don't feature the code repo in the header,
@@ -22,4 +22,4 @@ export const social = [
 	// bitbucket
 
 	/// more in reference above
-] satisfies StarlightUserConfig["social"];
+] satisfies StarlightUserConfig['social'];
