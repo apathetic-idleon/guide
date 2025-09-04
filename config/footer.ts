@@ -3,7 +3,7 @@ export const orgUrl = 'https://github.com/apathetic-tools/';
 
 // affiliation
 export const affil = {
-	en: 'Assets from <a href="https://www.legendsofidleon.com/">IdleOn</a> are Copyright &copy; <a href="https://play.google.com/store/apps/dev?id=4698737590260294499">LavaFlame2</a> and used for commentary. Not affiliated in any way.',
+	en: 'Assets from <a href="https://www.legendsofidleon.com/" class="text-inherit">IdleOn</a> are Copyright &copy; <a href="https://play.google.com/store/apps/dev?id=4698737590260294499" class="text-inherit">LavaFlame2</a> and used for commentary. Not affiliated in any way.',
 };
 
 // copyright
