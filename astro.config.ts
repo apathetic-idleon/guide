@@ -26,6 +26,10 @@ export default defineConfig({
 		]), starlight({
         title,
         description,
+				logo: {
+					light: '@assets/apathetic-tools/logo-black-512x512.png',
+					dark: '@assets/apathetic-tools/logo-white-512x512.png',
+				},
         defaultLocale,
         locales,
         social,
