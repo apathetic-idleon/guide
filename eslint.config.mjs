@@ -40,5 +40,5 @@ export default tseslint.config(
 		languageOptions: {
 			globals: globals.node,
 		},
-	},	
+	}
 );

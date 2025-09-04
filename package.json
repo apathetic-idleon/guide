@@ -64,11 +64,14 @@
     "@astrojs/check": "^0.9.4",
     "@astrojs/sitemap": "^3.5.1",
     "@astrojs/starlight": "^0.35.2",
+    "@astrojs/starlight-tailwind": "^4.0.1",
+    "@tailwindcss/vite": "^4.1.12",
     "is-wsl": "^3.1.0",
     "rehype-slug": "^6.0.0",
     "sharp": "^0.34.2",
     "starlight-links-validator": "^0.17.2",
-    "starlight-sidebar-topics": "^0.6.0"
+    "starlight-sidebar-topics": "^0.6.0",
+    "tailwindcss": "^4.1.12"
   },
   "engines": {
     "node": ">=22.0.0 <23.0.0"
