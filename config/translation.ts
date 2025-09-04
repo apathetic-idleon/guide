@@ -1,5 +1,5 @@
 // Ref: https://starlight.astro.build/reference/configuration/#defaultlocale
-export const defaultLocale = "root";
+export const defaultLocale = 'root';
 
 // List of languages for which we have UI translations for,
 // you should probably only support languages your content
@@ -12,7 +12,7 @@ export const locales = {
 	/// The following languages have Starlight UI translations
 	/// See the following for an updated list of supported languages:
 	/// https://starlight.astro.build/guides/i18n/#translate-starlights-ui
-	root: { label: "English", lang: "en" }, // English
+	root: { label: 'English', lang: 'en' }, // English
 	// ar: { label: 'اَلْعَرَبِيَّةُ', lang: 'ar', dir: 'rtl' },         // Arabic
 	// cs: { label: 'čeština', lang: 'cs' },                     // Czech
 	// da: { label: 'Dansk', lang: 'da' },                       // Danish (Denmark)
@@ -46,11 +46,11 @@ export const locales = {
 };
 
 // the url slug for the automatic translation status
-export const lunariaSlug = "translation-status";
+export const lunariaSlug = 'translation-status';
 
 // we sometimes need the actual defaultLocale, not 'root'
 let calcActualDefaultLocale = defaultLocale;
-if (calcActualDefaultLocale === "root") {
+if (calcActualDefaultLocale === 'root') {
 	calcActualDefaultLocale = locales[calcActualDefaultLocale].lang;
 }
 export const actualDefaultLocale = calcActualDefaultLocale;

@@ -1,8 +1,6 @@
 {
   "filters": {},
-  "plugins": [
-    "mdx"
-  ],
+  "plugins": ["mdx"],
   "rules": {
     "@textlint-rule/no-unmatched-pair": true,
     "abbr-within-parentheses": true,
