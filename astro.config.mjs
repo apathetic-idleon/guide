@@ -5,20 +5,21 @@ import sitemap from "@astrojs/sitemap";
 import starlightSidebarTopics from "starlight-sidebar-topics";
 import isWsl from "is-wsl";
 
+import { devServerFileWatcher } from './config/integrations/dev-server-file-watcher';
 import { title, description } from "./config/header";
 import { base, site, source } from "./config/hosting";
 import { social } from "./config/social";
 import { defaultLocale, locales } from "./config/translation";
 import { sidebar } from "./config/sidebar";
 
-import { watchSiteConfig } from "./src/watch-site-config";
-
 // https://astro.build/config
 export default defineConfig({
     site,
     base,
     integrations: [
-			watchSiteConfig(), 
+			devServerFileWatcher([
+				'./config/**', // Custom plugins and integrations
+			]),
 			starlight({
         title,
         description,
