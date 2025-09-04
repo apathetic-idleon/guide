@@ -1,0 +1,26 @@
+---
+import Default from '@astrojs/starlight/components/Footer.astro';
+import BaseLink from '@components/BaseLink.astro';
+import Localize from '@components/Localize.astro';
+import Conditional from '@components/Conditional.astro';
+import { affil, copyrightYears, license, licenseUrl, usage, orgName, orgUrl } from '@config/footer';
+import { title } from '@config/header';
+---
+
+<Default {...Astro.props}><slot /></Default>
+<div>
+	<Conditional cond={Object.keys(affil).length > 0}>
+		<p class="!my-0 !py-0"><small><em><Localize text={affil} /></em></small></p>
+	</Conditional>
+	<p class="!my-0 !py-0">
+		<small
+			>An <a href={orgUrl}>{orgName}</a> project. Copyright &copy; {copyrightYears}
+			<Localize text={title} />.</small>
+	</p>
+	<p class="!my-0 !py-0">
+		<small
+			>Content licensed under <a href={licenseUrl}>{license}</a>, except where noted. See <BaseLink
+				href="site/usage/">{usage}</BaseLink
+			>.</small>
+	</p>
+</div>

@@ -3,16 +3,20 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import sitemap from '@astrojs/sitemap';
 import starlightSidebarTopics from 'starlight-sidebar-topics';
-import starlightLinksValidator from 'starlight-links-validator'
+import starlightLinksValidator from 'starlight-links-validator';
+import tailwindcss from '@tailwindcss/vite';
 import isWsl from 'is-wsl';
 import rehypeSlug from 'rehype-slug';
 
+// can't use tsconfig aliases yet...
 import { devServerFileWatcher } from './config/integrations/dev-server-file-watcher';
 import { title, description } from './config/header';
 import { base, site, source } from './config/hosting';
 import { social } from './config/social';
 import { defaultLocale, locales } from './config/translation';
 import { sidebar } from './config/sidebar';
+
+
 
 // https://astro.build/config
 export default defineConfig({
@@ -34,13 +38,21 @@ export default defineConfig({
 				baseUrl: source + '/edit/main/',
 			},
 			lastUpdated: true,
+			components: {
+				Footer: './src/components/Footer.astro'
+			},
 			plugins: [
 				starlightSidebarTopics(sidebar),
-				...(process.env.CHECK_LINKS ? [starlightLinksValidator({
-					errorOnFallbackPages: false,
-					errorOnInconsistentLocale: true
-				})] : []),
+				...(process.env.CHECK_LINKS
+					? [
+							starlightLinksValidator({
+								errorOnFallbackPages: false,
+								errorOnInconsistentLocale: true,
+							}),
+						]
+					: []),
 			],
+			customCss: ['./src/styles/global.css'],
 		}),
 		sitemap(),
 	],
@@ -49,6 +61,7 @@ export default defineConfig({
 		// Override with our own config
 		rehypePlugins: [rehypeSlug],
 	},
+
 	vite: {
 		server: {
 			watch: {
@@ -63,5 +76,7 @@ export default defineConfig({
 					: {}),
 			},
 		},
+
+		plugins: [tailwindcss()],
 	},
 });
