@@ -55,6 +55,7 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
+    "@astrojs/sitemap": "^3.5.1",
     "@astrojs/starlight": "^0.35.2",
     "is-wsl": "^3.1.0",
     "sharp": "^0.34.2",
