@@ -8,7 +8,7 @@
       "@root/*": ["./*"],
       "~/*": ["src/*"],
       "@/*": ["src/*"],
-      "@site-config/*": ["site-config/*"],
+      "@config/*": ["config/*"],
       "@assets/*": ["src/assets/*"]
     }
   } 
