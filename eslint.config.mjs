@@ -1,6 +1,7 @@
 // @ts-check
 
-// based on https://github.com/withastro/docs/blob/main/eslint.config.mjs, MIT
+// derived from withastro/docs MIT
+// https://github.com/withastro/docs/blob/main/eslint.config.mjs
 
 import eslint from '@eslint/js';
 import eslintPluginAstro from 'eslint-plugin-astro';

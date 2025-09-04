@@ -1,4 +1,5 @@
-// inspired by / based on https://github.com/withastro/docs/blob/main/config/integrations/dev-server-file-watcher.ts Astro, MIT
+// derived from withastro/docs MIT
+// https://github.com/withastro/docs/blob/main/config/integrations/dev-server-file-watcher.ts
 
 import type { AstroIntegration } from 'astro';
 import glob from 'fast-glob';

@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import sitemap from '@astrojs/sitemap';
 import starlightSidebarTopics from 'starlight-sidebar-topics';
+import starlightLinksValidator from 'starlight-links-validator'
 import isWsl from 'is-wsl';
 import rehypeSlug from 'rehype-slug';
 
@@ -15,8 +16,10 @@ import { sidebar } from './config/sidebar';
 
 // https://astro.build/config
 export default defineConfig({
+	output: 'static',
 	site,
 	base,
+	trailingSlash: 'always',
 	integrations: [
 		devServerFileWatcher([
 			'./config/**', // Custom plugins and integrations
@@ -31,11 +34,17 @@ export default defineConfig({
 				baseUrl: source + '/edit/main/',
 			},
 			lastUpdated: true,
-			plugins: [starlightSidebarTopics(sidebar)],
+			plugins: [
+				starlightSidebarTopics(sidebar),
+				...(process.env.CHECK_LINKS ? [starlightLinksValidator({
+					errorOnFallbackPages: false,
+					errorOnInconsistentLocale: true
+				})] : []),
+			],
 		}),
 		sitemap(),
 	],
-	trailingSlash: 'always',
+
 	markdown: {
 		// Override with our own config
 		rehypePlugins: [rehypeSlug],
