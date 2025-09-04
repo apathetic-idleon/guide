@@ -14,13 +14,10 @@ import { title } from '@config/header';
 	</Conditional>
 	<p class="!my-0 !py-0">
 		<small
-			>An <a href={orgUrl}>{orgName}</a> project. Copyright &copy; {copyrightYears}
+			>An <a href={orgUrl} class="text-inherit">{orgName}</a> project. Copyright &copy; {copyrightYears}
 			<Localize text={title} />.</small>
 	</p>
 	<p class="!my-0 !py-0">
-		<small
-			>Content licensed under <a href={licenseUrl}>{license}</a>, except where noted. See <BaseLink
-				href="site/usage/">{usage}</BaseLink
-			>.</small>
+		<small>Content licensed under <a href={licenseUrl} class="text-inherit">{license}</a>, except where noted. See <BaseLink href="site/usage/" class="text-inherit">{usage}</BaseLink>.</small>
 	</p>
 </div>
