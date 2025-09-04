@@ -4,6 +4,7 @@ import starlight from "@astrojs/starlight";
 import sitemap from "@astrojs/sitemap";
 import starlightSidebarTopics from "starlight-sidebar-topics";
 import isWsl from "is-wsl";
+import rehypeSlug from 'rehype-slug';
 
 import { devServerFileWatcher } from './config/integrations/dev-server-file-watcher';
 import { title, description } from "./config/header";
@@ -34,6 +35,13 @@ export default defineConfig({
 			}), 
 			sitemap(),
 		],
+		trailingSlash: 'always',
+		markdown: {
+			// Override with our own config
+			rehypePlugins: [
+				rehypeSlug,
+			],
+		},
     vite: {
         server: {
             watch: {
