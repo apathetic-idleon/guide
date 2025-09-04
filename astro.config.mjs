@@ -10,38 +10,37 @@ import { sidebar } from "./site-config/sidebar";
 import { watchSiteConfig } from "./src/watch-site-config";
 import isWsl from "is-wsl";
 
+import sitemap from "@astrojs/sitemap";
+
 // https://astro.build/config
 export default defineConfig({
-	site,
-	base,
-	integrations: [
-		watchSiteConfig(),
-		starlight({
-			title,
-			description,
-			defaultLocale,
-			locales,
-			social,
-			editLink: {
-				baseUrl: source + "/edit/main/",
-			},
-			lastUpdated: true,
-			plugins: [starlightSidebarTopics(sidebar)],
-		}),
-	],
-	vite: {
-		server: {
-			watch: {
-				// work around WSL bug with /mnt/ watch (could also symlink to linux fs)
-				// https://github.com/withastro/astro/issues/6043#issuecomment-1409498718
-				// https://github.com/microsoft/WSL/issues/4739#issuecomment-2153546812
-				...(isWsl
-					? {
-							usePolling: true,
-							interval: 1000,
-						}
-					: {}),
-			},
-		},
-	},
+    site,
+    base,
+    integrations: [watchSiteConfig(), starlight({
+        title,
+        description,
+        defaultLocale,
+        locales,
+        social,
+        editLink: {
+            baseUrl: source + "/edit/main/",
+        },
+        lastUpdated: true,
+        plugins: [starlightSidebarTopics(sidebar)],
+		}), sitemap()],
+    vite: {
+        server: {
+            watch: {
+                // work around WSL bug with /mnt/ watch (could also symlink to linux fs)
+                // https://github.com/withastro/astro/issues/6043#issuecomment-1409498718
+                // https://github.com/microsoft/WSL/issues/4739#issuecomment-2153546812
+                ...(isWsl
+                    ? {
+                            usePolling: true,
+                            interval: 1000,
+                        }
+                    : {}),
+            },
+        },
+    },
 });
