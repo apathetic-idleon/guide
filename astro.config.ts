@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import sitemap from '@astrojs/sitemap';
+import AutoImport from 'astro-auto-import';
 import starlightSidebarTopics from 'starlight-sidebar-topics';
 import starlightLinksValidator from 'starlight-links-validator';
 import tailwindcss from '@tailwindcss/vite';
@@ -21,9 +22,11 @@ export default defineConfig({
     site,
     base,
     trailingSlash: 'always',
-    integrations: [devServerFileWatcher([
+    integrations: [
+			devServerFileWatcher([
         './config/**', // Custom plugins and integrations
-		]), starlight({
+			]), 			
+			starlight({
         title,
         description,
 				logo: {
@@ -37,8 +40,9 @@ export default defineConfig({
             baseUrl: source + '/edit/main/',
         },
         lastUpdated: true,
-        components: {
-            Footer: './src/components/Footer.astro'
+        components: {						
+            Footer: './src/components/Footer.astro',
+						Search: './src/components/Search.astro'
         },
         plugins: [
             starlightSidebarTopics(sidebar),
@@ -52,7 +56,18 @@ export default defineConfig({
                 : []),
         ],
         customCss: ['./src/styles/global.css'],
-		}), sitemap()],
+			}), 
+			sitemap(),
+			// generates a warning about order after mdx that can safely be disregarded
+			// https://github.com/delucis/astro-auto-import/issues/46
+			AutoImport({
+				imports: [
+					'./src/components/BaseLink.astro',
+					'./src/components/Conditional.astro',
+					'./src/components/Localize.astro',
+				],
+			}),
+		],
 
     vite: {
         server: {
