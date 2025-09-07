@@ -1,22 +1,25 @@
 ---
 import Default from '@astrojs/starlight/components/Footer.astro';
 import BaseLink from '@components/BaseLink.astro';
-import Localize from '@components/Localize.astro';
-import Conditional from '@components/Conditional.astro';
-import { affil, copyrightYears, license, licenseUrl, usage, orgName, orgUrl } from '@config/footer';
-import { title } from '@config/header';
+import { 
+	affilGame, 
+	affilGameUrl, 
+	affilDev, 
+	affilDevUrl, 
+	copyrightYears, 
+	license, 
+	licenseUrl, 
+	usage, 
+	org, 
+	orgUrl 
+} from '@config/footer';
 ---
 
 <Default {...Astro.props}><slot /></Default>
-<div>
-	<Conditional cond={Object.keys(affil).length > 0}>
-		<p class="!my-0 !py-0"><small><em><Localize text={affil} /></em></small></p>
-	</Conditional>
+<div>	
 	<p class="!my-0 !py-0">
 		<small
-			>An <a href={orgUrl} class="text-inherit">{orgName}</a> project. &copy; <Localize text={title} /> {copyrightYears}.</small>
+			>An <a href={orgUrl} class="text-inherit">{org}</a> project &copy; {copyrightYears}. Content licensed <a href={licenseUrl} class="text-inherit">{license}</a>. See <BaseLink href="site/usage/" class="text-inherit">{usage}</BaseLink>.</small>
 	</p>
-	<p class="!my-0 !py-0">
-		<small>Content licensed under <a href={licenseUrl} class="text-inherit">{license}</a>, except where noted. See <BaseLink href="site/usage/" class="text-inherit">{usage}</BaseLink>.</small>
-	</p>
+	<p class="!my-0 !py-0"><small><em>Not affiliated in any way with <a href={affilGameUrl} class="text-inherit">{affilGame}</a> &copy; <a href={affilDevUrl} class="text-inherit">{affilDev}</a>. Images used for commentary only.</em></small></p>
 </div>
