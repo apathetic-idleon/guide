@@ -4,6 +4,8 @@
 
 import type { StarlightUserConfig } from '@astrojs/starlight/types';
 
+export const discordInvite = 'https://discord.gg/PW6GahZ7';
+
 // type SocialLink = {
 // 	label: string;
 // 	icon: StarlightIcon;
@@ -12,7 +14,7 @@ import type { StarlightUserConfig } from '@astrojs/starlight/types';
 
 export const social = [
 	/// community chat
-	{ icon: 'discord', label: 'Discord', href: 'https://discord.gg/PW6GahZ7' },
+	{ icon: 'discord', label: 'Discord', href: discordInvite },
 
 	/// code hosting
 	// 		don't feature the code repo in the header,
