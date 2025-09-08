@@ -66,6 +66,10 @@ export const sidebar: StarlightSidebarTopicsUserConfig = [
 				label: 'General',
 				autogenerate: { directory: 'reference' },
 			},
+			{
+				label: 'Site',
+				autogenerate: { directory: 'site' },
+			},
 		],
 	},
 ];

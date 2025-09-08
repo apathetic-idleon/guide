@@ -2,8 +2,13 @@
 title: Credits
 description: Who made this guide?
 topic: reference
+
+# derived from withastro/docs MIT
+# https://github.com/withastro/docs/blob/main/src/content/docs/en/contribute.mdx
+
 ---
 
+import ContributorList from '@components/ContributorList.astro'
 import { 
 	affilGame, 
 	affilGameUrl, 
@@ -16,6 +21,7 @@ import {
 import {
   source,
   siteUrl,
+  hostingSlug,
 } from '@config/hosting';
 
 *Not affiliated in any way with <a href={affilGameUrl} class="text-inherit">{affilGame}</a> &copy; <a href={affilDevUrl} class="text-inherit">{affilDev}</a>. Images used for commentary only.*
@@ -28,9 +34,19 @@ import {
 
 ## Staff
 
+Key members of the Apathetic Guide, guiding the project along.
+
 * [InertSloth](https://github.com/InertSloth) *&ndash; head coordinator*
 
 ## Contributors
+
+Many people have contributed to these guides to make them what they are.
+
+<ContributorList githubRepo={hostingSlug} />
+
+#### Additional Contributors
+
+- 
 
 ## Notable Sources
 
