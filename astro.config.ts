@@ -65,7 +65,9 @@ export default defineConfig({
 					'./src/components/AsOf.astro',		
 					'./src/components/BaseLink.astro',
 					'./src/components/Conditional.astro',
+					'./src/components/Def.astro',		
 					'./src/components/Localize.astro',		
+					'./src/components/Stress.astro',		
 					{
 						'@astrojs/starlight/components': ['Aside'],
 					},
