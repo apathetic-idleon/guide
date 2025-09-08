@@ -2,6 +2,7 @@
 title: Installing
 description: A guide in my new Starlight docs site.
 sidebar:
+  order: 1
   badge:
     text: Placeholder
     variant: note
