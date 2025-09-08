@@ -1,0 +1,17 @@
+---
+// derived from withastro/docs MIT, 2025-09-07
+// https://github.com/withastro/docs/blob/main/src/components/ContributorList.astro
+
+import { getAllContributors } from '@utils/getContributors';
+import FacePile from '@components/FacePile.astro';
+
+export interface Props {
+	githubRepo?: `${string}/${string}`;
+}
+
+const { githubRepo = 'emerald-grove/astro-emerald-template' } = Astro.props as Props;
+
+const contributors = await getAllContributors(githubRepo);
+---
+
+<FacePile {contributors} />

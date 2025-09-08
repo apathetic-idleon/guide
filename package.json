@@ -57,6 +57,7 @@
     "typescript-eslint": "^8.41.0"
   },
   "dependencies": {
+    "@11ty/eleventy-fetch": "^5.1.0",
     "@astrojs/check": "^0.9.4",
     "@astrojs/sitemap": "^3.5.1",
     "@astrojs/starlight": "^0.35.2",
@@ -67,6 +68,7 @@
     "fast-glob": "^3.3.3",
     "is-wsl": "^3.1.0",
     "mdx": "^0.3.1",
+    "p-retry": "^7.0.0",
     "sharp": "^0.34.2",
     "starlight-links-validator": "^0.17.2",
     "starlight-sidebar-topics": "^0.6.0",
