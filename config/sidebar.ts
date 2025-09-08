@@ -72,4 +72,16 @@ export const sidebar: StarlightSidebarTopicsUserConfig = [
 			},
 		],
 	},
+	{
+		id: 'database',
+		label: 'Database',
+		link: 'database/enemies',
+		icon: 'seti:db',
+		items: [
+			{
+				label: 'General',
+				autogenerate: { directory: 'database' },
+			},
+		],
+	},
 ];
