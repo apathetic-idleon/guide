@@ -62,10 +62,14 @@ export default defineConfig({
 			// https://github.com/delucis/astro-auto-import/issues/46
 			AutoImport({
 				imports: [
+					'./src/components/AsOf.astro',		
 					'./src/components/BaseLink.astro',
 					'./src/components/Conditional.astro',
-					'./src/components/Localize.astro',
-				],
+					'./src/components/Localize.astro',		
+					{
+						'@astrojs/starlight/components': ['Aside'],
+					},
+				],				
 			}),
 		],
 
