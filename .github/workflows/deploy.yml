@@ -96,15 +96,25 @@ jobs:
       name: github-pages
 
     steps:
-      - name: Download build output
+      - name: Download build output        
         uses: actions/download-artifact@v4
         with:
-          name: github-pages # artifact name from withastro/action
-          path: ./dist
+          name: github-pages
+          path: ./dist        
         continue-on-error: true
 
+      - name: Check if dist exists
+        id: check-dist
+        run: |
+          if [ -d "./dist" ]; then
+            echo "found=true" >> $GITHUB_OUTPUT
+          else
+            echo "found=false" >> $GITHUB_OUTPUT
+          fi      
+
       - name: Deploy to GitHub Pages
-        if: ${{ hashFiles('./dist/**') != '' }}
+        id: gh-pages
+        if: steps.check-dist.outputs.found == 'true'
         uses: peaceiris/actions-gh-pages@v4
         with:
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
@@ -112,3 +122,14 @@ jobs:
           publish_branch: ${{ env.DEPLOY_BRANCH }}
           publish_dir: ./dist
           enable_jekyll: ${{ env.ENABLE_JEKYLL }}
+
+      - name: Deployment summary
+        run: |
+          if [[ "${{ steps.check-dist.outputs.found }}" == "true" && "${{ steps.gh-pages.outcome }}" == "success" ]]; then
+            echo "### ✅ Deployment Successful" >> $GITHUB_STEP_SUMMARY
+            echo "Repository: [${{ env.DEPLOY_REPO }}](https://github.com/${{ env.DEPLOY_REPO }})" >> $GITHUB_STEP_SUMMARY
+            echo "Deployed branch: \`${{ env.DEPLOY_BRANCH }}\`" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "### ⏭️ Deployment Skipped" >> $GITHUB_STEP_SUMMARY
+            echo "No build artifact detected in \`./dist\`. Deploy step skipped." >> $GITHUB_STEP_SUMMARY
+          fi
