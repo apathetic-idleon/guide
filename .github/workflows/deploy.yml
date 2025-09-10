@@ -60,12 +60,6 @@ jobs:
           fetch-depth: 0
 
       # we don't use withastro/action@v3 because we want to cache pnpm
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.ASTRO_NODE_VERSION }}
-          cache: 'pnpm'
-
       - name: Read pnpm version from package.json
         id: pnpm-version
         run: echo "version=$(jq -r '.packageManager' package.json | cut -d'@' -f2)" >> $GITHUB_OUTPUT
@@ -74,6 +68,12 @@ jobs:
         uses: pnpm/action-setup@v4
         with:
           version: ${{ steps.pnpm-version.outputs.version }}
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.ASTRO_NODE_VERSION }}
+          cache: 'pnpm'
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
