@@ -4,7 +4,7 @@ name: Deploy to GitHub Pages
 
 # job constants
 env:
-  ASTRO_NODE_VERSION: 22.19.0
+  ASTRO_NODE_VERSION: 22.x
   DEPLOY_REPO: apathetic-idleon/apathetic-idleon.github.io
   DEPLOY_BRANCH: gh-pages
   ENABLE_JEKYLL: false
@@ -75,6 +75,14 @@ jobs:
         with:
           node-version: ${{ env.ASTRO_NODE_VERSION }}
           cache: 'pnpm'
+
+      - name: Cache Astro build
+        uses: actions/cache@v4
+        with:
+          path: .astro
+          key: ${{ runner.os }}-astro-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-astro-
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
