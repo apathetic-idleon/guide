@@ -1,5 +1,27 @@
 # https://docs.astro.build/en/guides/deploy/github/
+# https://github.com/peaceiris/actions-gh-pages
 name: Deploy to GitHub Pages
+
+# to create your key:
+#   ssh-keygen -t ed25519 -a 100 -f path/to/keyfile -N "" -C "github-actions"
+# make sure no passphrase, can't get prompted in github secret
+
+# if you need older rsa method for older servers:
+#   ssh-keygen -t rsa -b 4096 -o -f path/to/keyfile -N "" -C "github-actions"
+
+# on the source repo: add the private key file contents without an extension to ACTIONS_DEPLOY_KEY secrets
+#   repo -> settings -> environments -> github-pages -> Environment secrets -> add ACTIONS_DEPLOY_KEY secret -> paste in contents
+# make sure there is a trailing newline at the end. It will fail otherwise.
+# also, if you use environment secret here, you need to use `environment: github-pages` below. Otherwise use a repository secret instead.
+
+# on the destination repo: add the file contents of the .pub file to deploy keys
+#   repo -> settings -> Security header -> Deploy keys -> Add deploy key -> check write access
+
+# make sure both files use linux LF characters, not windows ones.
+# if you have a copy paste / clipboard utility or some other program it may mangle the contents.
+
+# if you private key does not have `BEGIN OPENSSH PRIVATE KEY` in header you NEED to convert to PEM (make a backup of your key first):
+#   ssh-keygen -p -f path/to/your/key -m pem
 
 on:
   # Trigger the workflow every time you push to the `main` branch
@@ -12,8 +34,14 @@ on:
 # Allow this job to clone the repo and create a page deployment
 permissions:
   contents: read
-  pages: write
-  id-token: write
+  # pages: write # since we are ssh pushing, don't need this
+  # id-token: write # since we are ssh pushing, don't need this
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -35,8 +63,15 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          publish_branch: gh-pages
+          publish_dir: ./dist
+          enable_jekyll: false
+          external_repository: apathetic-idleon/apathetic-idleon.github.io
+        if: ${{ github.ref == 'refs/heads/main' }} # only deploy main
