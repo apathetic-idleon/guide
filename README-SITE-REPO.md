@@ -8,7 +8,7 @@ Please note we have a [Additional Terms — No AI Use Rider](NOAI-CONTENT-LICENS
 
 ## Code
 
-The project code itself is licensed [GNU AFFERO GENERAL PUBLIC LICENSE]https://github.com/apathetic-idleon/guide/blob/main/CODE-LICENSE) in the [official project repo](https://github.com/apathetic-idleon/guide/blob/main/).
+The project code itself is licensed [GNU AFFERO GENERAL PUBLIC LICENSE](https://github.com/apathetic-idleon/guide/blob/main/CODE-LICENSE) in the [official project repo](https://github.com/apathetic-idleon/guide/blob/main/).
 
 ## Note
 
