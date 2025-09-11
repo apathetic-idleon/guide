@@ -6,6 +6,8 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
+    "build:site-repo": "tsx ./scripts/build-site-repo.ts",
+    "clean": "rm -rf node_modules pnpm-lock.yaml dist dist-site-repo .astro .cache && pnpm install",
     "preview": "astro preview",
     "astro": "astro",
     "check": "astro check",
@@ -54,6 +56,7 @@
     "textlint-rule-terminology": "^5.2.15",
     "textlint-rule-unexpanded-acronym": "^1.2.4",
     "textlint-rule-write-good": "^2.0.0",
+    "tsx": "^4.20.5",
     "typescript-eslint": "^8.41.0"
   },
   "dependencies": {
@@ -73,7 +76,6 @@
     "starlight-links-validator": "^0.17.2",
     "starlight-sidebar-topics": "^0.6.0",
     "tailwindcss": "^4.1.12",
-    "tsm": "^2.3.0",
     "typescript": "^5.9.2"
   },
   "engines": {
