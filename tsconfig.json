@@ -6,6 +6,7 @@
   ],
   "exclude": [
     "dist",
+    "dist-site-repo",
     "**/__coverage__/**"
   ],
   "compilerOptions": {

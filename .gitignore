@@ -2,10 +2,12 @@
 
 # build output
 dist/
+dist-site-repo/
 # generated types
 .astro/
 
 # dependencies
+.pnpm-store
 node_modules/
 package-lock.lock
 package-lock.json
@@ -21,6 +23,7 @@ pnpm-debug.log*
 # environment variables
 .env
 .env.production
+!.env.example
 
 # IDE environments
 .vscode/* # we want to encourage vscode usage
