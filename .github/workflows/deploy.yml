@@ -216,7 +216,7 @@ jobs:
 
       - name: Deploy to GitHub README Branch
         id: readme
-        if: steps.check-dist.outputs.found == 'true'
+        if: ${{ steps.check-dist.outputs.found == 'true' && env.DEPLOY_README_BRANCH != '' }}
         uses: peaceiris/actions-gh-pages@v4
         with:
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
