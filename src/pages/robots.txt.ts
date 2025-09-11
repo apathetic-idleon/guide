@@ -2,16 +2,85 @@
 
 import type { APIRoute } from 'astro';
 
-const getRobotsTxt = (sitemapURL: URL) => `\
-# Example: Allow all bots to scan and index your site.
-# Full syntax: https://developers.google.com/search/docs/advanced/robots/create-robots-txt
-User-agent: *
-Allow: /
+// ❌ List all bots you want to block here
+const BLOCKED_BOTS = [
 
-Sitemap: ${sitemapURL.href}
-`;
+  /// Block AI bots
+
+  // OpenAI (ChatGPT)
+  'GPTBot',
+  'ChatGPT-User',
+  'OAI-SearchBot',
+  'OpenAI-GPT',
+
+  // Anthropic (Claude)
+  'ClaudeBot',
+  'anthropic-ai',
+  'Claude-Web',
+
+  // Google AI data crawler
+  'Google-Extended',
+
+  // Common Crawl (training dataset)
+  'CCBot',
+
+  // Perplexity
+  'PerplexityBot',
+
+  // Scraping / aggregation (training dataset)
+  'Omgilibot',
+  'Omgili',
+
+  // TikTok / ByteDance
+  'Bytespider',
+
+  // Knowledge graph / ML
+  'Diffbot',
+
+  // Image analysis
+  'ImagesiftBot',
+
+  // You.com
+  'YouBot',
+
+  // Attempt at generic catch-all
+  '*AI*',
+
+  /// “Smelly bots” you might or might not want
+
+  // search/shopping index (but they use it for AI internaly)
+  'Amazonbot',
+];
+
+const getRobotsTxt = (sitemapURL: URL) => {
+  const lines: string[] = [];
+
+  // Allow normal search engines
+  lines.push(
+	'# Full syntax: https://developers.google.com/search/docs/advanced/robots/create-robots-txt',
+
+    '# Allow normal search engines',
+    'User-agent: *',
+    'Allow: /',
+    ''
+  );
+
+  // Block bots from list
+  lines.push('# Block AI and unwanted crawlers');
+  for (const bot of BLOCKED_BOTS) {
+    lines.push(`User-agent: ${bot}`, 'Disallow: /', '');
+  }
+
+  // Add sitemap link
+  lines.push(`# Sitemap for search engines`, `Sitemap: ${sitemapURL.href}`);
+
+
+  return lines.join('\n');
+}
 
 export const GET: APIRoute = ({ site }) => {
 	const sitemapURL = new URL('sitemap-index.xml', site);
-	return new Response(getRobotsTxt(sitemapURL));
+	return new Response(getRobotsTxt(sitemapURL), {
+		headers: { 'Content-Type': 'text/plain' },
+	});
 };

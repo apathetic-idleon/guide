@@ -34,6 +34,15 @@ export default defineConfig({
 					dark: '@assets/apathetic-tools/logo-white-512x512.png',
 				},
         defaultLocale,
+        head: [
+            {
+                tag: 'meta',
+                attrs: {
+                    name: 'robots',
+                    content: 'noai, noimageai',
+                },
+            }
+        ],
         locales,
         social,
         editLink: {

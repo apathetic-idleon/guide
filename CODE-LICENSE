@@ -22,7 +22,7 @@ Notable tools include:
 
 The following license pertains to code used to generate and deploy the website or application that we ourselves have produced or modified. It does not cover the content the website displays, like text, images, videos, and the like. It does not cover anything already covered above.
 
-See `COTENT-LICENSE` for licensing of content elements.
+See `COTENT-LICENSE` and `NOAI-CONTENT-LICENSE` rider for licensing of project content (generally found under `src/content`, `src/assets` and `public` directories).
 
 Copyright (c) 2025, Apathetic Tools, all rights reserved.
 
