@@ -1,12 +1,14 @@
-# Starlight Starter Kit: Basics
+# Apathetic Guide to IdleOn
 
-[![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
+This is the code and content repository for the `Apathetic Guide to IdleOn`.
 
-```
-pnpm create astro@latest -- --template starlight
-```
+## Content License
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Please note we have a [Additional Terms — No AI Use Rider](NOAI-CONTENT-LICENSE) to explicitly disallow AI use of our content, which further restricts the [CC-BY-NC-SA](CONTENT-LICENSE). Contact us if you have different licensing needs. Neither of these apply to the code, just the project content (generally found under `src/content`, `src/assets` and `public` directories).
+
+## Code License
+
+The project code itself is licensed [GNU AFFERO GENERAL PUBLIC LICENSE](CODE-LICENSE).
 
 ## 🚀 Project Structure
 
@@ -25,7 +27,7 @@ Inside of your Astro + Starlight project, you'll see the following folders and f
 └── tsconfig.json
 ```
 
-Starlight looks for `.md` or `.mdx` files in the `src/content/docs/` directory. Each file is exposed as a route based on its file name.
+The site content is usually `.mdx` or `.md` files in the `src/content/docs/` directory. Each file is exposed as a route based on its file name.
 
 Images can be added to `src/assets/` and embedded in Markdown with a relative link.
 

@@ -1,0 +1,13 @@
+# Content License
+This project content (generally found under `src/content`, `src/assets` and `public` directories) is licensed under the [CC-BY-NC-SA-4.0 license](CONTENT-LICENSE) ( see that file for details) but with the additional terms outlined below:
+
+### Additional Terms — No AI Use Rider
+In addition to the terms of CC-BY-NC-SA-4.0:
+
+- You may **not** use the contents of this repository, in whole or in part, to train, fine-tune, or improve any machine learning or artificial intelligence (AI) system.
+- You may **not** include the contents of this repository in any dataset used for AI/ML training.
+- You may **not** provide access to the contents of this repository for the purpose of AI/ML training.
+
+These restrictions apply to commercial and non-commercial use alike.
+
+Contact us if you have different licensing needs.

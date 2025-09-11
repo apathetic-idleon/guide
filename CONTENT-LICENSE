@@ -1,3 +1,8 @@
+These licenses are for the project content (generally found under generally found under `src/content`, `src/assets` and `public` directories) and not the code to generate the project itself.
+
+
+---
+
 
 On `IdleOn - The Idle RPG` assets:
 
@@ -64,6 +69,14 @@ Copyright (c) 2025, Apathetic Tools, all rights reserved.
 We retain copyright on everything we ourselves produce for the website; which includes any code, text, images, videos, and other assets; so contact us if you have different licensing needs.
 
 We provide the following license on the text, images, videos, and the like for your use. The intent is that armed with this license, if we are no longer able to host the website, a community of fans and users would be able tostep up and keep it running if they so choose.
+
+
+---
+
+
+NO AI
+
+Please note we have a [Additional Terms — No AI Use Rider](NOAI-CONTENT-LICENSE) license (see that file for details) to explicitly disallow AI use of our project content, which further restricts the CC-BY-NC-SA license below. Contact us if you have different licensing needs. It does not apply to our code.
 
 
 ---
