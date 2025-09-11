@@ -7,6 +7,7 @@ env:
   ASTRO_NODE_VERSION: 22.x
   DEPLOY_REPO: apathetic-idleon/apathetic-idleon.github.io
   DEPLOY_BRANCH: gh-pages
+  DEPLOY_README_BRANCH: main
   ENABLE_JEKYLL: false
 
 # to create your key:
@@ -76,6 +77,14 @@ jobs:
           node-version: ${{ env.ASTRO_NODE_VERSION }}
           cache: 'pnpm'
 
+      - name: Cache pnpm store
+        uses: actions/cache@v4
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-
+
       - name: Cache Astro build
         uses: actions/cache@v4
         with:
@@ -90,12 +99,22 @@ jobs:
       - name: Build site
         run: pnpm run build
 
-      - name: Upload artifact
+      - name: Build site repo README
+        run: pnpm run build:site-repo      
+
+      - name: Upload artifact gh-pages
         if: ${{ github.ref == 'refs/heads/main' }} # only deploy main
         uses: actions/upload-artifact@v4
         with:
           name: github-pages
           path: ./dist
+
+      - name: Upload artifact site-repo README
+        if: ${{ github.ref == 'refs/heads/main' }} # only deploy main
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-repo-readme
+          path: ./dist-site-repo
 
   deploy:
     if: ${{ github.ref == 'refs/heads/main' }} # only deploy main
@@ -105,6 +124,17 @@ jobs:
       name: github-pages
 
     steps:
+      - name: Verify ACTIONS_DEPLOY_KEY
+        run: |
+          if [ -z "${{ secrets.ACTIONS_DEPLOY_KEY }}" ]; then
+            echo "❌ ACTIONS_DEPLOY_KEY is not set!"
+            exit 1
+          fi
+          if ! echo "${{ secrets.ACTIONS_DEPLOY_KEY }}" | grep -q "BEGIN OPENSSH PRIVATE KEY"; then
+            echo "❌ ACTIONS_DEPLOY_KEY does not look like a valid OpenSSH private key!"
+            exit 1
+          fi
+
       - name: Download build output        
         uses: actions/download-artifact@v4
         with:
@@ -141,4 +171,67 @@ jobs:
           else
             echo "### ⏭️ Deployment Skipped" >> $GITHUB_STEP_SUMMARY
             echo "No build artifact detected in \`./dist\`. Deploy step skipped." >> $GITHUB_STEP_SUMMARY
+          fi
+
+  deploy_site_repo_readme:
+    if: ${{ github.ref == 'refs/heads/main' }} # only deploy main
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+
+    steps:
+      - name: Skip if no DEPLOY_README_BRANCH
+        if: ${{ env.DEPLOY_README_BRANCH == '' }}
+        run: |
+          echo "Skipping deploy_site_repo_readme (DEPLOY_README_BRANCH not set)."
+          exit 0
+
+      - name: Verify ACTIONS_DEPLOY_KEY
+        run: |
+          if [ -z "${{ secrets.ACTIONS_DEPLOY_KEY }}" ]; then
+            echo "❌ ACTIONS_DEPLOY_KEY is not set!"
+            exit 1
+          fi
+          if ! echo "${{ secrets.ACTIONS_DEPLOY_KEY }}" | grep -q "BEGIN OPENSSH PRIVATE KEY"; then
+            echo "❌ ACTIONS_DEPLOY_KEY does not look like a valid OpenSSH private key!"
+            exit 1
+          fi
+
+      - name: Download build output        
+        uses: actions/download-artifact@v4
+        with:
+          name: site-repo-readme
+          path: ./dist-site-repo      
+        continue-on-error: true
+
+      - name: Check if dist-site-repo exists
+        id: check-dist
+        run: |
+          if [ -d "./dist-site-repo" ]; then
+            echo "found=true" >> $GITHUB_OUTPUT
+          else
+            echo "found=false" >> $GITHUB_OUTPUT
+          fi      
+
+      - name: Deploy to GitHub README Branch
+        id: readme
+        if: steps.check-dist.outputs.found == 'true'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          external_repository: ${{ env.DEPLOY_REPO }}
+          publish_branch: ${{ env.DEPLOY_README_BRANCH }}
+          publish_dir: ./dist-site-repo
+          enable_jekyll: true
+
+      - name: Deployment summary
+        run: |
+          if [[ "${{ steps.check-dist.outputs.found }}" == "true" && "${{ steps.readme.outcome }}" == "success" ]]; then
+            echo "### ✅ Deployment Site-Repo Successful" >> $GITHUB_STEP_SUMMARY
+            echo "Repository: [${{ env.DEPLOY_REPO }}](https://github.com/${{ env.DEPLOY_REPO }})" >> $GITHUB_STEP_SUMMARY
+            echo "Deployed branch: \`${{ env.DEPLOY_README_BRANCH }}\`" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "### ⏭️ Deployment Site-Repo Skipped" >> $GITHUB_STEP_SUMMARY
+            echo "No build artifact detected in \`./dist-site-repo\`. Deploy step skipped." >> $GITHUB_STEP_SUMMARY
           fi
