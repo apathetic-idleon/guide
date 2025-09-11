@@ -7,8 +7,10 @@ env:
   ASTRO_NODE_VERSION: 22.x
   DEPLOY_REPO: apathetic-idleon/apathetic-idleon.github.io
   DEPLOY_BRANCH: gh-pages
-  DEPLOY_README_BRANCH: main
   ENABLE_JEKYLL: false
+  DEPLOY_README_BRANCH: main
+  ENABLE_JEKYLL_README: true
+  
 
 # to create your key:
 #   ssh-keygen -t ed25519 -a 100 -f path/to/keyfile -N "" -C "github-actions"
@@ -77,14 +79,6 @@ jobs:
           node-version: ${{ env.ASTRO_NODE_VERSION }}
           cache: 'pnpm'
 
-      - name: Cache pnpm store
-        uses: actions/cache@v4
-        with:
-          path: ~/.pnpm-store
-          key: ${{ runner.os }}-pnpm-${{ hashFiles('pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-
-
       - name: Cache Astro build
         uses: actions/cache@v4
         with:
@@ -104,20 +98,25 @@ jobs:
 
       - name: Upload artifact gh-pages
         if: ${{ github.ref == 'refs/heads/main' }} # only deploy main
+        id: upload-gh-pages
         uses: actions/upload-artifact@v4
         with:
           name: github-pages
           path: ./dist
 
-      - name: Upload artifact site-repo README
-        if: ${{ github.ref == 'refs/heads/main' }} # only deploy main
+      - name: Upload artifact site-repo README        
+        if: ${{ github.ref == 'refs/heads/main' && env.DEPLOY_README_BRANCH != '' }} # only deploy main
+        id: upload-site-repo-readme
         uses: actions/upload-artifact@v4
         with:
           name: site-repo-readme
           path: ./dist-site-repo
+    outputs:
+      artifact_gh_pages: ${{ steps.upload-gh-pages.outcome }}
+      artifact_site_repo_readme: ${{ steps.upload-site-repo-readme.outcome }}
 
-  deploy:
-    if: ${{ github.ref == 'refs/heads/main' }} # only deploy main
+  deploy_gh_pages:
+    if: ${{ needs.build.outputs.artifact_gh_pages == 'success' }}
     needs: build
     runs-on: ubuntu-latest
     environment:
@@ -140,20 +139,8 @@ jobs:
         with:
           name: github-pages
           path: ./dist        
-        continue-on-error: true
-
-      - name: Check if dist exists
-        id: check-dist
-        run: |
-          if [ -d "./dist" ]; then
-            echo "found=true" >> $GITHUB_OUTPUT
-          else
-            echo "found=false" >> $GITHUB_OUTPUT
-          fi      
 
       - name: Deploy to GitHub Pages
-        id: gh-pages
-        if: steps.check-dist.outputs.found == 'true'
         uses: peaceiris/actions-gh-pages@v4
         with:
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
@@ -162,31 +149,14 @@ jobs:
           publish_dir: ./dist
           enable_jekyll: ${{ env.ENABLE_JEKYLL }}
 
-      - name: Deployment summary
-        run: |
-          if [[ "${{ steps.check-dist.outputs.found }}" == "true" && "${{ steps.gh-pages.outcome }}" == "success" ]]; then
-            echo "### ✅ Deployment Successful" >> $GITHUB_STEP_SUMMARY
-            echo "Repository: [${{ env.DEPLOY_REPO }}](https://github.com/${{ env.DEPLOY_REPO }})" >> $GITHUB_STEP_SUMMARY
-            echo "Deployed branch: \`${{ env.DEPLOY_BRANCH }}\`" >> $GITHUB_STEP_SUMMARY
-          else
-            echo "### ⏭️ Deployment Skipped" >> $GITHUB_STEP_SUMMARY
-            echo "No build artifact detected in \`./dist\`. Deploy step skipped." >> $GITHUB_STEP_SUMMARY
-          fi
-
   deploy_site_repo_readme:
-    if: ${{ github.ref == 'refs/heads/main' }} # only deploy main
+    if: ${{ needs.build.outputs.artifact_site_repo_readme == 'success' }}
     needs: build
     runs-on: ubuntu-latest
     environment:
       name: github-pages
 
-    steps:
-      - name: Skip if no DEPLOY_README_BRANCH
-        if: ${{ env.DEPLOY_README_BRANCH == '' }}
-        run: |
-          echo "Skipping deploy_site_repo_readme (DEPLOY_README_BRANCH not set)."
-          exit 0
-
+    steps:      
       - name: Verify ACTIONS_DEPLOY_KEY
         run: |
           if [ -z "${{ secrets.ACTIONS_DEPLOY_KEY }}" ]; then
@@ -202,36 +172,39 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: site-repo-readme
-          path: ./dist-site-repo      
-        continue-on-error: true
+          path: ./dist-site-repo         
 
-      - name: Check if dist-site-repo exists
-        id: check-dist
-        run: |
-          if [ -d "./dist-site-repo" ]; then
-            echo "found=true" >> $GITHUB_OUTPUT
-          else
-            echo "found=false" >> $GITHUB_OUTPUT
-          fi      
-
-      - name: Deploy to GitHub README Branch
-        id: readme
-        if: ${{ steps.check-dist.outputs.found == 'true' && env.DEPLOY_README_BRANCH != '' }}
+      - name: Deploy to GitHub README Branch    
         uses: peaceiris/actions-gh-pages@v4
         with:
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           external_repository: ${{ env.DEPLOY_REPO }}
           publish_branch: ${{ env.DEPLOY_README_BRANCH }}
           publish_dir: ./dist-site-repo
-          enable_jekyll: true
+          enable_jekyll: ${{ env.ENABLE_JEKYLL_README }}
 
-      - name: Deployment summary
+  summary:
+    needs: [deploy_gh_pages, deploy_site_repo_readme]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deployment Summary
         run: |
-          if [[ "${{ steps.check-dist.outputs.found }}" == "true" && "${{ steps.readme.outcome }}" == "success" ]]; then
-            echo "### ✅ Deployment Site-Repo Successful" >> $GITHUB_STEP_SUMMARY
-            echo "Repository: [${{ env.DEPLOY_REPO }}](https://github.com/${{ env.DEPLOY_REPO }})" >> $GITHUB_STEP_SUMMARY
-            echo "Deployed branch: \`${{ env.DEPLOY_README_BRANCH }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "## Deployment Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          if [ "${{ needs.deploy_gh_pages.result }}" = "success" ]; then
+            echo "- ✅ GitHub Pages deployed" >> $GITHUB_STEP_SUMMARY
+          elif [ "${{ needs.deploy_gh_pages.result }}" = "skipped" ]; then
+            echo "- ⏭️ GitHub Pages deployment skipped" >> $GITHUB_STEP_SUMMARY
           else
-            echo "### ⏭️ Deployment Site-Repo Skipped" >> $GITHUB_STEP_SUMMARY
-            echo "No build artifact detected in \`./dist-site-repo\`. Deploy step skipped." >> $GITHUB_STEP_SUMMARY
+            echo "- ❌ GitHub Pages deployment failed" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          if [ "${{ needs.deploy_site_repo_readme.result }}" = "success" ]; then
+            echo "- ✅ site-repo README deployed" >> $GITHUB_STEP_SUMMARY
+          elif [ "${{ needs.deploy_site_repo_readme.result }}" = "skipped" ]; then
+            echo "- ⏭️ site-repo README deployment skipped" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "- ❌ site-repo README deployment failed" >> $GITHUB_STEP_SUMMARY
           fi
