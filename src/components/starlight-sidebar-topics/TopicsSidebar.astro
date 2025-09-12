@@ -1,0 +1,9 @@
+---
+// https://github.com/HiDeoo/starlight-sidebar-topics/blob/main/packages/starlight-sidebar-topics/components/starlight/Sidebar.astro MIT
+import Topics from './Topics.astro'
+
+const { hasSidebar } = Astro.locals.starlightRoute
+const { isPageWithTopic } = Astro.locals.starlightSidebarTopics
+---
+
+{hasSidebar && isPageWithTopic && <Topics />}

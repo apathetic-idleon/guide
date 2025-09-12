@@ -21,7 +21,7 @@ export default defineConfig({
     output: 'static',
     site,
     base,
-    trailingSlash: 'always',
+    trailingSlash: 'ignore',
     integrations: [
 			devServerFileWatcher([
         './config/**', // Custom plugins and integrations
@@ -50,8 +50,9 @@ export default defineConfig({
         },
         lastUpdated: true,
         components: {						
-            Footer: './src/components/Footer.astro',
-						Search: './src/components/Search.astro'
+            Footer: './src/components/starlight/Footer.astro',
+						Search: './src/components/starlight/Search.astro',
+						Sidebar: './src/components/starlight/Sidebar.astro',
         },
         plugins: [
             starlightSidebarTopics(sidebar),
@@ -71,12 +72,12 @@ export default defineConfig({
 			// https://github.com/delucis/astro-auto-import/issues/46
 			AutoImport({
 				imports: [
-					'./src/components/AsOf.astro',		
-					'./src/components/BaseLink.astro',
-					'./src/components/Conditional.astro',
-					'./src/components/Def.astro',		
-					'./src/components/Localize.astro',		
-					'./src/components/Stress.astro',		
+					'./src/components/astro-extensions/BaseLink.astro',
+					'./src/components/astro-extensions/Localize.astro',							
+					'./src/components/mdx/AsOf.astro',		
+					'./src/components/mdx/Def.astro',						
+					'./src/components/mdx/Stress.astro',								
+					'./src/components/utils/Conditional.astro',
 					{
 						'@astrojs/starlight/components': ['Aside'],
 					},
