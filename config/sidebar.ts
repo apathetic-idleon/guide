@@ -6,7 +6,7 @@ import type { StarlightSidebarTopicsUserConfig } from 'starlight-sidebar-topics'
 export const sidebar: StarlightSidebarTopicsUserConfig = [
 	{
 		id: 'journey',
-		label: 'Journey',
+		label: 'Start',
 		link: 'journey/getting-started/install',
 		icon: 'rocket',
 		items: [
