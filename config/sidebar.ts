@@ -84,4 +84,16 @@ export const sidebar: StarlightSidebarTopicsUserConfig = [
 			},
 		],
 	},
+	{
+		id: 'third-party',
+		label: 'Third-party tools',
+		link: 'third-party/wiki',
+		icon: 'setting',
+		items: [
+			{
+				label: 'General',
+				autogenerate: { directory: 'third-party' },
+			},
+		],
+	},
 ];
