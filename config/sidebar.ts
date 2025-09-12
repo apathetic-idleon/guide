@@ -24,7 +24,7 @@ export const sidebar: StarlightSidebarTopicsUserConfig = [
 		id: 'mechanic',
 		label: 'Mechanics',
 		link: 'mechanic/global/upgrade-vault',
-		icon: 'setting',
+		icon: 'open-book',
 		items: [
 			{
 				label: 'Global',
