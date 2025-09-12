@@ -1,6 +1,6 @@
 /// repo edit links
 export const user = process.env.APP_USER ?? 'apathetic-idleon';
-export const repo = process.env.APP_REPO ?? 'apathetic-idleon.github.io';
+export const repo = process.env.APP_REPO ?? 'guide';
 export const hostingSlug = user + '/' + repo;
 export const source = process.env.APP_SOURCE ?? 'https://github.com/' + hostingSlug;
 export const sourcePlat = process.env.APP_SOURCE_PLAT ?? 'GitHub';
