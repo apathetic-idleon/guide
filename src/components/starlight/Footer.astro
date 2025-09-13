@@ -13,11 +13,16 @@ import {
 	org, 
 	orgUrl 
 } from '@config/footer';
+
+// figure out if we have pagination in the default footer
+const { pagination } = Astro.locals.starlightRoute;
+const { prev, next } = pagination;
+const hasPagination = prev || next;
 ---
 
 <Default {...Astro.props} />
 
-<footer class="copyright mt-0 sl-flex flex-col gap-2 text-xs text-[var(--sl-color-gray-3)]">	
-	<p class="my-0 py-0">An <a href={orgUrl} class="text-inherit">{org}</a> project &copy; {copyrightYears}. Content licensed <a href={licenseUrl} class="text-inherit">{license}</a>. See <BaseLink href="site/usage/" class="text-inherit">{usage}</BaseLink>.</p>
-	<p class="my-0 py-0"><em>Not affiliated in any way with <a href={affilGameUrl} class="text-inherit">{affilGame}</a> &copy; <a href={affilDevUrl} class="text-inherit">{affilDev}</a>. Images used for commentary only.</em></p>
+<footer aria-label="Copyright" class={`sl-flex flex-col gap-2 text-sm text-[var(--sl-color-gray-3)] ${hasPagination ? 'mt-5' : 'mt-0'}`}>	
+	<p class="my-0 py-0"><small>An <a href={orgUrl} class="text-inherit">{org}</a> project &copy; {copyrightYears}. Content licensed <a href={licenseUrl} class="text-inherit">{license}</a>. See <BaseLink href="site/usage/" class="text-inherit">{usage}</BaseLink>.</small></p>
+	<p class="my-0 py-0"><small><em>Not affiliated in any way with <a href={affilGameUrl} class="text-inherit">{affilGame}</a> &copy; <a href={affilDevUrl} class="text-inherit">{affilDev}</a>. Images used for commentary only.</em></small></p>
 </footer>
