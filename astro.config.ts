@@ -16,6 +16,8 @@ import { social } from './config/social';
 import { defaultLocale, locales } from './config/translation';
 import { sidebar } from './config/sidebar';
 
+import icon from 'astro-icon';
+
 // https://astro.build/config
 export default defineConfig({
     output: 'static',
@@ -24,53 +26,52 @@ export default defineConfig({
     trailingSlash: 'ignore',
     integrations: [
 			devServerFileWatcher([
-        './config/**', // Custom plugins and integrations
-			]), 			
+			'./config/**', // Custom plugins and integrations
+    	]), 
 			starlight({
-        title,
-        description,
+				title,
+				description,
 				logo: {
-					light: '@assets/apathetic-tools/logo-black-512x512.png',
-					dark: '@assets/apathetic-tools/logo-white-512x512.png',
+            light: '@assets/apathetic-tools/logo-black-512x512.png',
+            dark: '@assets/apathetic-tools/logo-white-512x512.png',
 				},
-        defaultLocale,
-        head: [
-            {
-                tag: 'meta',
-                attrs: {
-                    name: 'robots',
-                    content: 'noai, noimageai',
-                },
-            }
-        ],
-        locales,
-        social,
-        editLink: {
-            baseUrl: source + '/edit/main/',
-        },
-        lastUpdated: true,
-        components: {						
-            Footer: './src/components/starlight/Footer.astro',
-						Search: './src/components/starlight/Search.astro',
-        },
-        plugins: [
-            starlightSidebarTopics(sidebar),
-            ...(process.env.CHECK_LINKS
-                ? [
-                        starlightLinksValidator({
-                            errorOnFallbackPages: false,
-                            errorOnInconsistentLocale: true,
-                        }),
-                    ]
-                : []),
-        ],
-        customCss: [
-					'./src/styles/global.css',
-					'./src/styles/sidebar-topics-overrides.css',
+				defaultLocale,
+				head: [
+					{
+						tag: 'meta',
+						attrs: {
+								name: 'robots',
+								content: 'noai, noimageai',
+						},
+					}
+				],
+				locales,
+				social,
+				editLink: {
+					baseUrl: source + '/edit/main/',
+				},
+				lastUpdated: true,
+				components: {						
+					Footer: './src/components/starlight/Footer.astro',
+					Search: './src/components/starlight/Search.astro',
+				},
+				plugins: [
+					starlightSidebarTopics(sidebar),
+					...(process.env.CHECK_LINKS
+							? [
+											starlightLinksValidator({
+													errorOnFallbackPages: false,
+													errorOnInconsistentLocale: true,
+											}),
+									]
+							: []),
+				],
+				customCss: [
+										'./src/styles/global.css',
+										'./src/styles/sidebar-topics-overrides.css',
 				],
 			}), 
-			sitemap(),
-			// generates a warning about order after mdx that can safely be disregarded
+			sitemap(), // generates a warning about order after mdx that can safely be disregarded
 			// https://github.com/delucis/astro-auto-import/issues/46
 			AutoImport({
 				imports: [
@@ -81,12 +82,17 @@ export default defineConfig({
 					'./src/components/mdx/Stress.astro',								
 					'./src/components/utils/Conditional.astro',
 					{
-						'@astrojs/starlight/components': [
-							'Aside', 
-						],
+							'@astrojs/starlight/components': [
+									'Aside', 
+									['Icon', 'SIcon'],
+							],
+							"astro-icon/components": [
+									'Icon',
+							],
 					},
 				],				
-			}),
+			}), 
+			icon(),
 		],
 
     vite: {
@@ -104,6 +110,8 @@ export default defineConfig({
             },
         },
 
-        plugins: [tailwindcss()],
-    },
+        plugins: [
+					tailwindcss()
+				],
+		},
 });
