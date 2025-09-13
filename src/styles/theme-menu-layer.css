@@ -1,0 +1,22 @@
+/*
+// Problem: The dark mode theme menu in the top right doesn't render properly in Firefox
+// 
+// Starlight Theme Menu Component, MIT: 
+// Source: https://github.com/withastro/starlight/blob/main/packages/starlight/components/ThemeSelect.astro
+*/ 
+
+@layer our-theme-menu {
+	[data-theme='dark'] starlight-theme-select {
+		& select,
+		& select option,
+		& select option:checked {
+			background-color: var(--sl-color-gray-6);
+			color: var(--sl-color-text);
+		}
+		
+		& select option:hover {
+			background-color: var(--sl-color-accent-high);
+			color: var(--sl-color-text-invert);
+		}
+	}
+}
