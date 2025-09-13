@@ -52,7 +52,7 @@ export default defineConfig({
         components: {						
             Footer: './src/components/starlight/Footer.astro',
 						Search: './src/components/starlight/Search.astro',
-						Sidebar: './src/components/starlight/Sidebar.astro',
+						/* Sidebar: './src/components/starlight/Sidebar.astro', */
         },
         plugins: [
             starlightSidebarTopics(sidebar),
@@ -65,7 +65,10 @@ export default defineConfig({
                     ]
                 : []),
         ],
-        customCss: ['./src/styles/global.css'],
+        customCss: [
+					'./src/styles/global.css',
+					'./src/styles/sidebar-topics-overrides.css',
+				],
 			}), 
 			sitemap(),
 			// generates a warning about order after mdx that can safely be disregarded
