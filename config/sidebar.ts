@@ -5,18 +5,18 @@ import type { StarlightSidebarTopicsUserConfig } from 'starlight-sidebar-topics'
 
 export const sidebar: StarlightSidebarTopicsUserConfig = [
 	{
-		id: 'journey',
-		label: 'Start',
-		link: 'journey/getting-started/install',
+		id: 'walkthrough',
+		label: 'Walkthrough',
+		link: 'walkthrough/getting-started/install',
 		icon: 'rocket',
 		items: [
 			{
 				label: 'Getting Started',
-				autogenerate: { directory: 'journey/getting-started' },
+				autogenerate: { directory: 'walkthrough/getting-started' },
 			},
 			{
 				label: 'Unlock Worlds',
-				autogenerate: { directory: 'journey/world' },
+				autogenerate: { directory: 'walkthrough/world' },
 			},
 		],
 	},
