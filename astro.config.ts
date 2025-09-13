@@ -52,7 +52,6 @@ export default defineConfig({
         components: {						
             Footer: './src/components/starlight/Footer.astro',
 						Search: './src/components/starlight/Search.astro',
-						/* Sidebar: './src/components/starlight/Sidebar.astro', */
         },
         plugins: [
             starlightSidebarTopics(sidebar),
@@ -82,7 +81,9 @@ export default defineConfig({
 					'./src/components/mdx/Stress.astro',								
 					'./src/components/utils/Conditional.astro',
 					{
-						'@astrojs/starlight/components': ['Aside'],
+						'@astrojs/starlight/components': [
+							'Aside', 
+						],
 					},
 				],				
 			}),
