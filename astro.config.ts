@@ -105,7 +105,6 @@ export default defineConfig({
 					'./src/components/utils/Conditional.astro',
 					{
 							'@astrojs/starlight/components': [
-									'Aside', 
 									['Icon', 'SIcon'],
 							],
 							"astro-icon/components": [
