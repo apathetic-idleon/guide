@@ -6,9 +6,10 @@
 import eslint from '@eslint/js';
 import eslintPluginAstro from 'eslint-plugin-astro';
 import globals from 'globals';
+import { defineConfig } from 'eslint/config';
 import tseslint from 'typescript-eslint';
 
-export default tseslint.config(
+export default defineConfig([
 	{
 		ignores: ['**/dist', '**/node_modules', '**/.astro', '**/.github', '**/.changeset'],
 	},
@@ -40,5 +41,5 @@ export default tseslint.config(
 		languageOptions: {
 			globals: globals.node,
 		},
-	}
-);
+	},
+]);
