@@ -1,23 +1,86 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import type { StarlightUserConfig } from '@astrojs/starlight/types';
 import starlight from '@astrojs/starlight';
 import sitemap from '@astrojs/sitemap';
 import AutoImport from 'astro-auto-import';
 import starlightSidebarTopics from 'starlight-sidebar-topics';
+import starlightBlog from 'starlight-blog';
+import icon from 'astro-icon';
 import starlightLinksValidator from 'starlight-links-validator';
 import tailwindcss from '@tailwindcss/vite';
 import isWsl from 'is-wsl';
 
+
 // can't use tsconfig aliases yet...
-import { devServerFileWatcher } from './config/integrations/dev-server-file-watcher';
-import { title, description } from './config/header';
-import { base, site, source } from './config/hosting';
-import { social } from './config/social';
-import { defaultLocale, locales } from './config/translation';
-import { sidebar } from './config/sidebar';
+import devServerFileWatcher from './config/integrations/dev-server-file-watcher';
+import cleanupStarlightAfterPlugins from './config/integrations/cleanup-starlight-after-plugins';
+import {
+  title, description, base, site, source,
+  social, defaultLocale, locales,
+  sidebarConfig, sidebarOptions,
+  author, authorSlug, blogName, blogSlug
+} from './config';
 
-import icon from 'astro-icon';
+// ─── Starlight plugins ─────────────────────────────────────────
+const starlightPlugins = [
+	starlightSidebarTopics(sidebarConfig, sidebarOptions),
+	starlightBlog({
+		prefix: blogSlug,
+		title: blogName,
+		authors: {
+			[authorSlug]: {
+				name: author,
+			}
+		},
+	}),
+	...(process.env.CHECK_LINKS
+			? [
+							starlightLinksValidator({
+									errorOnFallbackPages: false,
+									errorOnInconsistentLocale: true,
+							}),
+					]
+			: []),
+	cleanupStarlightAfterPlugins(),
+] satisfies StarlightUserConfig['plugins'];
 
+// ─── Starlight config ──────────────────────────────────────────
+const starlightConfig : StarlightUserConfig = {
+	title,
+	description,
+	logo: {
+			light: '@assets/apathetic-tools/logo-black-512x512.png',
+			dark: '@assets/apathetic-tools/logo-white-512x512.png',
+	},
+	defaultLocale,
+	head: [
+		{
+			tag: 'meta',
+			attrs: {
+					name: 'robots',
+					content: 'noai, noimageai',
+			},
+		}
+	],
+	locales,
+	social,
+	editLink: {
+		baseUrl: source + '/edit/main/',
+	},
+	lastUpdated: true,
+	components: {						
+		Footer: './src/components/starlight/Footer.astro',
+		Search: './src/components/starlight/Search.astro',
+	},
+	plugins: starlightPlugins,
+	customCss: [
+							'./src/styles/global.css',
+							'./src/styles/sidebar-topics-overrides.css',
+	],
+};
+
+// ─── Astro config ──────────────────────────────────────────────
 // https://astro.build/config
 export default defineConfig({
     output: 'static',
@@ -28,50 +91,9 @@ export default defineConfig({
 			devServerFileWatcher([
 			'./config/**', // Custom plugins and integrations
     	]), 
-			starlight({
-				title,
-				description,
-				logo: {
-            light: '@assets/apathetic-tools/logo-black-512x512.png',
-            dark: '@assets/apathetic-tools/logo-white-512x512.png',
-				},
-				defaultLocale,
-				head: [
-					{
-						tag: 'meta',
-						attrs: {
-								name: 'robots',
-								content: 'noai, noimageai',
-						},
-					}
-				],
-				locales,
-				social,
-				editLink: {
-					baseUrl: source + '/edit/main/',
-				},
-				lastUpdated: true,
-				components: {						
-					Footer: './src/components/starlight/Footer.astro',
-					Search: './src/components/starlight/Search.astro',
-				},
-				plugins: [
-					starlightSidebarTopics(sidebar),
-					...(process.env.CHECK_LINKS
-							? [
-											starlightLinksValidator({
-													errorOnFallbackPages: false,
-													errorOnInconsistentLocale: true,
-											}),
-									]
-							: []),
-				],
-				customCss: [
-										'./src/styles/global.css',
-										'./src/styles/sidebar-topics-overrides.css',
-				],
-			}), 
+			starlight(starlightConfig),
 			sitemap(), // generates a warning about order after mdx that can safely be disregarded
+			icon(),
 			// https://github.com/delucis/astro-auto-import/issues/46
 			AutoImport({
 				imports: [
@@ -92,7 +114,6 @@ export default defineConfig({
 					},
 				],				
 			}), 
-			icon(),
 		],
 
     vite: {

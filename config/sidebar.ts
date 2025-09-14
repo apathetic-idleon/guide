@@ -1,9 +1,19 @@
 // icons must be from: https://starlight.astro.build/reference/icons/#all-icons
 // careful not to use trademarked logos for other purposes
 
-import type { StarlightSidebarTopicsUserConfig } from 'starlight-sidebar-topics';
+import starlightSidebarTopicsPlugin, {
+  type StarlightSidebarTopicsUserConfig,
+} from "starlight-sidebar-topics";
 
-export const sidebar: StarlightSidebarTopicsUserConfig = [
+import {
+	blogSlug
+} from './blog';
+
+// infer the UserOptions type from the plugin signature
+type StarlightSidebarTopicsUserOptions =
+  NonNullable<Parameters<typeof starlightSidebarTopicsPlugin>[1]>;
+
+export const sidebarConfig: StarlightSidebarTopicsUserConfig  = [
 	{
 		id: 'walkthrough',
 		label: 'Walkthrough',
@@ -97,3 +107,10 @@ export const sidebar: StarlightSidebarTopicsUserConfig = [
 		],
 	},
 ];
+
+export const sidebarOptions: StarlightSidebarTopicsUserOptions = {
+		exclude: [
+			'/'+blogSlug, 
+			'/'+blogSlug+'/**/*',
+		],
+};

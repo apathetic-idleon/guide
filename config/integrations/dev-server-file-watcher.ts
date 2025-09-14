@@ -20,8 +20,8 @@ import glob from 'fast-glob';
  *   ],
  * }
  */
-export const devServerFileWatcher = (paths: string[]) =>
-	({
+export default function devServerFileWatcher(paths: string[]): AstroIntegration {
+	return {
 		name: 'dev-server-file-watcher',
 		hooks: {
 			async 'astro:config:setup'({ addWatchFile, config }) {
@@ -31,4 +31,5 @@ export const devServerFileWatcher = (paths: string[]) =>
 				}
 			},
 		},
-	}) satisfies AstroIntegration;
+	};
+}
