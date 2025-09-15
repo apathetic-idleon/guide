@@ -56,11 +56,9 @@
     "textlint-rule-terminology": "^5.2.15",
     "textlint-rule-unexpanded-acronym": "^1.2.4",
     "textlint-rule-write-good": "^2.0.0",
-    "tsx": "^4.20.5",
     "typescript-eslint": "^8.43.0"
   },
   "dependencies": {
-    "@11ty/eleventy-fetch": "^5.1.0",
     "@astrojs/check": "^0.9.4",
     "@astrojs/sitemap": "^3.5.1",
     "@astrojs/starlight": "^0.35.3",
@@ -75,7 +73,6 @@
     "fast-glob": "^3.3.3",
     "is-wsl": "^3.1.0",
     "mdx": "^0.3.1",
-    "p-retry": "^7.0.0",
     "sharp": "^0.34.3",
     "starlight-auto-drafts": "^0.2.0",
     "starlight-auto-sidebar": "^0.1.2",
@@ -88,12 +85,13 @@
     "starlight-scroll-to-top": "^0.4.0",
     "starlight-sidebar-topics": "^0.6.0",
     "tailwindcss": "^4.1.13",
+    "tsx": "^4.20.5",
     "typescript": "^5.9.2"
   },
   "engines": {
     "node": ">=22.0.0 <23.0.0"
   },
-  "packageManager": "pnpm@10.15.1",
+  "packageManager": "pnpm@10.16.1",
   "devEngines": {
     "runtime": {
       "name": "node",
