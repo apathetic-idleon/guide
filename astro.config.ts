@@ -6,6 +6,7 @@ import sitemap from '@astrojs/sitemap';
 import AutoImport from 'astro-auto-import';
 import starlightSidebarTopics from 'starlight-sidebar-topics';
 import starlightAutoSidebar from 'starlight-auto-sidebar'
+import starlightFullViewMode from 'starlight-fullview-mode'
 import starlightBlog from 'starlight-blog';
 import icon from 'astro-icon';
 import starlightMarkdownBlocks from 'starlight-markdown-blocks';
@@ -28,9 +29,9 @@ import {
 } from './config';
 
 // ─── Starlight plugins ─────────────────────────────────────────
-const starlightPlugins = [
+const starlightPlugins = [	
   starlightAutoSidebar(), // must come before starlightSidebarTopics() 
-	starlightSidebarTopics(sidebarConfig, sidebarOptions),			
+	starlightSidebarTopics(sidebarConfig, sidebarOptions),				
 	starlightBlog({
 			prefix: blogSlug,
 			title: blogName,
@@ -42,10 +43,13 @@ const starlightPlugins = [
 	}),
 	starlightHeadingBadges(),
 	starlightMarkdownBlocks({
-		blocks: {
-
+		blocks: {			
 		},
 	}),
+	starlightFullViewMode({
+		leftSidebarEnabled: true,
+  	rightSidebarEnabled: true,
+	}), // must come after starlightSidebarTopics, starlightHeadingBadges: will warn
 	viewTransitions(),
 	inoxToolsStarWarp(),
 	...(process.env.CHECK_LINKS
