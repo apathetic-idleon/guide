@@ -8,6 +8,7 @@ import starlightSidebarTopics from 'starlight-sidebar-topics';
 import starlightBlog from 'starlight-blog';
 import icon from 'astro-icon';
 import inoxToolsStarWarp from '@inox-tools/star-warp';
+import starlightHeadingBadges from 'starlight-heading-badges'
 import starlightLinksValidator from 'starlight-links-validator';
 import tailwindcss from '@tailwindcss/vite';
 import isWsl from 'is-wsl';
@@ -35,6 +36,7 @@ const starlightPlugins = [
             }
         },
     }),
+		starlightHeadingBadges(),
 		inoxToolsStarWarp(),
     ...(process.env.CHECK_LINKS
             ? [
