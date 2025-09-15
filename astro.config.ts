@@ -28,7 +28,7 @@ import {
 
 // ─── Starlight plugins ─────────────────────────────────────────
 const starlightPlugins = [
-  starlightAutoSidebar(),  
+  starlightAutoSidebar(), // must come before starlightSidebarTopics() 
 	starlightSidebarTopics(sidebarConfig, sidebarOptions),			
 	starlightBlog({
 			prefix: blogSlug,
