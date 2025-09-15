@@ -1,3 +1,6 @@
+// sometimes we need a unilingual site name where i18n is not available
+export const siteName = 'Apathetic Guide to IdleOn';
+
 // The site Title, shown in the tab name and title bar, sometimes contains more than the name
 // Ref: https://starlight.astro.build/reference/configuration/#title-required
 export const title = {

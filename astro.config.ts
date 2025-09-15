@@ -7,6 +7,7 @@ import AutoImport from 'astro-auto-import';
 import starlightSidebarTopics from 'starlight-sidebar-topics';
 import starlightBlog from 'starlight-blog';
 import icon from 'astro-icon';
+import inoxToolsStarWarp from '@inox-tools/star-warp';
 import starlightLinksValidator from 'starlight-links-validator';
 import tailwindcss from '@tailwindcss/vite';
 import isWsl from 'is-wsl';
@@ -16,7 +17,7 @@ import isWsl from 'is-wsl';
 import devServerFileWatcher from './config/integrations/dev-server-file-watcher';
 import cleanupStarlightAfterPlugins from './config/integrations/cleanup-starlight-after-plugins';
 import {
-  title, description, base, site, source,
+  siteName, title, description, base, site, source,
   social, defaultLocale, locales,
   sidebarConfig, sidebarOptions,
   author, authorSlug, blogName, blogSlug
@@ -24,60 +25,70 @@ import {
 
 // ─── Starlight plugins ─────────────────────────────────────────
 const starlightPlugins = [
-	starlightSidebarTopics(sidebarConfig, sidebarOptions),
-	starlightBlog({
-		prefix: blogSlug,
-		title: blogName,
-		authors: {
-			[authorSlug]: {
-				name: author,
-			}
-		},
-	}),
-	...(process.env.CHECK_LINKS
-			? [
-							starlightLinksValidator({
-									errorOnFallbackPages: false,
-									errorOnInconsistentLocale: true,
-							}),
-					]
-			: []),
-	cleanupStarlightAfterPlugins(),
+    starlightSidebarTopics(sidebarConfig, sidebarOptions),
+    starlightBlog({
+        prefix: blogSlug,
+        title: blogName,
+        authors: {
+            [authorSlug]: {
+                name: author,
+            }
+        },
+    }),
+		inoxToolsStarWarp(),
+    ...(process.env.CHECK_LINKS
+            ? [
+                            starlightLinksValidator({
+                                    errorOnFallbackPages: false,
+                                    errorOnInconsistentLocale: true,
+                            }),
+                    ]
+            : []),
+    cleanupStarlightAfterPlugins(),
 ] satisfies StarlightUserConfig['plugins'];
 
 // ─── Starlight config ──────────────────────────────────────────
 const starlightConfig : StarlightUserConfig = {
-	title,
-	description,
-	logo: {
-			light: '@assets/apathetic-tools/logo-black-512x512.png',
-			dark: '@assets/apathetic-tools/logo-white-512x512.png',
-	},
-	defaultLocale,
-	head: [
-		{
-			tag: 'meta',
-			attrs: {
-					name: 'robots',
-					content: 'noai, noimageai',
-			},
-		}
-	],
-	locales,
-	social,
-	editLink: {
-		baseUrl: source + '/edit/main/',
-	},
-	lastUpdated: true,
-	components: {						
-		Footer: './src/components/starlight/Footer.astro',
-		Search: './src/components/starlight/Search.astro',
-	},
-	plugins: starlightPlugins,
-	customCss: [
-							'./src/styles/global.css',
-							'./src/styles/sidebar-topics-overrides.css',
-	],
+    title,
+    description,
+    logo: {
+            light: '@assets/apathetic-tools/logo-black-512x512.png',
+            dark: '@assets/apathetic-tools/logo-white-512x512.png',
+    },
+    defaultLocale,
+    head: [
+        {
+            tag: 'meta',
+            attrs: {
+                    name: 'robots',
+                    content: 'noai, noimageai',
+            },
+        },
+				{
+					"tag": "link",
+					"attrs": {
+						"rel": "search",
+						"type": "application/opensearchdescription+xml",
+						"href": "/warp.xml",
+						"title": siteName,
+					},
+				},
+    ],
+    locales,
+    social,
+    editLink: {
+        baseUrl: source + '/edit/main/',
+    },
+    lastUpdated: true,
+    components: {						
+        Footer: './src/components/starlight/Footer.astro',
+        Search: './src/components/starlight/Search.astro',
+    },
+    plugins: starlightPlugins,
+    customCss: [
+                            './src/styles/global.css',
+                            './src/styles/sidebar-topics-overrides.css',
+    ],
 };
 
 // ─── Astro config ──────────────────────────────────────────────
@@ -87,33 +98,28 @@ export default defineConfig({
     site,
     base,
     trailingSlash: 'ignore',
-    integrations: [
-			devServerFileWatcher([
-			'./config/**', // Custom plugins and integrations
-    	]), 
-			starlight(starlightConfig),
-			sitemap(), // generates a warning about order after mdx that can safely be disregarded
-			icon(),
-			// https://github.com/delucis/astro-auto-import/issues/46
-			AutoImport({
+    integrations: [devServerFileWatcher([
+    './config/**', // Custom plugins and integrations
+]), starlight(starlightConfig), // generates a warning about order after mdx that can safely be disregarded
+    sitemap(), icon(), // https://github.com/delucis/astro-auto-import/issues/46
+    AutoImport({
 				imports: [
-					'./src/components/astro-extensions/BaseLink.astro',
-					'./src/components/astro-extensions/Localize.astro',							
-					'./src/components/mdx/AsOf.astro',		
-					'./src/components/mdx/Def.astro',						
-					'./src/components/mdx/Stress.astro',								
-					'./src/components/utils/Conditional.astro',
-					{
-							'@astrojs/starlight/components': [
-									['Icon', 'SIcon'],
-							],
-							"astro-icon/components": [
-									'Icon',
-							],
-					},
+            './src/components/astro-extensions/BaseLink.astro',
+            './src/components/astro-extensions/Localize.astro',							
+            './src/components/mdx/AsOf.astro',		
+            './src/components/mdx/Def.astro',						
+            './src/components/mdx/Stress.astro',								
+            './src/components/utils/Conditional.astro',
+            {
+                    '@astrojs/starlight/components': [
+                            ['Icon', 'SIcon'],
+                    ],
+                    "astro-icon/components": [
+                            'Icon',
+                    ],
+            },
 				],				
-			}), 
-		],
+    })],
 
     vite: {
         server: {
@@ -131,7 +137,7 @@ export default defineConfig({
         },
 
         plugins: [
-					tailwindcss()
-				],
-		},
+                    tailwindcss()
+                ],
+        },
 });
