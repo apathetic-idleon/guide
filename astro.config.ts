@@ -5,6 +5,7 @@ import starlight from '@astrojs/starlight';
 import sitemap from '@astrojs/sitemap';
 import AutoImport from 'astro-auto-import';
 import starlightSidebarTopics from 'starlight-sidebar-topics';
+import starlightAutoSidebar from 'starlight-auto-sidebar'
 import starlightBlog from 'starlight-blog';
 import icon from 'astro-icon';
 import inoxToolsStarWarp from '@inox-tools/star-warp';
@@ -27,28 +28,29 @@ import {
 
 // ─── Starlight plugins ─────────────────────────────────────────
 const starlightPlugins = [
-    starlightSidebarTopics(sidebarConfig, sidebarOptions),
-    starlightBlog({
-        prefix: blogSlug,
-        title: blogName,
-        authors: {
-            [authorSlug]: {
-                name: author,
-            }
-        },
-    }),
-		starlightHeadingBadges(),
-		viewTransitions(),
-		inoxToolsStarWarp(),
-    ...(process.env.CHECK_LINKS
-            ? [
-                            starlightLinksValidator({
-                                    errorOnFallbackPages: false,
-                                    errorOnInconsistentLocale: true,
-                            }),
-                    ]
-            : []),
-    cleanupStarlightAfterPlugins(),
+  starlightAutoSidebar(),  
+	starlightSidebarTopics(sidebarConfig, sidebarOptions),			
+	starlightBlog({
+			prefix: blogSlug,
+			title: blogName,
+			authors: {
+					[authorSlug]: {
+							name: author,
+					}
+			},
+	}),
+	starlightHeadingBadges(),
+	viewTransitions(),
+	inoxToolsStarWarp(),
+	...(process.env.CHECK_LINKS
+					? [
+													starlightLinksValidator({
+																	errorOnFallbackPages: false,
+																	errorOnInconsistentLocale: true,
+													}),
+									]
+					: []),
+	cleanupStarlightAfterPlugins(),
 ] satisfies StarlightUserConfig['plugins'];
 
 // ─── Starlight config ──────────────────────────────────────────

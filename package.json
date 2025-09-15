@@ -76,6 +76,7 @@
     "mdx": "^0.3.1",
     "p-retry": "^7.0.0",
     "sharp": "^0.34.3",
+    "starlight-auto-sidebar": "^0.1.2",
     "starlight-blog": "^0.24.1",
     "starlight-contributor-list": "^0.3.0",
     "starlight-heading-badges": "^0.6.0",

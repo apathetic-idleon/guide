@@ -56,6 +56,9 @@ importers:
       sharp:
         specifier: ^0.34.3
         version: 0.34.3
+      starlight-auto-sidebar:
+        specifier: ^0.1.2
+        version: 0.1.2(@astrojs/starlight@0.35.3(astro@5.13.7(@types/node@24.3.3)(jiti@2.5.1)(lightningcss@1.30.1)(rollup@4.50.1)(tsx@4.20.5)(typescript@5.9.2)(yaml@2.8.1)))
       starlight-blog:
         specifier: ^0.24.1
         version: 0.24.1(@astrojs/starlight@0.35.3(astro@5.13.7(@types/node@24.3.3)(jiti@2.5.1)(lightningcss@1.30.1)(rollup@4.50.1)(tsx@4.20.5)(typescript@5.9.2)(yaml@2.8.1)))(astro@5.13.7(@types/node@24.3.3)(jiti@2.5.1)(lightningcss@1.30.1)(rollup@4.50.1)(tsx@4.20.5)(typescript@5.9.2)(yaml@2.8.1))
@@ -5119,6 +5122,12 @@ packages:
   stable-hash-x@0.2.0:
     resolution: {integrity: sha512-o3yWv49B/o4QZk5ZcsALc6t0+eCelPc44zZsLtCQnZPDwFpDYSWcDnrv2TtMmMbQ7uKo3J0HTURCqckw23czNQ==}
     engines: {node: '>=12.0.0'}
+
+  starlight-auto-sidebar@0.1.2:
+    resolution: {integrity: sha512-7wxR9r/dMGl0ISjO7LxmSQHFdUN/UdiEDWQ+ehv5AL8udEYgItZIvPrUWv5tAg4EF5Okj451mRp8s1bU9f6fmA==}
+    engines: {node: '>=18.17.1'}
+    peerDependencies:
+      '@astrojs/starlight': '>=0.32.0'
 
   starlight-blog@0.24.1:
     resolution: {integrity: sha512-zq4iSl6uXGC352MFjg4G1webPEfdeB4zH1z5sphNo5K5qFvcw/j0NkoR5YWFg7ubIQVasiktjyaSoBs1k8FeiA==}
@@ -12547,6 +12556,11 @@ snapshots:
   sprintf-js@1.0.3: {}
 
   stable-hash-x@0.2.0: {}
+
+  starlight-auto-sidebar@0.1.2(@astrojs/starlight@0.35.3(astro@5.13.7(@types/node@24.3.3)(jiti@2.5.1)(lightningcss@1.30.1)(rollup@4.50.1)(tsx@4.20.5)(typescript@5.9.2)(yaml@2.8.1))):
+    dependencies:
+      '@astrojs/starlight': 0.35.3(astro@5.13.7(@types/node@24.3.3)(jiti@2.5.1)(lightningcss@1.30.1)(rollup@4.50.1)(tsx@4.20.5)(typescript@5.9.2)(yaml@2.8.1))
+      github-slugger: 2.0.0
 
   starlight-blog@0.24.1(@astrojs/starlight@0.35.3(astro@5.13.7(@types/node@24.3.3)(jiti@2.5.1)(lightningcss@1.30.1)(rollup@4.50.1)(tsx@4.20.5)(typescript@5.9.2)(yaml@2.8.1)))(astro@5.13.7(@types/node@24.3.3)(jiti@2.5.1)(lightningcss@1.30.1)(rollup@4.50.1)(tsx@4.20.5)(typescript@5.9.2)(yaml@2.8.1)):
     dependencies:
