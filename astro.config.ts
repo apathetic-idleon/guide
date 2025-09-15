@@ -18,7 +18,7 @@ import isWsl from 'is-wsl';
 
 // can't use tsconfig aliases yet...
 import devServerFileWatcher from './config/integrations/dev-server-file-watcher';
-import cleanupStarlightAfterPlugins from './config/integrations/cleanup-starlight-after-plugins';
+import starlightWorkAfterPlugins from './config/integrations/starlight-work-after-plugins';
 import {
   siteName, title, description, base, site, source,
   social, defaultLocale, locales,
@@ -50,7 +50,7 @@ const starlightPlugins = [
 													}),
 									]
 					: []),
-	cleanupStarlightAfterPlugins(),
+	starlightWorkAfterPlugins(), // must come last
 ] satisfies StarlightUserConfig['plugins'];
 
 // ─── Starlight config ──────────────────────────────────────────

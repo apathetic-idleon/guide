@@ -21,9 +21,9 @@ function handleConfigSetup({ config, updateConfig }: ConfigSetupArgs ) {
   }
 }
 
-export default function cleanupStarlightAfterPlugins(): StarlightPlugin {
+export default function starlightWorkAfterPlugins(): StarlightPlugin {
   return {
-    name: 'cleanup-starlight-after-plugins',
+    name: 'starlight-work-after-plugins',
     hooks: {
       'config:setup': handleConfigSetup,
     },
