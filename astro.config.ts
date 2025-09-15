@@ -8,6 +8,7 @@ import starlightSidebarTopics from 'starlight-sidebar-topics';
 import starlightAutoSidebar from 'starlight-auto-sidebar'
 import starlightBlog from 'starlight-blog';
 import icon from 'astro-icon';
+import starlightMarkdownBlocks from 'starlight-markdown-blocks';
 import inoxToolsStarWarp from '@inox-tools/star-warp';
 import starlightHeadingBadges from 'starlight-heading-badges'
 import { viewTransitions } from "astro-vtbot/starlight-view-transitions";
@@ -40,6 +41,11 @@ const starlightPlugins = [
 			},
 	}),
 	starlightHeadingBadges(),
+	starlightMarkdownBlocks({
+		blocks: {
+
+		},
+	}),
 	viewTransitions(),
 	inoxToolsStarWarp(),
 	...(process.env.CHECK_LINKS
