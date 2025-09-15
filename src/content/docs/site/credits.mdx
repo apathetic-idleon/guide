@@ -8,7 +8,7 @@ topic: reference
 
 ---
 
-import ContributorList from '@components/github/ContributorList.astro'
+import { ContributorList } from "starlight-contributor-list";
 import { 
 	affilGame, 
 	affilGameUrl, 
@@ -41,6 +41,7 @@ Key members of the Apathetic Guide, guiding the project along.
 ## Direct Contributors
 
 Many people have contributed to these guides to make them what they are.
+
 
 <ContributorList githubRepo={hostingSlug} />
 
