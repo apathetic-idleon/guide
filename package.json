@@ -69,6 +69,7 @@
     "@tailwindcss/vite": "^4.1.13",
     "astro": "latest",
     "astro-auto-import": "^0.4.4",
+    "astro-embed": "^0.9.0",
     "astro-icon": "^1.1.5",
     "astro-vtbot": "^2.1.8",
     "fast-glob": "^3.3.3",
@@ -76,6 +77,7 @@
     "mdx": "^0.3.1",
     "p-retry": "^7.0.0",
     "sharp": "^0.34.3",
+    "starlight-auto-drafts": "^0.2.0",
     "starlight-auto-sidebar": "^0.1.2",
     "starlight-blog": "^0.24.1",
     "starlight-contributor-list": "^0.3.0",
@@ -83,6 +85,7 @@
     "starlight-heading-badges": "^0.6.0",
     "starlight-links-validator": "^0.17.2",
     "starlight-markdown-blocks": "^0.1.0",
+    "starlight-scroll-to-top": "^0.4.0",
     "starlight-sidebar-topics": "^0.6.0",
     "tailwindcss": "^4.1.13",
     "typescript": "^5.9.2"

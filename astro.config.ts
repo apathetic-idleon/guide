@@ -10,6 +10,8 @@ import starlightFullViewMode from 'starlight-fullview-mode'
 import starlightBlog from 'starlight-blog';
 import icon from 'astro-icon';
 import starlightMarkdownBlocks from 'starlight-markdown-blocks';
+import starlightAutoDrafts from 'starlight-auto-drafts'
+import starlightScrollToTop from 'starlight-scroll-to-top'
 import inoxToolsStarWarp from '@inox-tools/star-warp';
 import starlightHeadingBadges from 'starlight-heading-badges'
 import { viewTransitions } from "astro-vtbot/starlight-view-transitions";
@@ -29,7 +31,7 @@ import {
 } from './config';
 
 // ─── Starlight plugins ─────────────────────────────────────────
-const starlightPlugins = [	
+const starlightPlugins = [		
   starlightAutoSidebar(), // must come before starlightSidebarTopics() 
 	starlightSidebarTopics(sidebarConfig, sidebarOptions),				
 	starlightBlog({
@@ -50,6 +52,21 @@ const starlightPlugins = [
 		leftSidebarEnabled: true,
   	rightSidebarEnabled: true,
 	}), // must come after starlightSidebarTopics, starlightHeadingBadges: will warn
+	starlightAutoDrafts({
+		highlights: {
+			badges: true,
+		},
+	}), // does not hot reload, rerun pnpm run dev
+	starlightScrollToTop({
+		position: 'right',
+		tooltipText: 'Back to Top',
+		showTooltip: true,
+		smoothScroll: true,
+		threshold: 30,
+		showProgressRing: true,
+		progressRingColor: 'white',
+		showOnHomepage: true,
+	}),
 	viewTransitions(),
 	inoxToolsStarWarp(),
 	...(process.env.CHECK_LINKS
