@@ -70,6 +70,7 @@
     "astro": "latest",
     "astro-auto-import": "^0.4.4",
     "astro-icon": "^1.1.5",
+    "astro-vtbot": "^2.1.8",
     "fast-glob": "^3.3.3",
     "is-wsl": "^3.1.0",
     "mdx": "^0.3.1",
