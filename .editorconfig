@@ -1,9 +1,7 @@
 # EditorConfig is awesome: https://EditorConfig.org
 
-# derived from withastro/docs MIT
-# https://github.com/withastro/docs/blob/main/.editorconfig
-# derived from microsoft/vscode MIT
-# https://github.com/microsoft/vscode/blob/main/.editorconfig
+# inspired by Apathetic-Tools · MIT
+# https://github.com/apathetic-tools/snippets/blob/main/docs/windows/development-setup
 
 # top-most EditorConfig file
 root = true

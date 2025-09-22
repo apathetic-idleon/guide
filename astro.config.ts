@@ -157,10 +157,11 @@ export default defineConfig({
     vite: {
         server: {
             watch: {
-                // work around WSL bug with /mnt/ watch (could also symlink to linux fs)
+                // work around WSL bug with /mnt/ watch (prefer use WSL fs instead), MIT
+                // https://github.com/apathetic-tools/snippets/blob/main/snippets/astro/wsl-mnt-polling-fix
                 // https://github.com/withastro/astro/issues/6043#issuecomment-1409498718
                 // https://github.com/microsoft/WSL/issues/4739#issuecomment-2153546812
-                ...(isWsl
+                ...((isWsl && process.cwd().startsWith('/mnt'))
                     ? {
                             usePolling: true,
                             interval: 1000,

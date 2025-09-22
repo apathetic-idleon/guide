@@ -1,8 +1,10 @@
-# based on https://github.com/withastro/docs/blob/main/.gitignore, MIT
+# Inspired by Apathetic-Tools · MIT
+# https://github.com/apathetic-tools/snippets/blob/main/docs/windows/development-setup
 
 # build output
 dist/
 dist-site-repo/
+*.tsbuildinfo
 # generated types
 .astro/
 
