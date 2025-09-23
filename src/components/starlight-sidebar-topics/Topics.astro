@@ -1,0 +1,133 @@
+---
+// Inspired by Apathetic Tools · MIT
+// https://github.com/apathetic-tools/snippets/blob/main/docs/astro-starlight/topics-astro-docs-theme
+// Inspired by HiDeoo/starlight-sidebar-topics · MIT
+// https://github.com/HiDeoo/starlight-sidebar-topics/blob/main/packages/starlight-sidebar-topics/components/Topics.astro
+// Inspired by Astro/docs · MIT
+// https://docs.astro.build/
+import { Badge, Icon } from '@astrojs/starlight/components'
+
+const { topics } = Astro.locals.starlightSidebarTopics
+---
+
+<ul class="starlight-sidebar-topics">
+  {
+    topics.map((topic) => (
+      <li>
+        <a href={topic.link} class:list={{ 'starlight-sidebar-topics-current': topic.isCurrent }}>
+          {topic.icon && (
+            <div class="starlight-sidebar-topics-icon">
+              <Icon name={topic.icon} />
+            </div>
+          )}
+          <div>
+            {topic.label}
+            {topic.badge && (
+              <Badge class="starlight-sidebar-topics-badge" text={topic.badge.text} variant={topic.badge.variant} />
+            )}
+          </div>
+        </a>
+      </li>
+    ))
+  }
+</ul>
+
+
+<style>
+	.starlight-sidebar-topics {
+		/* Layout variables */
+		--tab-switcher-border-width: 1px;
+		--tab-switcher-padding: calc(0.25rem - var(--tab-switcher-border-width));
+		--tab-item-border-radius: 0.5rem;
+		--tab-switcher-border-radius: calc(
+			var(--tab-item-border-radius) + var(--tab-switcher-padding) + var(--tab-switcher-border-width)
+		);
+
+		/* Color variables */
+		--tab-switcher-border-color: var(--sl-color-hairline-light);
+		--tab-switcher-background-color: var(--sl-color-gray-7, var(--sl-color-gray-6));
+		--tab-switcher-text-color: var(--sl-color-gray-3);
+		--tab-switcher-text-color--active: var(--sl-color-white);
+		--tab-switcher-icon-color: var(--sl-color-gray-4);
+		--tab-switcher-icon-color--active: var(--sl-color-text-accent);
+		--tab-item-background-color--hover: var(--sl-color-gray-6);
+		--tab-item-background-color--active: var(--sl-color-black);
+	}
+	/* Dark theme variations */
+	:global([data-theme='dark']) .starlight-sidebar-topics {
+		--tab-switcher-text-color: var(--sl-color-gray-2);
+		--tab-switcher-icon-color: var(--sl-color-gray-3);
+		--tab-item-background-color--hover: var(--sl-color-gray-5);
+	}
+
+	@media (min-width: 50rem) {
+		/* Dark theme variations with the desktop sidebar visible */
+		:global([data-theme='dark']) .starlight-sidebar-topics {
+			--tab-switcher-background-color: var(--sl-color-black);
+			--tab-item-background-color--hover: var(--sl-color-gray-6);
+			--tab-item-background-color--active: var(--sl-color-gray-6);
+		}
+	}
+
+  ul {
+    border: var(--tab-switcher-border-width) solid var(--tab-switcher-border-color);
+		border-radius: var(--tab-switcher-border-radius);
+		list-style: none;
+		display: flex;
+		flex-direction: column;		
+		gap: 0.25rem;
+		padding: var(--tab-switcher-padding);
+		background-color: var(--tab-switcher-background-color);				
+		margin-bottom: 0;
+  }
+
+  li {
+    overflow-wrap: anywhere;
+  }
+
+  li :global(a) {
+		border: var(--tab-switcher-border-width) solid transparent;
+		border-radius: var(--tab-item-border-radius);
+    display: flex;
+		align-items: center;		
+		gap: 0.5rem;
+    padding: calc(0.5rem - var(--tab-switcher-border-width));
+		background-clip: padding-box;
+		line-height: var(--sl-line-height-headings);
+		text-decoration: none;
+		color: var(--tab-switcher-text-color);
+		font-weight: 600;		
+		transition: background-color 0.2s, color 0.2s;		
+  }
+
+	a:hover {
+		color: var(--tab-switcher-text-color--active);
+		background-color: var(--tab-item-background-color--hover);
+	}
+	a.starlight-sidebar-topics-current {
+		border-color: var(--tab-switcher-border-color);
+		color: var(--tab-switcher-text-color--active);
+		background-color: var(--tab-item-background-color--active);
+	}
+	
+		/* Icon wrapper */
+  .starlight-sidebar-topics-icon {
+    display: flex;		
+		justify-content: center;
+		align-items: center;
+		margin: 0.25rem;
+		color: var(--tab-switcher-icon-color);
+    transition: background-color 0.2s, border-color 0.2s;
+  }  
+
+	a:hover .starlight-sidebar-topics-icon {
+		color: inherit;
+	}
+	a.starlight-sidebar-topics-current .starlight-sidebar-topics-icon {
+		color: var(--tab-switcher-icon-color--active);
+	}
+
+  .starlight-sidebar-topics-badge {
+    margin-inline-start: 0.25em;
+  }
+</style>

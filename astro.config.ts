@@ -114,13 +114,13 @@ const starlightConfig : StarlightUserConfig = {
     },
     lastUpdated: true,
     components: {						
-        Footer: './src/components/starlight/Footer.astro',
-        Search: './src/components/starlight/Search.astro',
+        Footer: './src/overrides/starlight/Footer.astro',
+        Search: './src/overrides/starlight/Search.astro',
+        Sidebar:  './src/overrides/starlight/Sidebar.astro',
     },
     plugins: starlightPlugins,
     customCss: [
                             './src/styles/global.css',
-                            './src/styles/sidebar-topics-overrides.css',
     ],
 };
 
