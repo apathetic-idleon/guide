@@ -1,17 +1,13 @@
 // icons must be from: https://starlight.astro.build/reference/icons/#all-icons
 // careful not to use trademarked logos for other purposes
 
-import starlightSidebarTopicsPlugin, {
-  type StarlightSidebarTopicsUserConfig,
+import type {
+  StarlightSidebarTopicsUserConfig, StarlightSidebarTopicsUserOptions
 } from "starlight-sidebar-topics";
 
 import {
 	blogSlug
 } from './blog';
-
-// infer the UserOptions type from the plugin signature
-type StarlightSidebarTopicsUserOptions =
-  NonNullable<Parameters<typeof starlightSidebarTopicsPlugin>[1]>;
 
 export const sidebarConfig: StarlightSidebarTopicsUserConfig  = [
 	{
