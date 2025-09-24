@@ -8,7 +8,10 @@ export const title = {
 };
 
 // Ref: https://starlight.astro.build/reference/configuration/#logo
-export const logo = {};
+export const logo = {
+	light: '@assets/apathetic-tools/logo-light-512x512.png',
+	dark: '@assets/apathetic-tools/logo-dark-512x512.png',
+};
 
 // The meta description for search engines. A single combined string for all languages.
 export const description = 'Gameplay guide to the IdleOn game.';

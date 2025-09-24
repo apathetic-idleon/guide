@@ -24,7 +24,7 @@ import isWsl from 'is-wsl';
 import devServerFileWatcher from './config/integrations/dev-server-file-watcher';
 import starlightWorkAfterPlugins from './config/integrations/starlight-work-after-plugins';
 import {
-  siteName, title, description, base, site, source,
+  siteName, title, logo, description, base, site, source,
   social, defaultLocale, locales,
   sidebarConfig, sidebarOptions,
   author, authorSlug, blogName, blogSlug
@@ -84,10 +84,7 @@ const starlightPlugins = [
 const starlightConfig : StarlightUserConfig = {
     title,
     description,
-    logo: {
-            light: '@assets/apathetic-tools/logo-black-512x512.png',
-            dark: '@assets/apathetic-tools/logo-white-512x512.png',
-    },
+    logo,
     defaultLocale,
     head: [
         {
