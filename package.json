@@ -72,7 +72,6 @@
     "astro-icon": "^1.1.5",
     "astro-vtbot": "^2.1.8",
     "fast-glob": "^3.3.3",
-    "fast-xml-parser": "^5.2.5",
     "is-wsl": "^3.1.0",
     "mdx": "^0.3.1",
     "sharp": "^0.34.4",

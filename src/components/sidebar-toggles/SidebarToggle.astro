@@ -1,11 +1,5 @@
 ---
-import mdiIcons from "@iconify-json/mdi/icons.json";
-import { parseSvgPath } from "./utils";
-
-// server-side names
-
-const chevronLeftPath  = parseSvgPath(mdiIcons.icons["chevron-left"].body);
-const chevronRightPath  = parseSvgPath(mdiIcons.icons["chevron-right"].body);
+import { Icon } from "astro-icon/components";
 ---
 
 <div 
@@ -14,27 +8,14 @@ const chevronRightPath  = parseSvgPath(mdiIcons.icons["chevron-right"].body);
 	tabindex="0"
 	aria-expanded="true"
 >
-  <svg
-		class="icon-collapse"
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-  >
-    <path d={chevronLeftPath}></path>
-  </svg>
-	<svg
-		class="icon-expand"
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-  >
-    <path d={chevronRightPath}></path>
-  </svg>
+	<Icon name="mdi:chevron-left" class="icon-collapse" />
+	<Icon name="mdi:chevron-right" class="icon-expand" />  
 </div>
 
 <style>
-svg {
+[data-icon] {
 	height: 1.125rem;
 	width: 1.125rem;
-	fill: currentColor;
 }
 
 .toggle-left-sidebar-btn .icon-expand { display: none; }
@@ -63,7 +44,7 @@ svg {
 
 <script>
 	(function () {
-		const btn = document.querySelector(".toggle-left-sidebar-btn");
+		const btn = document.querySelector<HTMLElement>(".toggle-left-sidebar-btn");
 		if (!btn) return;
 		
 		const collapsedClassname = "sidebar-collapsed";
@@ -89,7 +70,7 @@ svg {
     });
 
     // Keyboard support
-    btn.addEventListener("keydown", (e) => {
+    btn.addEventListener("keydown", (e: KeyboardEvent) => {
       if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
         btn.click();
