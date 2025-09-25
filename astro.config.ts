@@ -5,8 +5,7 @@ import starlight from '@astrojs/starlight';
 import sitemap from '@astrojs/sitemap';
 import AutoImport from 'astro-auto-import';
 import starlightSidebarTopics from 'starlight-sidebar-topics';
-import starlightAutoSidebar from 'starlight-auto-sidebar'
-import starlightFullViewMode from 'starlight-fullview-mode'
+import starlightAutoSidebar from 'starlight-auto-sidebar';
 import starlightBlog from 'starlight-blog';
 import icon from 'astro-icon';
 import starlightMarkdownBlocks from 'starlight-markdown-blocks';
@@ -29,6 +28,9 @@ import {
   sidebarConfig, sidebarOptions,
   author, authorSlug, blogName, blogSlug
 } from './config';
+import {
+	readSidebarStateScript
+} from './src/components/sidebar-toggles/utils';
 
 // ─── Starlight plugins ─────────────────────────────────────────
 const starlightPlugins = [		
@@ -48,10 +50,6 @@ const starlightPlugins = [
 		blocks: {			
 		},
 	}),
-	starlightFullViewMode({
-		leftSidebarEnabled: true,
-  	rightSidebarEnabled: true,
-	}), // must come after starlightSidebarTopics, starlightHeadingBadges: will warn
 	starlightAutoDrafts({
 		highlights: {
 			badges: true,
@@ -102,6 +100,10 @@ const starlightConfig : StarlightUserConfig = {
 						"href": "/warp.xml",
 						"title": siteName,
 					},
+				},
+				{
+					"tag": "script",
+					"content": readSidebarStateScript(),
 				},
     ],
     locales,

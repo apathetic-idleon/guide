@@ -1,0 +1,102 @@
+---
+import mdiIcons from "@iconify-json/mdi/icons.json";
+import { parseSvgPath } from "./utils";
+
+// server-side names
+
+const chevronLeftPath  = parseSvgPath(mdiIcons.icons["chevron-left"].body);
+const chevronRightPath  = parseSvgPath(mdiIcons.icons["chevron-right"].body);
+---
+
+<div 
+	class="toggle-left-sidebar-btn" 
+	role="button"
+	tabindex="0"
+	aria-expanded="true"
+>
+  <svg
+		class="icon-collapse"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+  >
+    <path d={chevronLeftPath}></path>
+  </svg>
+	<svg
+		class="icon-expand"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+  >
+    <path d={chevronRightPath}></path>
+  </svg>
+</div>
+
+<style>
+svg {
+	height: 1.125rem;
+	width: 1.125rem;
+	fill: currentColor;
+}
+
+.toggle-left-sidebar-btn .icon-expand { display: none; }
+:global(.sidebar-collapsed) .toggle-left-sidebar-btn .icon-collapse { display: none; }
+:global(.sidebar-collapsed) .toggle-left-sidebar-btn .icon-expand { display: inline-flex; }
+
+.toggle-left-sidebar-btn {
+	position: fixed;
+  top: 4.25rem;      
+  left: 18.25rem;   
+  width: 1.5rem;
+  height: 1.5rem;
+	display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--sl-color-gray-4);
+  z-index: 1000;
+  cursor: pointer;
+	color: var(--sl-color-gray-4);
+}
+
+:global(.sidebar-collapsed) .toggle-left-sidebar-btn {
+  left: 0.25rem;   
+}
+</style>
+
+<script>
+	(function () {
+		const btn = document.querySelector(".toggle-left-sidebar-btn");
+		if (!btn) return;
+		
+		const collapsedClassname = "sidebar-collapsed";
+
+   function applyState(collapsed: boolean) {
+			if (!btn) return;			
+
+      if (collapsed) {		
+        btn.setAttribute("aria-expanded", "false");
+      } else {				
+        btn.setAttribute("aria-expanded", "true");				
+      }
+    }
+
+		const initialCollapsed = document.documentElement.classList.contains(collapsedClassname);
+  	applyState(initialCollapsed);
+
+    // Click to toggle
+    btn.addEventListener("click", () => {
+      const now = document.documentElement.classList.toggle(collapsedClassname);
+      applyState(now);
+      sessionStorage.setItem("starlight-sidebar-collapsed", now ? "1" : "0");
+    });
+
+    // Keyboard support
+    btn.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        btn.click();
+      }
+    });
+  }
+  
+  )();
+</script>
+

@@ -1,4 +1,4 @@
-@layer base, starlight, our-theme-menu, our-sidebar, theme, components, utilities;
+@layer base, starlight, our-theme-menu, our-sidebar, collapsible-sidebars, theme, components, utilities;
 
 @import '@astrojs/starlight-tailwind';
 @import 'tailwindcss/theme.css' layer(theme);
@@ -6,3 +6,4 @@
 
 @import './theme-menu-layer.css' layer(our-theme-menu);
 @import './sidebar-layer.css' layer(our-sidebar);
+@import './collapsible-sidebars.css' layer(collapsible-sidebars);

@@ -10,6 +10,7 @@
     "**/__coverage__/**"
   ],
   "compilerOptions": {
+    "types": ["astro/client"],
     "baseUrl": ".",
     "paths": {
       "@root/*": [

@@ -1,0 +1,36 @@
+.sidebar-pane {
+  width: 18rem;  
+  flex-shrink: 0;
+  overflow: hidden;
+	display: flex;
+  flex-direction: column;
+}
+
+.sidebar-collapsed .sidebar-pane {
+  width: 0;
+}
+
+/* hide everything except the toggle button */
+.sidebar-collapsed .sidebar-content > :not(.toggle-left-sidebar-btn) {	
+  display: none !important;
+}
+
+/* main content area */
+.main-frame .main-pane {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.main-frame {
+  padding-inline-start: var(--sl-content-inline-start);
+}
+
+.sidebar-collapsed .main-frame {
+  padding-inline-start: 2.5rem;
+}
+
+@media screen and (max-width: 800px) {
+  .toggle-left-side-bar-btn {
+    display: none;
+  }
+}
