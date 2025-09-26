@@ -1,36 +1,162 @@
+/*
+	Page markup looks like:
+	div.page
+		nav.sidebar    -- whole screen
+		  div.sidebar-pane    -- just left side under header
+		    div.sidebar-content
+				  div.toggle-sidebar-btn.toggle-left-sidebar-btn
+					ul.starlight-sidebar-topics
+					sl
+					  ul.top-level    -- regular starlight sidebar groups
+		div.main-frame
+		  div.lg:sl-flex
+			  aside.right-sidebar-container
+				  div.right-sidebar
+						div.right-sidebar-panel
+							div.sl-container
+								div.toggle-sidebar-btn.toggle-right-sidebar-btn
+								starlight-toc		-- regular starlight table of contents
+				div.main-pane
+				  main
+					  div.content-panel
+						  .sl-container
+							  h1    -- page header
+						div.content-panel
+						  .sl-container
+								div.sl-markdown-content    -- regular starlight page content
+*/
+
+/* left sidebar */
 .sidebar-pane {
-  width: 18rem;  
-  flex-shrink: 0;
-  overflow: hidden;
+	flex-shrink: 0;  
 	display: flex;
   flex-direction: column;
 }
 
-.sidebar-collapsed .sidebar-pane {
-  width: 0;
+.sidebar-content {
+	position: relative;
+}
+
+.sidebar-pane,
+.sidebar-content {
+	overflow: visible;
 }
 
 /* hide everything except the toggle button */
-.sidebar-collapsed .sidebar-content > :not(.toggle-left-sidebar-btn) {	
+.left-sidebar-collapsed .sidebar-pane {
+  width: 1.1rem;
+}
+
+.left-sidebar-collapsed .sidebar-content > :not(.toggle-left-sidebar-btn) {	
   display: none !important;
 }
 
-/* main content area */
+/* right sidebar */
+.right-sidebar-container {
+	position: relative;
+	flex-shrink: 0;
+	display: flex;
+  flex-direction: column;
+}
+
+.right-sidebar-container, 
+.right-sidebar,
+.right-sidebar-panel {
+  overflow: visible;
+}
+
+/* hide everything except the toggle button */
+.right-sidebar-collapsed .right-sidebar-container {
+	width: 0;
+	min-width: 0;
+}
+
+.right-sidebar-collapsed .right-sidebar .sl-container > :not(.toggle-right-sidebar-btn) {	
+  display: none !important;
+}
+
+/* main content area, nothing collapsed */
 .main-frame .main-pane {
   flex: 1 1 auto;
-  min-width: 0;
+  min-width: auto;
+}
+
+/* left sidebar collapsed */
+.left-sidebar-collapsed .main-frame .main-pane {
+  flex: 1 1 80%;
+  min-width: 80%;
+}
+
+.main-pane .sl-container {
+  width: 100%;
+  max-width: none;
 }
 
 .main-frame {
   padding-inline-start: var(--sl-content-inline-start);
 }
 
-.sidebar-collapsed .main-frame {
+.left-sidebar-collapsed .main-frame {
   padding-inline-start: 2.5rem;
 }
 
+.right-sidebar-collapsed .main-frame {
+  padding-inline-end: 1.25rem;
+}
+
+
 @media screen and (max-width: 800px) {
-  .toggle-left-side-bar-btn {
+  .toggle-left-sidebar-btn {
     display: none;
   }
+
+	.toggle-right-sidebar-btn {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 72rem) {
+	.toggle-right-sidebar-btn {
+    display: none;
+  }
+}
+
+.toggle-sidebar-btn {
+	position: absolute;  
+	/* left / right is for the differentiator class */
+	width: 1.65rem;
+  height: 1.65rem;
+	display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--sl-color-gray-5);
+  z-index: 1000;
+  cursor: pointer;
+	color: var(--sl-color-gray-3);
+	background-color: var(--sl-color-bg-sidebar);
+}
+
+.toggle-left-sidebar-btn {
+	top: 0.25rem; 
+  left: 18rem;   
+}
+
+@media screen and (max-width: 72rem) {
+	.toggle-left-sidebar-btn {
+		top: 3.25rem;  
+	}
+}
+
+.left-sidebar-collapsed .toggle-left-sidebar-btn {
+  left: 0.25rem;   
+}
+
+.toggle-right-sidebar-btn {
+  top: 4.3rem; 
+  left: -1.15rem;
+	background-color: var(--sl-color-bg);;
+}
+
+.right-sidebar-collapsed .toggle-right-sidebar-btn {
+  left: -0.9rem;  
 }

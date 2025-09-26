@@ -116,6 +116,7 @@ const starlightConfig : StarlightUserConfig = {
         Footer: './src/overrides/starlight/Footer.astro',
         Search: './src/overrides/starlight/Search.astro',
         Sidebar:  './src/overrides/starlight/Sidebar.astro',
+				TableOfContents:  './src/overrides/starlight/TableOfContents.astro',
     },
     plugins: starlightPlugins,
     customCss: [

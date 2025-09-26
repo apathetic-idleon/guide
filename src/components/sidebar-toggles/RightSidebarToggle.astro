@@ -3,13 +3,13 @@ import { Icon } from "astro-icon/components";
 ---
 
 <div 
-	class="toggle-left-sidebar-btn" 
+	class="toggle-right-sidebar-btn toggle-sidebar-btn" 
 	role="button"
 	tabindex="0"
 	aria-expanded="true"
 >
-	<Icon name="mdi:chevron-left" class="icon-collapse" />
-	<Icon name="mdi:chevron-right" class="icon-expand" />  
+	<Icon name="mdi:chevron-right" class="icon-collapse" title="Collapse" />
+	<Icon name="mdi:chevron-left" class="icon-expand" title="Expand" />  
 </div>
 
 <style>
@@ -18,36 +18,17 @@ import { Icon } from "astro-icon/components";
 	width: 1.125rem;
 }
 
-.toggle-left-sidebar-btn .icon-expand { display: none; }
-:global(.sidebar-collapsed) .toggle-left-sidebar-btn .icon-collapse { display: none; }
-:global(.sidebar-collapsed) .toggle-left-sidebar-btn .icon-expand { display: inline-flex; }
-
-.toggle-left-sidebar-btn {
-	position: fixed;
-  top: 4.25rem;      
-  left: 18.25rem;   
-  width: 1.5rem;
-  height: 1.5rem;
-	display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid var(--sl-color-gray-4);
-  z-index: 1000;
-  cursor: pointer;
-	color: var(--sl-color-gray-4);
-}
-
-:global(.sidebar-collapsed) .toggle-left-sidebar-btn {
-  left: 0.25rem;   
-}
+.toggle-right-sidebar-btn .icon-expand { display: none; }
+:global(.right-sidebar-collapsed) .toggle-right-sidebar-btn .icon-collapse { display: none; }
+:global(.right-sidebar-collapsed) .toggle-right-sidebar-btn .icon-expand { display: inline-flex; }
 </style>
 
 <script>
 	(function () {
-		const btn = document.querySelector<HTMLElement>(".toggle-left-sidebar-btn");
+		const btn = document.querySelector<HTMLElement>(".toggle-right-sidebar-btn");
 		if (!btn) return;
 		
-		const collapsedClassname = "sidebar-collapsed";
+		const collapsedClassname = "right-sidebar-collapsed";
 
    function applyState(collapsed: boolean) {
 			if (!btn) return;			
@@ -66,7 +47,7 @@ import { Icon } from "astro-icon/components";
     btn.addEventListener("click", () => {
       const now = document.documentElement.classList.toggle(collapsedClassname);
       applyState(now);
-      sessionStorage.setItem("starlight-sidebar-collapsed", now ? "1" : "0");
+      sessionStorage.setItem("starlight-right-sidebar-collapsed", now ? "1" : "0");
     });
 
     // Keyboard support

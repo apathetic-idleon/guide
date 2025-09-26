@@ -1,7 +1,11 @@
 /* global document:readonly, sessionStorage:readonly */
 (function () {
-		const saved = sessionStorage.getItem("starlight-sidebar-collapsed") === "1";
-		if (saved) {
-				document.documentElement.classList.add('sidebar-collapsed');
+		const savedSidebar = sessionStorage.getItem("starlight-left-sidebar-collapsed") === "1";
+		if (savedSidebar) {
+				document.documentElement.classList.add('left-sidebar-collapsed');
+		}
+		const savedToc = sessionStorage.getItem("starlight-right-sidebar-collapsed") === "1";
+		if (savedToc) {
+				document.documentElement.classList.add('right-sidebar-collapsed');
 		}
 })();
