@@ -1,0 +1,81 @@
+---
+import { Icon } from "astro-icon/components";
+
+export interface Props {
+  side?: "left" | "right";
+	collapseIcon?: string;
+  expandIcon?: string;
+}
+
+const { side = "left", collapseIcon, expandIcon } = Astro.props;
+
+const icons = {
+  collapse: collapseIcon ?? (side === "left" ? "mdi:chevron-left" : "mdi:chevron-right"),
+  expand: expandIcon ?? (side === "left" ? "mdi:chevron-right" : "mdi:chevron-left")
+};
+---
+
+<div 
+  class={`toggle-${side}-sidebar-btn toggle-sidebar-btn`} 
+  role="button"
+  tabindex="0"
+  aria-expanded="true"
+>
+  <Icon name={icons.collapse} class="icon-collapse" title="Collapse" />
+  <Icon name={icons.expand} class="icon-expand" title="Expand" />
+</div>
+
+<style>
+[data-icon] {
+  height: 1.125rem;
+  width: 1.125rem;
+}
+
+/* hide/show icons based on collapsed state */
+:global(.left-sidebar-collapsed) .toggle-left-sidebar-btn .icon-expand,
+:global(.right-sidebar-collapsed) .toggle-right-sidebar-btn .icon-expand {
+  display: inline-flex;
+}
+:global(.left-sidebar-collapsed) .toggle-left-sidebar-btn .icon-collapse,
+:global(.right-sidebar-collapsed) .toggle-right-sidebar-btn .icon-collapse {
+  display: none;
+}
+
+.icon-expand {
+  display: none;
+}
+</style>
+
+<script is:inline define:vars={{ side }}>
+  (function () {
+		/** @type {HTMLElement | null} */
+    const btn = document.querySelector(`.toggle-${side}-sidebar-btn`);
+    if (!btn) return;
+
+    const collapsedClassname = `${side}-sidebar-collapsed`;
+    const storageKey = `starlight-${side}-sidebar-collapsed`;
+
+		/**
+		 * @param {boolean} collapsed
+		 */
+    function applyState(collapsed) {
+      btn.setAttribute("aria-expanded", collapsed ? "false" : "true");
+    }
+
+    const initialCollapsed = sessionStorage.getItem(storageKey) === "1";
+    applyState(initialCollapsed);
+
+    btn.addEventListener("click", () => {
+      const now = document.documentElement.classList.toggle(collapsedClassname);
+      applyState(now);
+      sessionStorage.setItem(storageKey, now ? "1" : "0");
+    });
+
+    btn.addEventListener("keydown", /** @param {KeyboardEvent} e */ (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        btn.click();
+      }
+    });
+  })();
+</script>

@@ -5,10 +5,9 @@
 // https://github.com/HiDeoo/starlight-sidebar-topics/blob/main/packages/starlight-sidebar-topics/overrides/Sidebar.astro
 
 import Default from '@astrojs/starlight/components/Sidebar.astro'
-import LeftSidebarToggle from '@root/src/components/sidebar-toggles/LeftSidebarToggle.astro'
 import StarlightSidebarTopicsSidebar from '@components/starlight-sidebar-topics/TopicsSidebar.astro'
-
+import SidebarToggle from '@components/sidebar-toggles/SidebarToggle.astro'
 ---
-<LeftSidebarToggle />
+<SidebarToggle side="left" />
 <StarlightSidebarTopicsSidebar />
 <Default><slot /></Default>
