@@ -26,99 +26,19 @@
 								div.sl-markdown-content    -- regular starlight page content
 */
 
-/* left sidebar */
-.sidebar-pane {
-	flex-shrink: 0;  
-	display: flex;
-  flex-direction: column;
+/* for both sides */
+.main-frame {
+  padding-inline-start: var(--sl-content-inline-start);
 }
 
-.sidebar-content {
-	position: relative;
-}
-
-.sidebar-pane,
-.sidebar-content {
-	overflow: visible;
-}
-
-/* hide everything except the toggle button */
-.left-sidebar-collapsed .sidebar-pane {
-  width: 1.1rem;
-}
-
-.left-sidebar-collapsed .sidebar-content > :not(.toggle-left-sidebar-btn) {	
-  display: none !important;
-}
-
-/* right sidebar */
-.right-sidebar-container {
-	position: relative;
-	flex-shrink: 0;
-	display: flex;
-  flex-direction: column;
-}
-
-.right-sidebar-container, 
-.right-sidebar,
-.right-sidebar-panel {
-  overflow: visible;
-}
-
-/* hide everything except the toggle button */
-.right-sidebar-collapsed .right-sidebar-container {
-	width: 0;
-	min-width: 0;
-}
-
-.right-sidebar-collapsed .right-sidebar .sl-container > :not(.toggle-right-sidebar-btn) {	
-  display: none !important;
-}
-
-/* main content area, nothing collapsed */
 .main-frame .main-pane {
   flex: 1 1 auto;
   min-width: auto;
 }
 
-/* left sidebar collapsed */
-.left-sidebar-collapsed .main-frame .main-pane {
-  flex: 1 1 80%;
-  min-width: 80%;
-}
-
 .main-pane .sl-container {
   width: 100%;
   max-width: none;
-}
-
-.main-frame {
-  padding-inline-start: var(--sl-content-inline-start);
-}
-
-.left-sidebar-collapsed .main-frame {
-  padding-inline-start: 2.5rem;
-}
-
-.right-sidebar-collapsed .main-frame {
-  padding-inline-end: 1.25rem;
-}
-
-
-@media screen and (max-width: 800px) {
-  .toggle-left-sidebar-btn {
-    display: none;
-  }
-
-	.toggle-right-sidebar-btn {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 72rem) {
-	.toggle-right-sidebar-btn {
-    display: none;
-  }
 }
 
 .toggle-sidebar-btn {
@@ -136,6 +56,29 @@
 	background-color: var(--sl-color-bg-sidebar);
 }
 
+@media screen and (max-width: 800px) {
+  .toggle-sidebar-btn {
+    display: none;
+  }
+}
+
+
+/* left sidebar */
+.sidebar-pane {
+	flex-shrink: 0;  
+	display: flex;
+  flex-direction: column;
+}
+
+.sidebar-content {
+	position: relative;
+}
+
+.sidebar-pane,
+.sidebar-content {
+	overflow: visible;
+}
+
 .toggle-left-sidebar-btn {
 	top: 0.25rem; 
   left: 18rem;   
@@ -147,14 +90,68 @@
 	}
 }
 
+/* left sidebar collapsed */
+.left-sidebar-collapsed .sidebar-pane {
+  width: 1.1rem;
+}
+
+.left-sidebar-collapsed .sidebar-content > :not(.toggle-left-sidebar-btn) {	
+  display: none !important;
+}
+
+.left-sidebar-collapsed .main-frame .main-pane {
+  flex: 1 1 80%;
+  min-width: 80%;
+}
+
+.left-sidebar-collapsed .main-frame {
+  padding-inline-start: 2.5rem;
+}
+
 .left-sidebar-collapsed .toggle-left-sidebar-btn {
   left: 0.25rem;   
+}
+
+/* right sidebar, part of main content */
+
+.right-sidebar-container {
+	position: relative;
+	flex-shrink: 0;
+	display: flex;
+  flex-direction: column;
+}
+
+.right-sidebar-container, 
+.right-sidebar,
+.right-sidebar-panel {
+  overflow: visible;
+}
+
+@media screen and (max-width: 72rem) {
+	.toggle-right-sidebar-btn {
+    display: none;
+  }
 }
 
 .toggle-right-sidebar-btn {
   top: 4.3rem; 
   left: -1.15rem;
 	background-color: var(--sl-color-bg);;
+}
+
+
+/* right sidebar collapsed */
+.right-sidebar-collapsed .right-sidebar-container {
+	width: 0;
+	min-width: 0;
+}
+
+.right-sidebar-collapsed .right-sidebar .sl-container > :not(.toggle-right-sidebar-btn) {	
+  display: none !important;
+}
+
+.right-sidebar-collapsed .main-frame {
+  padding-inline-end: 1.25rem;
 }
 
 .right-sidebar-collapsed .toggle-right-sidebar-btn {
