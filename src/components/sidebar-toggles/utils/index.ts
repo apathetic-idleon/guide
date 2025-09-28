@@ -1,3 +1,6 @@
+// Inspired by Apathetic Tools · MIT
+// https://github.com/apathetic-tools/snippets/blob/main/docs/astro-starlight/sidebar-toggle
+
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';

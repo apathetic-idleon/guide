@@ -1,8 +1,0 @@
----
-import { getRelativeLocaleUrl } from 'astro:i18n';
-
-const { href, class: className = '' } = Astro.props;
-const final_href = getRelativeLocaleUrl(Astro.currentLocale!, href);
----
-
-<a href={final_href} class={className}><slot /></a>
