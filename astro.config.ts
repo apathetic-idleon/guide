@@ -137,12 +137,9 @@ export default defineConfig({
     sitemap(), icon(), // https://github.com/delucis/astro-auto-import/issues/46
     AutoImport({
 				imports: [
-            './src/components/astro-extensions/BaseLink.astro',
-            './src/components/astro-extensions/Localize.astro',							
             './src/components/mdx/AsOf.astro',		
             './src/components/mdx/Def.astro',						
             './src/components/mdx/Stress.astro',								
-            './src/components/utils/Conditional.astro',
             {
                     '@astrojs/starlight/components': [
                             ['Icon', 'SIcon'],
