@@ -29,8 +29,8 @@ import {
   author, authorSlug, blogName, blogSlug
 } from './config';
 import {
-	readSidebarStateScript
-} from './src/components/sidebar-toggles/utils';
+	readInlineScript
+} from './src/utils/readInlineScript';
 
 // ─── Starlight plugins ─────────────────────────────────────────
 const starlightPlugins = [		
@@ -103,7 +103,11 @@ const starlightConfig : StarlightUserConfig = {
 				},
 				{
 					"tag": "script",
-					"content": readSidebarStateScript(),
+					"content": readInlineScript("components/sidebar-toggles/sidebarStateHeadScript.js"),
+				},
+				{
+					"tag": "script",
+					"content": readInlineScript("components/guide-mode-selector/guideModeStateHeadScript.js"),
 				},
     ],
     locales,
@@ -116,6 +120,7 @@ const starlightConfig : StarlightUserConfig = {
         Footer: './src/overrides/starlight/Footer.astro',
         Search: './src/overrides/starlight/Search.astro',
         Sidebar:  './src/overrides/starlight/Sidebar.astro',
+				SocialIcons: './src/overrides/starlight/SocialIcons.astro',
 				TableOfContents:  './src/overrides/starlight/TableOfContents.astro',
     },
     plugins: starlightPlugins,
@@ -140,6 +145,7 @@ export default defineConfig({
             './src/components/mdx/AsOf.astro',		
             './src/components/mdx/Def.astro',						
             './src/components/mdx/Stress.astro',								
+						'./src/components/mdx/GuideBlock.astro',								
             {
                     '@astrojs/starlight/components': [
                             ['Icon', 'SIcon'],

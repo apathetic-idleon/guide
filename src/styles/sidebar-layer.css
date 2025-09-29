@@ -6,36 +6,36 @@
 // note we had to undo some of the default astro styling.
 */ 
 
-@layer our-sidebar {
-	.sidebar-pane {
-		/* --- Nested list items --- */
-		& ul ul li {
-			border-inline-start: 1px solid var(--sl-color-hairline-light);
-			transition: border-color 0.2s ease; /* line transition */
+@layer our-sidebar;
 
-			/* Links inside nested items */
-			& > a {
-				color: var(--sl-color-gray-3); /* more muted baseline */
-				transition: color 0.2s ease;
-			}
+.sidebar-pane {
+	/* --- Nested list items --- */
+	& ul ul li {
+		border-inline-start: 1px solid var(--sl-color-hairline-light);
+		transition: border-color 0.2s ease; /* line transition */
 
-			/* Active page */
-			&:has(> a[aria-current='page']) {
-				border-inline-start-color: var(--sl-color-text-accent);
-			}
-			& > a[aria-current='page'] {
-				background-color: initial;
-				color: var(--sl-color-text-accent);
-				transition: color 0.2s ease;
-			}
+		/* Links inside nested items */
+		& > a {
+			color: var(--sl-color-gray-3); /* more muted baseline */
+			transition: color 0.2s ease;
+		}
 
-			/* Hover (but not active) */
-			&:has(> a:not([aria-current='page']):is(:hover, :focus-visible)) {
-				border-inline-start-color: var(--sl-color-accent-high);
-			}
-			& > a:not([aria-current='page']):is(:hover, :focus-visible) {
-				color: var(--sl-color-accent-high);
-			}
+		/* Active page */
+		&:has(> a[aria-current='page']) {
+			border-inline-start-color: var(--sl-color-text-accent);
+		}
+		& > a[aria-current='page'] {
+			background-color: initial;
+			color: var(--sl-color-text-accent);
+			transition: color 0.2s ease;
+		}
+
+		/* Hover (but not active) */
+		&:has(> a:not([aria-current='page']):is(:hover, :focus-visible)) {
+			border-inline-start-color: var(--sl-color-accent-high);
+		}
+		& > a:not([aria-current='page']):is(:hover, :focus-visible) {
+			color: var(--sl-color-accent-high);
 		}
 	}
 }

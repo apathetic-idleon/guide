@@ -1,0 +1,83 @@
+---
+const html = await Astro.slots.render('default');
+
+// Utility to count occurrences of a tag in the HTML
+function countTag(tag: string) {
+  const regex = new RegExp(`<${tag}(\\s|>|/)`, 'g');
+  return (html.match(regex) || []).length;
+}
+
+const hintsCount = countTag('hints');
+const choicesCount = countTag('choices');
+const instructCount = countTag('instruct');
+
+// Compute promotion classes
+const promoteClasses: string[] = [];
+
+if (hintsCount > 0) {
+  if (choicesCount === 0) {
+		promoteClasses.push('promote-hints-to-choices');
+		
+		if (instructCount === 0) {
+			promoteClasses.push('promote-hints-to-instruct');
+		} 
+	}
+}
+
+if (choicesCount > 0 && instructCount === 0) {
+  promoteClasses.push('promote-choices-to-instruct');
+}
+---
+
+<div class={`guide-block ${promoteClasses.join(' ')}`}>
+  <slot />
+</div>
+
+<style lang="css" scoped>
+	/* Theme */
+	.guide-block {
+		--border-padding: 0.5rem;
+		--hints-color: #ff00cc80;
+		--choices-color: #00ccff80;
+		--instruct-color: #ffcc0080;
+	}
+
+	/* Hide all mode-specific blocks by default */
+	:global(
+		hints,
+		choices,
+		instruct
+	) {
+		display: none;
+		margin-left: calc(-1 * var(--border-padding));
+		padding-left: var(--border-padding);
+		box-sizing: border-box;
+	}
+
+	/* Optional styling per type */
+	:global(hints) { 
+		border-left: 2px solid var(--hints-color); 
+	}
+	:global(choices) { 
+		border-left: 2px solid var(--choices-color);
+	}
+	:global(instruct) { 
+		border-left: 2px solid var(--instruct-color);
+	}
+
+	/* Show blocks for the current mode */
+	:global(
+		.guide-mode-state-hints hints,
+		.guide-mode-state-choices choices,
+		.guide-mode-state-instruct instruct
+	) {
+		display: block;
+	}
+
+	/* Promoted blocks added by server */
+	:global(.guide-mode-state-choices) .promote-hints-to-choices :global(hints),
+	:global(.guide-mode-state-instruct) .promote-hints-to-instruct :global(hints),
+	:global(.guide-mode-state-instruct) .promote-choices-to-instruct :global(choices) {
+		display: block;
+	}
+</style>

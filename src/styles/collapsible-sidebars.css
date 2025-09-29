@@ -33,6 +33,8 @@
 								div.sl-markdown-content    -- regular starlight page content
 */
 
+@layer collapsible-sidebars;
+
 /* for both sides */
 .main-frame {
   padding-inline-start: var(--sl-content-inline-start);
