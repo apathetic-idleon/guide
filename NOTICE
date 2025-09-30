@@ -1,29 +1,31 @@
-Not affiliated in any way with `IdleOn` © LavaFlame2. Images used for commentary only.
+# NOTICE
 
-The content of this project itself is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International license
-		LICENSE
-    https://creativecommons.org/licenses/by-nc-sa/4.0/
+This project is not affiliated with *Legends of IdleON* © LavaFlame2. Images and content from the game are used for commentary, instruction, and informational purposes only.
 
-There is an additional terms No AI Rider that further limits your use at:
-		NOAI-CONTENT-LICENSE
 
-The underlying source code used to format and display that content is licensed under the GNU AFFERO GENERAL PUBLIC LICENSE 3.0
-    LICENSE-CODE
+## Licensing
+- **Project content:** Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)  
+	See: `LICENSE`  
+	https://creativecommons.org/licenses/by-nc-sa/4.0/
+- **Additional content terms:** No AI Use Rider  
+  See: `NOAI-CONTENT-LICENSE`
+- **Source code:** GNU Affero General Public License v3 (AGPLv3)  
+  See: `CODE-LICENSE`  
+  https://www.gnu.org/licenses/agpl-3.0.html
 
-Parts of this project is borrowed from, derived from, or inspired by, Astro
-    https://github.com/withastro/astro -- withastro, MIT
 
-Parts of this project is borrowed from, derived from, or inspired by, the Astro Starlight Official Documentation
-    https://github.com/withastro/starlight -- withastro, MIT
-
-Parts of this project is borrowed from, derived from, or inspired by, the Astro Official Documentation
-    https://github.com/withastro/docs -- withastro, MIT
-
-Parts of this project is borrowed from, derived from, or inspired by, Github's choosealicense.com project
-    https://github.com/github/choosealicense.com -- GitHub, Inc. and contributors, MIT
-
-Parts of this project is borrowed from, derived from, or inspired by, the GitHub Official Documentation
-		https://github.com/github/docs -- GitHub, Inc. and contributors, CC-BY, code MIT
-
-Parts of this project is borrowed from, derived from, or inspired by, the Mozilla Developer Network (MDN)
-		https://developer.mozilla.org -- Mozilla Foundation, CC0 / MIT
+## Third-Party Components
+- Apathetic Tools Snippets · MIT  
+  https://github.com/apathetic-tools/snippets
+- Astro Framework · MIT  
+  https://github.com/withastro/astro
+- Astro Official Documentation · MIT  
+  https://github.com/withastro/docs
+- Astro Starlight Framework + Documentation · MIT  
+  https://github.com/withastro/starlight
+- Github choosealicense.com · MIT  
+  https://github.com/github/choosealicense.com
+- GitHub Official Documentation · CC-BY (content), MIT (code)
+  https://github.com/github/docs
+- Mozilla Developer Network (MDN) · CC0 / MIT  
+  https://developer.mozilla.org

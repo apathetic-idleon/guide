@@ -1,7 +1,7 @@
 <!--
 This file is part of the IdleOn Guide project.
 
-© 2025 Apathetic Tools (https://github.com/apathetic-tools)
+Apathetic Tools © 2025 (https://github.com/apathetic-tools)
 
 This content is dual-licensed:
  - Under Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0).
@@ -11,7 +11,7 @@ See LICENSE for details.
 
 SPDX-License-Identifier: CC-BY-NC-SA-4.0
 
-Note: Legends of IdleOn™ and related assets are © Lavaflame2.
+Note: Legends of IdleOn and related assets are © Lavaflame2.
 This project is unaffiliated with or endorsed by Lavaflame2.
 -->
 

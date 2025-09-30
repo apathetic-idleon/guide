@@ -1,37 +1,67 @@
-All `IdleOn - The Idle RPG` game assets, images, videos are Copyright (C), LavaFlame2 All rights reserved.
+# CODE-LICENSE
 
-Main website: https://www.legendsofidleon.com/
-Developer profile on Google Play: https://play.google.com/store/apps/dev?id=4698737590260294499
+Code and website files for the Apathetic Guide to IdleOn
+Apathetic Tools © 2025 (https://github.com/apathetic-tools)
 
-They are only reproduced, hosted, or used within this website and codebase with the express intent to provide (usually opinionated) instruction and information about the `IdleOn - The Idle RPG` game to the general public, and are either used with express permission or believed to be covered by Fair Use (https://en.wikipedia.org/wiki/Fair_use) limited use primary for commentary, but also at times news reporting and criticism.
+This code is dual-licensed:
+ - GNU Affero General Public License v3.0 (AGPLv3) — see below
+ - Alternative licensing terms may be offered by the copyright holder
 
+Note: Legends of IdleOn and related assets are © Lavaflame2.
+This project is unaffiliated with or endorsed by Lavaflame2.
 
----
-
-
-On other tools:
-
-Each respective tool developed and distributed by their respective authors retain their own copyright, and is included in this distribution through their license. When appropriate, we include their license under our own bellow.
-
-Notable tools include:
-- Astro Starlight Documentation Framework https://astro.build/
-
+SPDX-License-Identifier: AGPL-3.0-or-later
 
 ---
 
 
-The following license pertains to code used to generate and deploy the website or application that we ourselves have produced or modified. It does not cover the content the website displays, like text, images, videos, and the like. It does not cover anything already covered above.
+## Code License Summary
 
-See `COTENT-LICENSE` and `NOAI-CONTENT-LICENSE` rider for licensing of project content (generally found under `src/content`, `src/assets` and `public` directories).
+The code in this repository (site, web app, utilities), including contributions from the community, is dual-licensed under AGPLv3:
 
-Copyright (c) 2025, Apathetic Tools, all rights reserved.
+You may copy, modify, and distribute this code under AGPLv3 terms.
+The license requires that any derivative applications (even used solely on a network server) must also share source code.
 
-We retain copyright on everything we ourselves produce for the website; which includes any code, text, images, videos, and other assets; so contact us if you have different licensing needs.
+Full license text is included below and can also be found at:
+https://www.gnu.org/licenses/agpl-3.0.html
 
-We provide the following license on the code for your use. The intent is that armed with this license, if we are no longer able to host the website, a community of fans and users would be able tostep up and keep it running if they so choose.
+Alternative licensing terms are available directly through Apathetic Tools.
 
+For text/docs content see `LICENSE` and `NOAI-CONTENT-LICENSE` instead.
+
+Our intent with the AGPLv3 is to allow community continuation of the site or tools if Apathetic Tools are no longer able to host them.
 
 ---
+
+
+## Game Assets
+
+All Legends of IdleON (also known as IdleOn – The Idle RPG) assets (images, videos, etc.) are © LavaFlame2.
+This project is unaffiliated with or endorsed by LavaFlame2.
+
+Official game site: : https://www.legendsofidleon.com/
+Developer page: https://play.google.com/store/apps/dev?id=4698737590260294499
+
+Game-related screenshots, assets and text are used solely for commentary, instructional, and informational purposes, and do not imply endorsement by LavaFlame2.
+
+---
+
+
+## Third-party tools
+
+Third-party tools included in this repository retain their own copyrights.
+Notable examples:
+
+- Astro Starlight Documentation Framework: https://astro.build/ (MIT License)
+
+Full license texts are included in their respective directories or referenced below ours.
+
+---
+
+
+## Code License: GNU Affero General Public License v3 (AGPLv3)
+
+The following is the full text of the GNU Affero General Public License v3, which applies to all code in this repository, including contributions from the community:
                     
                     GNU AFFERO GENERAL PUBLIC LICENSE
                        Version 3, 19 November 2007
@@ -695,9 +725,10 @@ if any, to sign a "copyright disclaimer" for the program, if necessary.
 For more information on this, and how to apply and follow the GNU AGPL, see
 <https://www.gnu.org/licenses/>.
 
-
 ---
 
+
+## Third-Party License: Astro Starlight Documentation Framework (MIT)
 
 Astro Starlight Documentation Framework 
 https://astro.build/

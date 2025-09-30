@@ -1,88 +1,87 @@
-These licenses are for the project content (generally found under generally found under `src/content`, `src/assets` and `public` directories) and not the code to generate the project itself.
+# CONTENT-LICENSE
 
+Content for the *Apathetic Guide to IdleOn*.
+Apathetic Tools © 2025 (https://github.com/apathetic-tools)
 
----
+This content is dual-licensed:
+ - Under Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)  — see below
+ - Under alternative licensing terms by the copyright holder
 
+Note: Legends of IdleOn and related assets are © Lavaflame2.
+This project is unaffiliated with or endorsed by Lavaflame2.
 
-On `IdleOn - The Idle RPG` assets:
-
-All `IdleOn - The Idle RPG` game assets, images, videos are Copyright © LavaFlame2, all rights reserved.
-
-Main website: https://www.legendsofidleon.com/
-Developer profile on Google Play: https://play.google.com/store/apps/dev?id=4698737590260294499
-
-They are only reproduced, hosted, or used within this website and codebase with the express intent to provide (usually opinionated) instruction and information about the `IdleOn - The Idle RPG` game to the general public, and are either used with express permission or believed to be covered by Fair Use (https://en.wikipedia.org/wiki/Fair_use) through limited use primarily for commentary, but also at times for news reporting and criticism.
-
+SPDX-License-Identifier: CC-BY-NC-SA-4.0
 
 ---
 
 
-On derivitive assets:
+## Content License Summary
 
-Information in this guide, website or application, ultimately describe the elements that exist within the `IdleOn - The Idle RPG` game. Most descriptive game terms and images are often derived from game elements like text, images, animations, and videos, covered above.
+The content in this repository, including contributions from the community, is dual-licensed under CC BY-NC-SA:
 
-Because of this, some elements on our website or application may also appear similar to other information references or guides, which are also derived from the same source of truth; the game. 
+You may copy, modify, and distribute the content under BY-NC-SA terms. The license requires (summary):
+- That you give proper attribution (link back to this repository or project).
+- That you do not use the content for commercial purposes.
+- That any derivative works are also shared under the same license.
 
-In the event we use information from another website or application or product, we always do our utmost best to comply with all aspects of the respective Copyright and License requirements from `IdleOn - The Idle RPG`, but also any from the resources we may have used when creating our website or application.
-
-In such a secondary source, and whenever possible, we attempt to trace all information and assets back to the `IdleOn - The Idle RPG` game itself; rather than the secondary source; and use it directly from the Game instead.
-
-
----
-
-
-On assets found in the IdleOn MMO wiki:
-
-Some information may originate from the IdleOn MMO Wiki or appear very similar, it being both a compilation of reference information from the IdleOn game but also common sense advice or conclusions about the game.
-
-Main website: https://idleon.wiki/
-
-Content there is licensed under the Creative Commons Attribution-NonCommercial 3.0 unless otherwise noted.
+Full license text is included below and can also be found at:
 https://creativecommons.org/licenses/by-nc-sa/3.0/
 
-Since it is specifically Non-Commercial, when we do refer to information from the wiki, we make every effort to instead trace information back to the game instead, as this license is incompatible with us retaining full copyright rights and relicensing on our own produced assets.
+Alternative licensing terms are available directly through Apathetic Tools.
 
-If we must use content directly from the wiki, we only use the minimum required to direct users to view the information in the wiki itself and so this use would fall under fair use.
+For code see `CODE-LICENSE` instead.
 
-
----
-
-
-On other websites, apps, resources, guides:
-
-Some information may originate from other sources or appear very similar, them all being a compilation of reference information from the IdleOn game but also common sense advice or conclusions about the game.
-
-When we do refer to information from other sources, we always make every attempt to comply with their copyright and license.  We also make every effort to instead trace information back to the game instead, that is most compatible with us retaining full copyright and relicensing rights to our own produced content and assets.
-
-If we must use content directly from another source, we only use the minimum required to direct users to view the information in the source itself and so this use would fall under fair use.
-
+Our intent with the CC BY-NC-SA license is to allow community continuation of the site or tools if Apathetic Tools is no longer able to host them — but not to allow commercial use of the site content.
 
 ---
 
 
-The following license pertains to content the website displays that we ourselves have produced or modified; some examples include text, images, videos, and the like. It does not cover the code itself that generates and deploys the website or application. It does not cover anything already covered above.
+## Game Assets
 
-See `CODE-LICENSE` for licensing of code elements.
+All *Legends of IdleON* (also known as *IdleOn – The Idle RPG*) assets (images, videos, etc.) are © LavaFlame2.
+This project is unaffiliated with or endorsed by LavaFlame2.
 
-Copyright (c) 2025, Apathetic Tools, all rights reserved.
+Official game site: : https://www.legendsofidleon.com/
+Developer page: https://play.google.com/store/apps/dev?id=4698737590260294499
 
-We retain copyright on everything we ourselves produce for the website; which includes any code, text, images, videos, and other assets; so contact us if you have different licensing needs.
-
-We provide the following license on the text, images, videos, and the like for your use. The intent is that armed with this license, if we are no longer able to host the website, a community of fans and users would be able tostep up and keep it running if they so choose.
-
-
----
-
-
-NO AI
-
-Please note we have a [Additional Terms — No AI Use Rider](NOAI-CONTENT-LICENSE) license (see that file for details) to explicitly disallow AI use of our project content, which further restricts the CC-BY-NC-SA license below. Contact us if you have different licensing needs. It does not apply to our code.
-
+Game-related screenshots, assets and text are used solely for commentary, instructional, and informational purposes, and do not imply endorsement by LavaFlame2.
 
 ---
 
 
-Our interpretation is that commercial includes any content that includes or is presented alongside promotions (even unpaid), advertisements, sponsorships, subscription services, or funding vehicles like donations, merchandising, patreon (and comparable fan funding models).
+## On Source Material
+
+All content in this guide is derived directly from the *Legends of IdleON* game, and guidance reflects the opinions of the *Apathetic Guide to IdleOn* core team and community contributors. Some information may align with community resources, but all content here is verified and derived from the game and our contributors.
+
+---
+
+
+## NO AI
+
+The content in this project is also subject to an **Additional Terms — No AI Use Rider** ([see details
+](NOAI-CONTENT-LICENSE)), which explicitly prohibits AI use and further restricts the CC BY-NC-SA license.
+These terms do not apply to code. 
+
+Alternative licensing terms are available directly through Apathetic Tools.
+
+---
+
+
+## What constitutes commercial use?
+
+Our interpretation of "commercial use" includes any content that:
+- Is considered commercial in your jurisdiction.
+- Is associated with promotions, even unpaid.
+- Includes advertisements or sponsorships.
+- Is part of subscription services.
+- Uses funding vehicles such as donations, merchandising, Patreon, or comparable fan funding models.
+
+This also applies if the platform hosting your content applies any of the above on top of your content.
+
+---
+
+
+## Content License Human Readable: Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International 
 
 Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International 
 https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en
@@ -99,7 +98,7 @@ You are free to:
 Under the following terms:
 
     Attribution — You must give appropriate credit , provide a link to the license, and indicate if changes were made . You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
-    NonCommercial — You may not use the material for commercial purposes .
+    NonCommercial — You may not use the material for commercial purposes.
     ShareAlike — If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.
     No additional restrictions — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
 
@@ -112,6 +111,7 @@ No warranties are given. The license may not give you all of the permissions nec
 
 ---
 
+## Content License Legal Version: Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International 
 
 The following is the legal version of the 
 
