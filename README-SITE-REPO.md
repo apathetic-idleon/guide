@@ -21,7 +21,7 @@ This is the distribution repository for the `Apathetic Guide to IdleOn` for publ
 
 ## Content License
 
-Please note we have a [Additional Terms — No AI Use Rider](LICENSE-NOAI-CONTENT) to explicitly disallow AI use of our content, which further restricts the [CC-BY-NC-SA](`LICENSE`). Contact us if you have different licensing needs. Neither of these apply to the code, just the project content (generally found under `src/content`, `src/assets` and `public` directories).
+Please note we have a [Additional Terms — No AI Use Rider](LICENSE-NOAI-CONTENT) to explicitly disallow AI use of our content, which further restricts the [CC-BY-NC-SA](LICENSE). Contact us if you have different licensing needs. Neither of these apply to the code, just the project content (generally found under `src/content`, `src/assets` and `public` directories).
 
 ## Code
 
