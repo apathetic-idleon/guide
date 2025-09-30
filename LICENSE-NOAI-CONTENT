@@ -1,7 +1,9 @@
 # LICENSE-NOAI-CONTENT
 
 ## Content License
-This project content (generally found under `src/content`, `src/assets` and `public` directories) is licensed under the [CC-BY-NC-SA-4.0 license](LICENSE) ( see that file for details) but with the additional terms outlined below:
+The project content is licensed under the [CC-BY-NC-SA-4.0 license](LICENSE), with the additional terms outlined below.
+This license applies to project content (generally found under `src/content`, `src/assets`, and `public`), unless otherwise noted.
+
 
 ### Additional Terms — No AI Use Rider
 In addition to the terms of CC-BY-NC-SA-4.0:
@@ -12,4 +14,9 @@ In addition to the terms of CC-BY-NC-SA-4.0:
 
 These restrictions apply to commercial and non-commercial use alike.
 
-Contact us if you have different licensing needs.
+Alternative licensing terms are available directly through Apathetic Tools.
+
+---
+
+
+See also: [LICENSE](LICENSE) (content) and [LICENSE-CODE](LICENSE-CODE) for other project licensing terms.
