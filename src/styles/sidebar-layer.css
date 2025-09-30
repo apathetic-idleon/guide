@@ -1,10 +1,24 @@
-/*
-// We're borrowing HiDeoo/starlight-theme-rapide MIT
-// Source: https://github.com/HiDeoo/starlight-theme-rapide/blob/main/packages/starlight-theme-rapide/styles/base.css
-// to provide sidebar stylings with the border highlight instead of the pill effect
-//
-// note we had to undo some of the default astro styling.
-*/ 
+/* 
+This file is part of the Apathetic Guide to IdleOn project.
+
+Apathetic Tools © 2025 (https://github.com/apathetic-tools)
+
+This source code is dual-licensed:
+ - Under the GNU Affero General Public License v3.0 (AGPLv3).
+ - Under alternative licensing terms by the copyright holder.
+
+See CODE-LICENSE for details.
+
+SPDX-License-Identifier: AGPL-3.0-or-later
+
+Inspired by HiDeoo/starlight-theme-rapide MIT
+https://github.com/HiDeoo/starlight-theme-rapide/blob/main/packages/starlight-theme-rapide/styles/base.css
+*/
+
+/* 
+  Using border-left highlight design from Rapide instead of default pill effect
+  Note: we had to undo some of the default astro styling. 
+*/
 
 @layer our-sidebar;
 

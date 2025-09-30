@@ -1,3 +1,17 @@
+/* 
+This file is part of the Apathetic Guide to IdleOn project.
+
+Apathetic Tools © 2025 (https://github.com/apathetic-tools)
+
+This source code is dual-licensed:
+ - Under the GNU Affero General Public License v3.0 (AGPLv3).
+ - Under alternative licensing terms by the copyright holder.
+
+See CODE-LICENSE for details.
+
+SPDX-License-Identifier: AGPL-3.0-or-later
+*/
+
 // icons for our dropdown menu
 export const iconPaths: { [key: string]: string | null } = {
 	// Starlight · MIT: https://github.com/apathetic-tools/snippets/blob/main/docs/astro-starlight/icons-by-category/README.md
