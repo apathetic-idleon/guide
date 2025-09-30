@@ -40,22 +40,37 @@ pnpm-debug.log*
 !.env.example
 
 # IDE environments
-.vscode/* # we want to encourage vscode usage
+# encourage VSCode usage
+.vscode/* 
 .idea/
 .vimrc
 .nanorc
 .stackblitzrc
 sandbox.config.json
 
-# Add local workspace settings
+# Add local workspace settings (commit these)
 !.vscode/extensions.json
 !.vscode/launch.json
 !.vscode/settings.json
+!ws-idleon.code-workspace
 
 # macOS-specific files
 .DS_Store
 
-# Cached requests
+# Cached requests / tool caches
 .cache
-**/_fonts/brand/
 .textlintcache
+.lintstagedrc.cache
+.cache/lint-staged
+.eslintcache
+.stylelintcache
+
+# Fonts / other generated assets
+**/_fonts/brand/
+
+# Github configuration
+!.github/
+
+# Husky hooks (commit these)
+!.husky/
+
