@@ -34,7 +34,7 @@ import isWsl from 'is-wsl';
 
 
 // can't use tsconfig aliases yet...
-import remarkValidateGuideBlocks from './src/plugins/remark/validate-guide-blocks';
+// import remarkValidateGuideBlocks from './src/plugins/remark/validate-guide-blocks';
 import devServerFileWatcher from './config/integrations/dev-server-file-watcher';
 import starlightWorkAfterPlugins from './config/integrations/starlight-work-after-plugins';
 import {

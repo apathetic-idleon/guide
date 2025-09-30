@@ -17,8 +17,14 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 
 import { modeIcons } from '@components/guide-mode-selector/mode-icons';
 
+interface ModeOption {
+  label: string;
+  value: string;
+  icon: string | null;
+}
+
 // the list of options, and an optional icon
-const options = [
+const options: ModeOption[] = [
   { label: "Hints", value: "hint", icon: modeIcons['hint'] },
   { label: "Choices", value: "choice", icon: modeIcons['choice'] },
   { label: "Instruct", value: "instruct", icon: modeIcons['instruct'] },
@@ -165,8 +171,10 @@ const inactiveClasses = ['bg-surface', 'text-text', 'border-2', 'border-transpar
 </style>
 
 <script is:inline define:vars={{ activeClasses, inactiveClasses, options }}>
+	const opts = options; //alias for ts
+
 	function selectGuideMode(value, target) {
-		removeModeClasses = options.map(opt => "guide-mode-state-"+opt.value).filter(val => val !== "guide-mode-state-"+value);
+		removeModeClasses = opts.map(opt => "guide-mode-state-"+opt.value).filter(val => val !== "guide-mode-state-"+value);
 		document.documentElement.classList.remove(...removeModeClasses);
 		document.documentElement.classList.add(`guide-mode-state-${value}`);
 
@@ -209,7 +217,7 @@ const inactiveClasses = ['bg-surface', 'text-text', 'border-2', 'border-transpar
 			// Update dropdown icon
 			const labelIcon = controlDropdown.querySelector('.label-icon path');
 			if (labelIcon) {
-				const option = options.find(opt => opt.value === value);
+				const option = opts.find(opt => opt.value === value);
 				if (option) {
 					console.log("setting icon")
 					labelIcon.setAttribute('d', option.icon);

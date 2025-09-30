@@ -16,8 +16,6 @@ import type { Root, Parent } from 'mdast';
 import type { VFile } from 'vfile';
 import type { Plugin } from 'unified';
 
-// import type { MDXJsxFlowElement } from '@mdx-js/mdx';
-
 const remarkValidateGuideBlocks: Plugin<[], Root> = () => {
   return (tree: Root, file: VFile) => {
     function visit(node: any, parent: Parent | null) {
@@ -28,6 +26,7 @@ const remarkValidateGuideBlocks: Plugin<[], Root> = () => {
         const isInsideGuideBlock =
           parent &&
           parent.type === 'mdxJsxFlowElement' &&
+					'name' in parent && // type guard
           parent.name === 'GuideBlock';
 
         if (!isInsideGuideBlock) {

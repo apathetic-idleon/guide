@@ -41,7 +41,9 @@ const {
 const resolvedIconPath = iconPathD || modeIcons[mode] || "";
 ---
 <div class={`mode-block ${mode}-block ${extraClass}`}>
-	{resolvedIconPath && (
+	{icon ? (
+		<div class="custom-icon-wrapper" set:html={icon}></div>
+	) : resolvedIconPath ? (
 		<div class="icon-wrapper"><svg 
 			aria-hidden="true" 
 			class="icon label-icon" 
@@ -53,7 +55,7 @@ const resolvedIconPath = iconPathD || modeIcons[mode] || "";
 		>
 				<path d={resolvedIconPath} />
 			</svg></div>
-	)}	
+	) : null}	
 	<div class="mode-block-content"><slot /></div>	
 </div>
 

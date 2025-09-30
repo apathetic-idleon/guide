@@ -29,8 +29,8 @@ function getIcon(iconName : string) : string | null {
 }
 
 export const modeIcons: { [key: string]: string | null } = {
-	hint: iconPaths['lightbulb-outline'],
-	choice: iconPaths['open-book'],
-	instruct: iconPaths['seti:pipeline'],
+	hint: getIcon('lightbulb-outline'),
+	choice: getIcon('open-book'),
+	instruct: getIcon('seti:pipeline'),
 };
 
