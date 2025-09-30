@@ -202,9 +202,9 @@ These are optional commands and their dependencies to do work on the project cod
 ## Meta Information
 
 - `CODE_OF_CONDUCT.md`
-- `CODE-LICENSE`
-- `CONTENT-LICENSE`
-- `NOAI-CONTENT-LICENSE`
+- `LICENSE-CODE`
+- `LICENSE`
+- `LICENSE-NOAI-CONTENT`
 - `NOTICE`
 - `README.md`
 - `README-SITE-REPO.md`

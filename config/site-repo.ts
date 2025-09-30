@@ -7,7 +7,7 @@ This source code is dual-licensed:
  - Under the GNU Affero General Public License v3.0 (AGPLv3).
  - Under alternative licensing terms by the copyright holder.
 
-See CODE-LICENSE for details.
+See `LICENSE-CODE` for details.
 
 SPDX-License-Identifier: AGPL-3.0-or-later
 */
@@ -19,8 +19,8 @@ export type FileEntry = string | { src: string; dest: string };
 export const files: FileEntry[] = [
 	'.gitignore',
 	'CODE_OF_CONDUCT.md',
-	'CONTENT-LICENSE',
-	'NOAI-CONTENT-LICENSE',
+	'`LICENSE`',
+	'LICENSE-NOAI-CONTENT',
 	'NOTICE',
 	{ src: 'README-SITE-REPO.md', dest: 'README.md' },
 ];

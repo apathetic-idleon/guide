@@ -5,7 +5,7 @@
 #
 # Licensing:
 #  - Text/docs: CC BY-NC-SA 4.0 (see LICENSE)
-#  - Code: AGPLv3 (see CODE-LICENSE)
+#  - Code: AGPLv3 (see `LICENSE-CODE`)
 #  - Alternative licensing terms may be offered by the copyright holder.
 #
 # SPDX-License-Identifier: CC-BY-NC-SA-4.0 AND AGPL-3.0-or-later

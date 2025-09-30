@@ -21,11 +21,11 @@ This is the code and content repository for the `Apathetic Guide to IdleOn`.
 
 ## Content License
 
-Please note we have a [Additional Terms — No AI Use Rider](NOAI-CONTENT-LICENSE) to explicitly disallow AI use of our content, which further restricts the [CC-BY-NC-SA](CONTENT-LICENSE). Contact us if you have different licensing needs. Neither of these apply to the code, just the project content (generally found under `src/content`, `src/assets` and `public` directories).
+Please note we have a [Additional Terms — No AI Use Rider](LICENSE-NOAI-CONTENT) to explicitly disallow AI use of our content, which further restricts the [CC-BY-NC-SA](`LICENSE`). Contact us if you have different licensing needs. Neither of these apply to the code, just the project content (generally found under `src/content`, `src/assets` and `public` directories).
 
 ## Code License
 
-The project code itself is licensed [GNU AFFERO GENERAL PUBLIC LICENSE](CODE-LICENSE).
+The project code itself is licensed [GNU AFFERO GENERAL PUBLIC LICENSE](`LICENSE-CODE`).
 
 ## 🚀 Project Structure
 
