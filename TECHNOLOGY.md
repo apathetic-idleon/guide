@@ -180,6 +180,9 @@ These are optional commands and their dependencies to do work on the project cod
     - `@types/mdx`
     - `@types/mdast`
     - `@types/unist`
+- For pre-commit hooks:
+    - `husky`
+    - `lint-staged`
 
 #### Configs
 

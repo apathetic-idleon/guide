@@ -18,7 +18,8 @@
     "lint:linkcheck": "CHECK_LINKS=true pnpm build",
     "lint:eslint": "eslint .",
     "lint:text": "textlint --cache src/content/docs/**/*.{md,mdx}",
-    "lint:text:fix": "textlint --fix --cache src/content/docs/**/*.{md,mdx}"
+    "lint:text:fix": "textlint --fix --cache src/content/docs/**/*.{md,mdx}",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
@@ -37,6 +38,8 @@
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "globals": "^16.4.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^16.2.1",
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
     "textlint": "^15.2.2",
@@ -108,5 +111,8 @@
       "name": "pnpm",
       "onFail": "error"
     }
+  },
+  "lint-staged": {
+    "*": "prettier -w . --cache --plugin-search-dir=."
   }
 }
