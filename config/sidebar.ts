@@ -16,14 +16,13 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 // careful not to use trademarked logos for other purposes
 
 import type {
-  StarlightSidebarTopicsUserConfig, StarlightSidebarTopicsUserOptions
-} from "starlight-sidebar-topics";
+	StarlightSidebarTopicsUserConfig,
+	StarlightSidebarTopicsUserOptions,
+} from 'starlight-sidebar-topics';
 
-import {
-	blogSlug
-} from './blog';
+import { blogSlug } from './blog';
 
-export const sidebarConfig: StarlightSidebarTopicsUserConfig  = [
+export const sidebarConfig: StarlightSidebarTopicsUserConfig = [
 	{
 		id: 'walkthrough',
 		label: 'Walkthrough',
@@ -119,8 +118,5 @@ export const sidebarConfig: StarlightSidebarTopicsUserConfig  = [
 ];
 
 export const sidebarOptions: StarlightSidebarTopicsUserOptions = {
-		exclude: [
-			'/'+blogSlug, 
-			'/'+blogSlug+'/**/*',
-		],
+	exclude: ['/' + blogSlug, '/' + blogSlug + '/**/*'],
 };

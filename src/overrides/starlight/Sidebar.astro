@@ -20,10 +20,11 @@ Inspired by HiDeoo/starlight-sidebar-topics · MIT
 https://github.com/HiDeoo/starlight-sidebar-topics/blob/main/packages/starlight-sidebar-topics/overrides/Sidebar.astro
 */
 
-import Default from '@astrojs/starlight/components/Sidebar.astro'
-import StarlightSidebarTopicsSidebar from '@components/starlight-sidebar-topics/TopicsSidebar.astro'
-import SidebarToggle from '@components/sidebar-toggles/SidebarToggle.astro'
+import Default from '@astrojs/starlight/components/Sidebar.astro';
+import StarlightSidebarTopicsSidebar from '@components/starlight-sidebar-topics/TopicsSidebar.astro';
+import SidebarToggle from '@components/sidebar-toggles/SidebarToggle.astro';
 ---
+
 <SidebarToggle side="left" />
 <StarlightSidebarTopicsSidebar />
 <Default><slot /></Default>

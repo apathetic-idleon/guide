@@ -1,39 +1,18 @@
 {
   "extends": "astro/tsconfigs/strict",
-  "include": [
-    ".astro/types.d.ts",
-    "**/*"
-  ],
-  "exclude": [
-    "dist",
-    "dist-site-repo",
-    "**/__coverage__/**"
-  ],
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist", "dist-site-repo", "**/__coverage__/**"],
   "compilerOptions": {
     "types": ["astro/client"],
     "baseUrl": ".",
     "paths": {
-      "@root/*": [
-        "./*"
-      ],
-      "~/*": [
-        "./src/*"
-      ],
-      "@/*": [
-        "./src/*"
-      ],
-      "@config/*": [
-        "./config/*"
-      ],
-      "@assets/*": [
-        "./src/assets/*"
-      ],
-      "@components/*": [
-        "./src/components/*"
-      ],
-      "@utils/*": [
-        "./src/utils/*"
-      ]
+      "@root/*": ["./*"],
+      "~/*": ["./src/*"],
+      "@/*": ["./src/*"],
+      "@config/*": ["./config/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@components/*": ["./src/components/*"],
+      "@utils/*": ["./src/utils/*"]
     }
   }
 }

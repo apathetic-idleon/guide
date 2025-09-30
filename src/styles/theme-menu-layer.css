@@ -17,7 +17,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 // 
 // Starlight Theme Menu Component, MIT: 
 // Source: https://github.com/withastro/starlight/blob/main/packages/starlight/components/ThemeSelect.astro
-*/ 
+*/
 @layer our-theme-menu;
 
 [data-theme='dark'] starlight-theme-select {
@@ -27,10 +27,9 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 		background-color: var(--sl-color-gray-6);
 		color: var(--sl-color-text);
 	}
-	
+
 	& select option:hover {
 		background-color: var(--sl-color-accent-high);
 		color: var(--sl-color-text-invert);
 	}
 }
-

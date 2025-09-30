@@ -49,46 +49,45 @@ https://github.com/Windmillcode/starlight-fullview-mode
 
 /* for both sides */
 .main-frame {
-  padding-inline-start: var(--sl-content-inline-start);
+	padding-inline-start: var(--sl-content-inline-start);
 }
 
 .main-frame .main-pane {
-  flex: 1 1 auto;
-  min-width: auto;
+	flex: 1 1 auto;
+	min-width: auto;
 }
 
 .main-pane .sl-container {
-  width: 100%;
-  max-width: none;
+	width: 100%;
+	max-width: none;
 }
 
 .toggle-sidebar-btn {
-	position: absolute;  
+	position: absolute;
 	/* left / right is for the differentiator class */
 	width: 1.65rem;
-  height: 1.65rem;
+	height: 1.65rem;
 	display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid var(--sl-color-gray-5);
-  z-index: 1000;
-  cursor: pointer;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid var(--sl-color-gray-5);
+	z-index: 1000;
+	cursor: pointer;
 	color: var(--sl-color-gray-3);
 	background-color: var(--sl-color-bg-sidebar);
 }
 
 @media screen and (max-width: 800px) {
-  .toggle-sidebar-btn {
-    display: none;
-  }
+	.toggle-sidebar-btn {
+		display: none;
+	}
 }
-
 
 /* left sidebar */
 .sidebar-pane {
-	flex-shrink: 0;  
+	flex-shrink: 0;
 	display: flex;
-  flex-direction: column;
+	flex-direction: column;
 }
 
 .sidebar-content {
@@ -101,36 +100,36 @@ https://github.com/Windmillcode/starlight-fullview-mode
 }
 
 .toggle-left-sidebar-btn {
-	top: 0.25rem; 
-  left: 18rem;   
+	top: 0.25rem;
+	left: 18rem;
 }
 
 @media screen and (max-width: 72rem) {
 	.toggle-left-sidebar-btn {
-		top: 3.25rem;  
+		top: 3.25rem;
 	}
 }
 
 /* left sidebar collapsed */
 .left-sidebar-collapsed .sidebar-pane {
-  width: 1.1rem;
+	width: 1.1rem;
 }
 
-.left-sidebar-collapsed .sidebar-content > :not(.toggle-left-sidebar-btn) {	
-  display: none !important;
+.left-sidebar-collapsed .sidebar-content > :not(.toggle-left-sidebar-btn) {
+	display: none !important;
 }
 
 .left-sidebar-collapsed .main-frame .main-pane {
-  flex: 1 1 80%;
-  min-width: 80%;
+	flex: 1 1 80%;
+	min-width: 80%;
 }
 
 .left-sidebar-collapsed .main-frame {
-  padding-inline-start: 2.5rem;
+	padding-inline-start: 2.5rem;
 }
 
 .left-sidebar-collapsed .toggle-left-sidebar-btn {
-  left: 0.25rem;   
+	left: 0.25rem;
 }
 
 /* right sidebar, part of main content */
@@ -139,27 +138,26 @@ https://github.com/Windmillcode/starlight-fullview-mode
 	position: relative;
 	flex-shrink: 0;
 	display: flex;
-  flex-direction: column;
+	flex-direction: column;
 }
 
-.right-sidebar-container, 
+.right-sidebar-container,
 .right-sidebar,
 .right-sidebar-panel {
-  overflow: visible;
+	overflow: visible;
 }
 
 @media screen and (max-width: 72rem) {
 	.toggle-right-sidebar-btn {
-    display: none;
-  }
+		display: none;
+	}
 }
 
 .toggle-right-sidebar-btn {
-  top: 4.3rem; 
-  left: -1.15rem;
+	top: 4.3rem;
+	left: -1.15rem;
 	background-color: var(--sl-color-bg);
 }
-
 
 /* right sidebar collapsed */
 .right-sidebar-collapsed .right-sidebar-container {
@@ -167,14 +165,14 @@ https://github.com/Windmillcode/starlight-fullview-mode
 	min-width: 0;
 }
 
-.right-sidebar-collapsed .right-sidebar .sl-container > :not(.toggle-right-sidebar-btn) {	
-  display: none !important;
+.right-sidebar-collapsed .right-sidebar .sl-container > :not(.toggle-right-sidebar-btn) {
+	display: none !important;
 }
 
 .right-sidebar-collapsed .main-frame {
-  padding-inline-end: 1.25rem;
+	padding-inline-end: 1.25rem;
 }
 
 .right-sidebar-collapsed .toggle-right-sidebar-btn {
-  left: -0.9rem;  
+	left: -0.9rem;
 }

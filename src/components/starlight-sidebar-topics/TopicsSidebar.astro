@@ -17,10 +17,10 @@ https://github.com/apathetic-tools/snippets/blob/main/docs/astro-starlight/topic
 Inspired by HiDeoo/starlight-sidebar-topics · MIT
 https://github.com/HiDeoo/starlight-sidebar-topics/blob/main/packages/starlight-sidebar-topics/components/starlight/Sidebar.astro
 */
-import Topics from '@components/starlight-sidebar-topics/Topics.astro'
+import Topics from '@components/starlight-sidebar-topics/Topics.astro';
 
-const { hasSidebar } = Astro.locals.starlightRoute
-const { isPageWithTopic } = Astro.locals.starlightSidebarTopics
+const { hasSidebar } = Astro.locals.starlightRoute;
+const { isPageWithTopic } = Astro.locals.starlightSidebarTopics;
 ---
 
 {hasSidebar && isPageWithTopic && <Topics />}

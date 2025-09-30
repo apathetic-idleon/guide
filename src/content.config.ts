@@ -17,7 +17,7 @@ import { docsSchema } from '@astrojs/starlight/schema';
 import { topicSchema } from 'starlight-sidebar-topics/schema';
 import { autoSidebarLoader } from 'starlight-auto-sidebar/loader';
 import { autoSidebarSchema } from 'starlight-auto-sidebar/schema';
-import { blogSchema } from 'starlight-blog/schema'
+import { blogSchema } from 'starlight-blog/schema';
 
 /**
  * Extends Starlight's docs schema to support extra fields.
@@ -28,8 +28,8 @@ import { blogSchema } from 'starlight-blog/schema'
  * Using `merge` keeps both plugin schemas intact without manually copying fields.
  */
 function extendDocsSchema(context: Parameters<typeof blogSchema>[0]) {
-  const blog = blogSchema(context).passthrough();
-  return blog.merge(
+	const blog = blogSchema(context).passthrough();
+	return blog.merge(
 		z.object({
 			topic: topicSchema.shape.topic,
 		})
@@ -37,13 +37,13 @@ function extendDocsSchema(context: Parameters<typeof blogSchema>[0]) {
 }
 
 export const collections = {
-  docs: defineCollection({
-    loader: docsLoader(),
-    schema: docsSchema({ extend: extendDocsSchema }),
-  }),
+	docs: defineCollection({
+		loader: docsLoader(),
+		schema: docsSchema({ extend: extendDocsSchema }),
+	}),
 
 	autoSidebar: defineCollection({
-    loader: autoSidebarLoader(),
-    schema: autoSidebarSchema(),
-  }),
+		loader: autoSidebarLoader(),
+		schema: autoSidebarSchema(),
+	}),
 };

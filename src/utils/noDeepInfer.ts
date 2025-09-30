@@ -18,7 +18,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
  * Keeps the runtime return type intact while trimming inference depth.
  */
 export function noDeepInfer<T extends (...args: any[]) => any>(
-  fn: T
+	fn: T
 ): (...args: Parameters<T>) => ReturnType<T> {
-  return ((...args: Parameters<T>) => fn(...args)) as any;
+	return ((...args: Parameters<T>) => fn(...args)) as any;
 }

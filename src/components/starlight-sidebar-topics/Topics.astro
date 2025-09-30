@@ -19,33 +19,36 @@ https://github.com/HiDeoo/starlight-sidebar-topics/blob/main/packages/starlight-
 Inspired by Astro/docs · MIT
 https://docs.astro.build/
 */
-import { Badge, Icon } from '@astrojs/starlight/components'
+import { Badge, Icon } from '@astrojs/starlight/components';
 
-const { topics } = Astro.locals.starlightSidebarTopics
+const { topics } = Astro.locals.starlightSidebarTopics;
 ---
 
 <ul class="starlight-sidebar-topics">
-  {
-    topics.map((topic) => (
-      <li>
-        <a href={topic.link} class:list={{ 'starlight-sidebar-topics-current': topic.isCurrent }}>
-          {topic.icon && (
-            <div class="starlight-sidebar-topics-icon">
-              <Icon name={topic.icon} />
-            </div>
-          )}
-          <div>
-            {topic.label}
-            {topic.badge && (
-              <Badge class="starlight-sidebar-topics-badge" text={topic.badge.text} variant={topic.badge.variant} />
-            )}
-          </div>
-        </a>
-      </li>
-    ))
-  }
+	{
+		topics.map((topic) => (
+			<li>
+				<a href={topic.link} class:list={{ 'starlight-sidebar-topics-current': topic.isCurrent }}>
+					{topic.icon && (
+						<div class="starlight-sidebar-topics-icon">
+							<Icon name={topic.icon} />
+						</div>
+					)}
+					<div>
+						{topic.label}
+						{topic.badge && (
+							<Badge
+								class="starlight-sidebar-topics-badge"
+								text={topic.badge.text}
+								variant={topic.badge.variant}
+							/>
+						)}
+					</div>
+				</a>
+			</li>
+		))
+	}
 </ul>
-
 
 <style lang="css" scoped>
 	.starlight-sidebar-topics {
@@ -83,36 +86,38 @@ const { topics } = Astro.locals.starlightSidebarTopics
 		}
 	}
 
-  ul {
-    border: var(--tab-switcher-border-width) solid var(--tab-switcher-border-color);
+	ul {
+		border: var(--tab-switcher-border-width) solid var(--tab-switcher-border-color);
 		border-radius: var(--tab-switcher-border-radius);
 		list-style: none;
 		display: flex;
-		flex-direction: column;		
+		flex-direction: column;
 		gap: 0.25rem;
 		padding: var(--tab-switcher-padding);
-		background-color: var(--tab-switcher-background-color);				
+		background-color: var(--tab-switcher-background-color);
 		margin-bottom: 0;
-  }
+	}
 
-  li {
-    overflow-wrap: anywhere;
-  }
+	li {
+		overflow-wrap: anywhere;
+	}
 
-  li :global(a) {
+	li :global(a) {
 		border: var(--tab-switcher-border-width) solid transparent;
 		border-radius: var(--tab-item-border-radius);
-    display: flex;
-		align-items: center;		
+		display: flex;
+		align-items: center;
 		gap: 0.5rem;
-    padding: calc(0.5rem - var(--tab-switcher-border-width));
+		padding: calc(0.5rem - var(--tab-switcher-border-width));
 		background-clip: padding-box;
 		line-height: var(--sl-line-height-headings);
 		text-decoration: none;
 		color: var(--tab-switcher-text-color);
-		font-weight: 600;		
-		transition: background-color 0.2s, color 0.2s;		
-  }
+		font-weight: 600;
+		transition:
+			background-color 0.2s,
+			color 0.2s;
+	}
 
 	a:hover {
 		color: var(--tab-switcher-text-color--active);
@@ -123,16 +128,18 @@ const { topics } = Astro.locals.starlightSidebarTopics
 		color: var(--tab-switcher-text-color--active);
 		background-color: var(--tab-item-background-color--active);
 	}
-	
-		/* Icon wrapper */
-  .starlight-sidebar-topics-icon {
-    display: flex;		
+
+	/* Icon wrapper */
+	.starlight-sidebar-topics-icon {
+		display: flex;
 		justify-content: center;
 		align-items: center;
 		margin: 0.25rem;
 		color: var(--tab-switcher-icon-color);
-    transition: background-color 0.2s, border-color 0.2s;
-  }  
+		transition:
+			background-color 0.2s,
+			border-color 0.2s;
+	}
 
 	a:hover .starlight-sidebar-topics-icon {
 		color: inherit;
@@ -141,7 +148,7 @@ const { topics } = Astro.locals.starlightSidebarTopics
 		color: var(--tab-switcher-icon-color--active);
 	}
 
-  .starlight-sidebar-topics-badge {
-    margin-inline-start: 0.25em;
-  }
+	.starlight-sidebar-topics-badge {
+		margin-inline-start: 0.25em;
+	}
 </style>

@@ -17,34 +17,31 @@ import type { VFile } from 'vfile';
 import type { Plugin } from 'unified';
 
 const remarkValidateGuideBlocks: Plugin<[], Root> = () => {
-  return (tree: Root, file: VFile) => {
-    function visit(node: any, parent: Parent | null) {
-      if (
-        node.type === 'mdxJsxFlowElement' &&
-        ['Hint', 'Choice', 'Instruct'].includes(node.name)
-      ) {
-        const isInsideGuideBlock =
-          parent &&
-          parent.type === 'mdxJsxFlowElement' &&
+	return (tree: Root, file: VFile) => {
+		function visit(node: any, parent: Parent | null) {
+			if (node.type === 'mdxJsxFlowElement' && ['Hint', 'Choice', 'Instruct'].includes(node.name)) {
+				const isInsideGuideBlock =
+					parent &&
+					parent.type === 'mdxJsxFlowElement' &&
 					'name' in parent && // type guard
-          parent.name === 'GuideBlock';
+					parent.name === 'GuideBlock';
 
-        if (!isInsideGuideBlock) {
-          file.message(
-            `<${node.name}> must be inside a <GuideBlock>.`,
-            node.position,
-            'remark-validate-guide-blocks'
-          );
-        }
-      }
+				if (!isInsideGuideBlock) {
+					file.message(
+						`<${node.name}> must be inside a <GuideBlock>.`,
+						node.position,
+						'remark-validate-guide-blocks'
+					);
+				}
+			}
 
-      if ('children' in node && Array.isArray(node.children)) {
-        node.children.forEach((child: any) => visit(child, node as Parent));
-      }
-    }
+			if ('children' in node && Array.isArray(node.children)) {
+				node.children.forEach((child: any) => visit(child, node as Parent));
+			}
+		}
 
-    visit(tree, null);
-  };
+		visit(tree, null);
+	};
 };
 
 export default remarkValidateGuideBlocks;

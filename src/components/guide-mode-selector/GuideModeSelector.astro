@@ -18,163 +18,192 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 import { modeIcons } from '@components/guide-mode-selector/mode-icons';
 
 interface ModeOption {
-  label: string;
-  value: string;
-  icon: string | null;
+	label: string;
+	value: string;
+	icon: string | null;
 }
 
 // the list of options, and an optional icon
 const options: ModeOption[] = [
-  { label: "Hints", value: "hint", icon: modeIcons['hint'] },
-  { label: "Choices", value: "choice", icon: modeIcons['choice'] },
-  { label: "Instruct", value: "instruct", icon: modeIcons['instruct'] },
+	{ label: 'Hints', value: 'hint', icon: modeIcons['hint'] },
+	{ label: 'Choices', value: 'choice', icon: modeIcons['choice'] },
+	{ label: 'Instruct', value: 'instruct', icon: modeIcons['instruct'] },
 ];
 const defaultIcon = options[0].icon;
 
 // for the control-buttons
-const activeClasses = ['bg-accent', 'text-accent-foreground', 'border-2', 'border-gray-500'];       // filled accent
+const activeClasses = ['bg-accent', 'text-accent-foreground', 'border-2', 'border-gray-500']; // filled accent
 const inactiveClasses = ['bg-surface', 'text-text', 'border-2', 'border-transparent'];
 ---
 
 <div class="guide-mode-select lg:mr-1 sm:mr-1">
-  
-  <!-- Inline buttons for large screens -->
+	<!-- Inline buttons for large screens -->
 	<div class="control-buttons hidden lg:flex flex items-center">
 		<!-- Label -->
-  	<span class="font-medium text-text">Give:</span>
-		<div class="flex gap-2 ml-2">		
-			{options.map((opt) => (
-				<button
-					type="button"
-					data-value={opt.value}
-					class={`rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-ring ${ inactiveClasses.join(' ') }`}
-				>
-					<svg aria-hidden="true" class="icon label-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d={opt.icon} /></svg> <span>{opt.label}</span>
-				</button>
-			))}
+		<span class="font-medium text-text">Give:</span>
+		<div class="flex gap-2 ml-2">
+			{
+				options.map((opt) => (
+					<button
+						type="button"
+						data-value={opt.value}
+						class={`rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-ring ${inactiveClasses.join(' ')}`}
+					>
+						<svg
+							aria-hidden="true"
+							class="icon label-icon"
+							width="16"
+							height="16"
+							viewBox="0 0 24 24"
+							fill="currentColor"
+							style="--sl-icon-size: 1em;"
+						>
+							<path d={opt.icon} />
+						</svg>{' '}
+						<span>{opt.label}</span>
+					</button>
+				))
+			}
 		</div>
 	</div>
 
-  <!-- Dropdown for screens smaller than lg -->
-  <div class="control-dropdown lg:hidden">
-    <label style="--sl-select-width: 6.25em;">
-      <span class="sr-only">Select guide mode</span>
-			<svg aria-hidden="true" class="icon label-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d={defaultIcon} /></svg>			
-      <select  				      
-        autocomplete="off"
-      >
-        {options.map((opt) => (
-          <option value={opt.value}>{opt.label}</option>
-        ))}
-      </select>
-      <svg aria-hidden="true" class="icon caret" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"></path></svg>
-    </label>
-  </div>
-
+	<!-- Dropdown for screens smaller than lg -->
+	<div class="control-dropdown lg:hidden">
+		<label style="--sl-select-width: 6.25em;">
+			<span class="sr-only">Select guide mode</span>
+			<svg
+				aria-hidden="true"
+				class="icon label-icon"
+				width="16"
+				height="16"
+				viewBox="0 0 24 24"
+				fill="currentColor"
+				style="--sl-icon-size: 1em;"><path d={defaultIcon}></path></svg
+			>
+			<select autocomplete="off">
+				{options.map((opt) => <option value={opt.value}>{opt.label}</option>)}
+			</select>
+			<svg
+				aria-hidden="true"
+				class="icon caret"
+				width="16"
+				height="16"
+				viewBox="0 0 24 24"
+				fill="currentColor"
+				style="--sl-icon-size: 1em;"
+				><path
+					d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"
+				></path></svg
+			>
+		</label>
+	</div>
 </div>
 
 <style lang="css" scoped>
-.control-buttons button {
-	--sl-label-icon-size: 0.875rem;
-	position: relative;
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;	
-	gap: 0.3rem;	
-	font-variant: small-caps;	
-	padding: 0.25rem 0.375rem; /* vertical and horizontal padding */
-}
+	.control-buttons button {
+		--sl-label-icon-size: 0.875rem;
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.3rem;
+		font-variant: small-caps;
+		padding: 0.25rem 0.375rem; /* vertical and horizontal padding */
+	}
 
-.control-buttons .label-icon {
-	color: var(--sl-icon-color);
-	font-size: var(--sl-label-icon-size);
-	width: 1em;
-	height: 1em;
+	.control-buttons .label-icon {
+		color: var(--sl-icon-color);
+		font-size: var(--sl-label-icon-size);
+		width: 1em;
+		height: 1em;
 
-	position: absolute;	
-	top: 50%;
-	left: 0.375rem; /* matches button left padding */
-	transform: translateY(-40%); /* tweak this depending on chosen icons */
-	pointer-events: none;	
-}
+		position: absolute;
+		top: 50%;
+		left: 0.375rem; /* matches button left padding */
+		transform: translateY(-40%); /* tweak this depending on chosen icons */
+		pointer-events: none;
+	}
 
-.control-buttons button span {	
-	display: inline-block;
-	padding-left: calc(var(--sl-label-icon-size) + 0.3rem);
-}
+	.control-buttons button span {
+		display: inline-block;
+		padding-left: calc(var(--sl-label-icon-size) + 0.3rem);
+	}
 
-/* Dropdown for screens smaller than lg */
-.control-dropdown label {
-	--sl-label-icon-size: 0.875rem;
-	--sl-caret-size: 1.25rem;
-	--sl-inline-padding: 0.5rem;
-	position: relative;
-	display: flex;
-	align-items: center;
-	gap: 0.25rem;
-	color: var(--sl-color-gray-1);
-}
+	/* Dropdown for screens smaller than lg */
+	.control-dropdown label {
+		--sl-label-icon-size: 0.875rem;
+		--sl-caret-size: 1.25rem;
+		--sl-inline-padding: 0.5rem;
+		position: relative;
+		display: flex;
+		align-items: center;
+		gap: 0.25rem;
+		color: var(--sl-color-gray-1);
+	}
 
-.control-dropdown svg {
-	color: var(--sl-icon-color);
-	font-size: var(--sl-icon-size, 1em);
-	width: 1em;
-	height: 1em;
-}
+	.control-dropdown svg {
+		color: var(--sl-icon-color);
+		font-size: var(--sl-icon-size, 1em);
+		width: 1em;
+		height: 1em;
+	}
 
-.control-dropdown .icon {
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
-	pointer-events: none;
-}
+	.control-dropdown .icon {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		pointer-events: none;
+	}
 
-.control-dropdown .label-icon {
-	font-size: var(--sl-label-icon-size);
-  inset-inline-start: 0;
-}
+	.control-dropdown .label-icon {
+		font-size: var(--sl-label-icon-size);
+		inset-inline-start: 0;
+	}
 
-.control-dropdown select {
-	border: 0;
-	padding-block: 0.625rem;
-	padding-inline: calc(var(--sl-label-icon-size) + var(--sl-inline-padding) + 0.25rem) calc(var(--sl-caret-size) + var(--sl-inline-padding) + 0.25rem);
-	margin-inline: calc(var(--sl-inline-padding) * -1);
-	width: calc(var(--sl-select-width) + var(--sl-inline-padding) * 2);
-	background-color: transparent;
-	text-overflow: ellipsis;
-	color: inherit;
-	cursor: pointer;
-	appearance: none;
-}
+	.control-dropdown select {
+		border: 0;
+		padding-block: 0.625rem;
+		padding-inline: calc(var(--sl-label-icon-size) + var(--sl-inline-padding) + 0.25rem)
+			calc(var(--sl-caret-size) + var(--sl-inline-padding) + 0.25rem);
+		margin-inline: calc(var(--sl-inline-padding) * -1);
+		width: calc(var(--sl-select-width) + var(--sl-inline-padding) * 2);
+		background-color: transparent;
+		text-overflow: ellipsis;
+		color: inherit;
+		cursor: pointer;
+		appearance: none;
+	}
 
-.control-dropdown select option {
-	background-color: var(--sl-color-bg-nav);
-  color: var(--sl-color-gray-1);
-}
+	.control-dropdown select option {
+		background-color: var(--sl-color-bg-nav);
+		color: var(--sl-color-gray-1);
+	}
 
-.control-dropdown .caret {
-	font-size: var(--sl-caret-size);
-  inset-inline-end: 0;
-}
+	.control-dropdown .caret {
+		font-size: var(--sl-caret-size);
+		inset-inline-end: 0;
+	}
 
-:global([data-theme='dark']) .control-dropdown select,
-:global([data-theme='dark']) .control-dropdown select option,
-:global([data-theme='dark']) .control-dropdown select option:checked {
-	background-color: var(--sl-color-gray-6);
-	color: var(--sl-color-text);
-}
+	:global([data-theme='dark']) .control-dropdown select,
+	:global([data-theme='dark']) .control-dropdown select option,
+	:global([data-theme='dark']) .control-dropdown select option:checked {
+		background-color: var(--sl-color-gray-6);
+		color: var(--sl-color-text);
+	}
 
-:global([data-theme='dark']) .control-dropdown select option:hover {
-	background-color: var(--sl-color-accent-high);
-	color: var(--sl-color-text-invert);
-}
+	:global([data-theme='dark']) .control-dropdown select option:hover {
+		background-color: var(--sl-color-accent-high);
+		color: var(--sl-color-text-invert);
+	}
 </style>
 
 <script is:inline define:vars={{ activeClasses, inactiveClasses, options }}>
 	const opts = options; //alias for ts
 
 	function selectGuideMode(value, target) {
-		removeModeClasses = opts.map(opt => "guide-mode-state-"+opt.value).filter(val => val !== "guide-mode-state-"+value);
+		removeModeClasses = opts
+			.map((opt) => 'guide-mode-state-' + opt.value)
+			.filter((val) => val !== 'guide-mode-state-' + value);
 		document.documentElement.classList.remove(...removeModeClasses);
 		document.documentElement.classList.add(`guide-mode-state-${value}`);
 
@@ -186,60 +215,62 @@ const inactiveClasses = ['bg-surface', 'text-text', 'border-2', 'border-transpar
 			controlDropdown = controlButtons.parentElement.querySelector('.control-dropdown');
 		} else if (target && target.tagName === 'SELECT') {
 			controlDropdown = target.parentElement;
-			controlButtons = controlDropdown.parentElement.querySelector('.control-buttons');			
-		} else {			
+			controlButtons = controlDropdown.parentElement.querySelector('.control-buttons');
+		} else {
 			const guideModeSelect = document.querySelector('.guide-mode-select');
-			controlButtons = guideModeSelect.querySelector('.control-buttons');			
-			controlDropdown = guideModeSelect.querySelector('.control-dropdown');		
+			controlButtons = guideModeSelect.querySelector('.control-buttons');
+			controlDropdown = guideModeSelect.querySelector('.control-dropdown');
 		}
 
 		// Remove active class from previous button
-    const currentButton = controlButtons?.querySelector('button[data-value].active');
-    if (currentButton) {
+		const currentButton = controlButtons?.querySelector('button[data-value].active');
+		if (currentButton) {
 			currentButton.classList.remove(...activeClasses);
-      currentButton.classList.add(...inactiveClasses);
+			currentButton.classList.add(...inactiveClasses);
 			currentButton.classList.remove('active');
 		}
 
 		// Add active class to the new button
-    const btn = controlButtons?.querySelector(`button[data-value="${value}"]`);
-    if (btn) {
+		const btn = controlButtons?.querySelector(`button[data-value="${value}"]`);
+		if (btn) {
 			btn.classList.remove(...inactiveClasses);
-			btn.classList.add(...activeClasses);      
+			btn.classList.add(...activeClasses);
 			btn.classList.add('active');
 		}
 
 		// Update dropdown value
-    const selectEl = controlDropdown?.querySelector('select');
-    if (selectEl) {
+		const selectEl = controlDropdown?.querySelector('select');
+		if (selectEl) {
 			selectEl.value = value;
 
 			// Update dropdown icon
 			const labelIcon = controlDropdown.querySelector('.label-icon path');
 			if (labelIcon) {
-				const option = opts.find(opt => opt.value === value);
+				const option = opts.find((opt) => opt.value === value);
 				if (option) {
-					console.log("setting icon")
+					console.log('setting icon');
 					labelIcon.setAttribute('d', option.icon);
 				}
 			}
 		}
 
-		localStorage.setItem("guideMode", value);
-		document.dispatchEvent(new CustomEvent("guideModeChange", { detail: value }));
+		localStorage.setItem('guideMode', value);
+		document.dispatchEvent(new CustomEvent('guideModeChange', { detail: value }));
 	}
 
-  // add event listeners after DOM is ready
-  if (typeof window !== 'undefined') {
+	// add event listeners after DOM is ready
+	if (typeof window !== 'undefined') {
 		if (!window.__guideModeInitialized) {
-      window.__guideModeInitialized = true;
+			window.__guideModeInitialized = true;
 
 			const saved = localStorage.getItem('guideMode') || 'hints';
 			selectGuideMode(saved);
 
-			document.querySelectorAll('.guide-mode-select .control-buttons button[data-value]').forEach((btn) => {
-				btn.addEventListener('click', (e) => selectGuideMode(btn.dataset.value, e.currentTarget));
-			});
+			document
+				.querySelectorAll('.guide-mode-select .control-buttons button[data-value]')
+				.forEach((btn) => {
+					btn.addEventListener('click', (e) => selectGuideMode(btn.dataset.value, e.currentTarget));
+				});
 
 			// dropdown in hamburger menu doesn't exist, but does on medium screens in header
 			document.addEventListener('change', (e) => {
@@ -249,5 +280,5 @@ const inactiveClasses = ['bg-surface', 'text-text', 'border-2', 'border-transpar
 				}
 			});
 		}
-  }
+	}
 </script>

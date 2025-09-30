@@ -14,8 +14,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 
 export const org = 'Apathetic Tools';
 export const orgUrl = 'https://github.com/apathetic-tools/';
-export const orgEmail = 'InertSloth@gmail.com'
-
+export const orgEmail = 'InertSloth@gmail.com';
 
 // affiliation
 export const affilGame = 'IdleOn';

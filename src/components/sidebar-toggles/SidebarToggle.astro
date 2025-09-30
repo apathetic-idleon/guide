@@ -18,83 +18,86 @@ Inspired by Windmillcode/starlight-fullview-mode · MIT
 https://github.com/Windmillcode/starlight-fullview-mode
 */
 
-import { Icon } from "astro-icon/components";
+import { Icon } from 'astro-icon/components';
 
 export interface Props {
-  side?: "left" | "right";
+	side?: 'left' | 'right';
 	collapseIcon?: string;
-  expandIcon?: string;
+	expandIcon?: string;
 }
 
-const { side = "left", collapseIcon, expandIcon } = Astro.props;
+const { side = 'left', collapseIcon, expandIcon } = Astro.props;
 
 const icons = {
-  collapse: collapseIcon ?? (side === "left" ? "mdi:chevron-left" : "mdi:chevron-right"),
-  expand: expandIcon ?? (side === "left" ? "mdi:chevron-right" : "mdi:chevron-left")
+	collapse: collapseIcon ?? (side === 'left' ? 'mdi:chevron-left' : 'mdi:chevron-right'),
+	expand: expandIcon ?? (side === 'left' ? 'mdi:chevron-right' : 'mdi:chevron-left'),
 };
 ---
 
-<div 
-  class={`toggle-${side}-sidebar-btn toggle-sidebar-btn`} 
-  role="button"
-  tabindex="0"
-  aria-expanded="true"
+<div
+	class={`toggle-${side}-sidebar-btn toggle-sidebar-btn`}
+	role="button"
+	tabindex="0"
+	aria-expanded="true"
 >
-  <Icon name={icons.collapse} class="icon-collapse" title="Collapse" />
-  <Icon name={icons.expand} class="icon-expand" title="Expand" />
+	<Icon name={icons.collapse} class="icon-collapse" title="Collapse" />
+	<Icon name={icons.expand} class="icon-expand" title="Expand" />
 </div>
 
 <style lang="css" scoped>
-[data-icon] {
-  height: 1.125rem;
-  width: 1.125rem;
-}
+	[data-icon] {
+		height: 1.125rem;
+		width: 1.125rem;
+	}
 
-/* hide/show icons based on collapsed state */
-:global(.left-sidebar-collapsed) .toggle-left-sidebar-btn .icon-expand,
-:global(.right-sidebar-collapsed) .toggle-right-sidebar-btn .icon-expand {
-  display: inline-flex;
-}
-:global(.left-sidebar-collapsed) .toggle-left-sidebar-btn .icon-collapse,
-:global(.right-sidebar-collapsed) .toggle-right-sidebar-btn .icon-collapse {
-  display: none;
-}
+	/* hide/show icons based on collapsed state */
+	:global(.left-sidebar-collapsed) .toggle-left-sidebar-btn .icon-expand,
+	:global(.right-sidebar-collapsed) .toggle-right-sidebar-btn .icon-expand {
+		display: inline-flex;
+	}
+	:global(.left-sidebar-collapsed) .toggle-left-sidebar-btn .icon-collapse,
+	:global(.right-sidebar-collapsed) .toggle-right-sidebar-btn .icon-collapse {
+		display: none;
+	}
 
-.icon-expand {
-  display: none;
-}
+	.icon-expand {
+		display: none;
+	}
 </style>
 
 <script is:inline define:vars={{ side }}>
-  (function () {
+	(function () {
 		/** @type {HTMLElement | null} */
-    const btn = document.querySelector(`.toggle-${side}-sidebar-btn`);
-    if (!btn) return;
+		const btn = document.querySelector(`.toggle-${side}-sidebar-btn`);
+		if (!btn) return;
 
-    const collapsedClassname = `${side}-sidebar-collapsed`;
-    const storageKey = `starlight-${side}-sidebar-collapsed`;
+		const collapsedClassname = `${side}-sidebar-collapsed`;
+		const storageKey = `starlight-${side}-sidebar-collapsed`;
 
 		/**
 		 * @param {boolean} collapsed
 		 */
-    function applyState(collapsed) {
-      btn.setAttribute("aria-expanded", collapsed ? "false" : "true");
-    }
+		function applyState(collapsed) {
+			btn.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+		}
 
-    const initialCollapsed = sessionStorage.getItem(storageKey) === "1";
-    applyState(initialCollapsed);
+		const initialCollapsed = sessionStorage.getItem(storageKey) === '1';
+		applyState(initialCollapsed);
 
-    btn.addEventListener("click", () => {
-      const now = document.documentElement.classList.toggle(collapsedClassname);
-      applyState(now);
-      sessionStorage.setItem(storageKey, now ? "1" : "0");
-    });
+		btn.addEventListener('click', () => {
+			const now = document.documentElement.classList.toggle(collapsedClassname);
+			applyState(now);
+			sessionStorage.setItem(storageKey, now ? '1' : '0');
+		});
 
-    btn.addEventListener("keydown", /** @param {KeyboardEvent} e */ (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        btn.click();
-      }
-    });
-  })();
+		btn.addEventListener(
+			'keydown',
+			/** @param {KeyboardEvent} e */ (e) => {
+				if (e.key === 'Enter' || e.key === ' ') {
+					e.preventDefault();
+					btn.click();
+				}
+			}
+		);
+	})();
 </script>

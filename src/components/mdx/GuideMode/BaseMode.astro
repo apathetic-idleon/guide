@@ -17,55 +17,60 @@ import { modeIcons } from '@components/guide-mode-selector/mode-icons';
 
 interface Props {
 	mode: string;
-  icon?: string;
+	icon?: string;
 	iconWidth?: number;
 	iconHeight?: number;
 	iconViewBox?: string;
 	iconFill?: string;
 	iconStyle?: string;
 	iconPathD?: string;
-  class?: string;
+	class?: string;
 }
-const { 
+const {
 	mode,
-	icon = "", 
+	icon = '',
 	iconWidth = 16,
 	iconHeight = 16,
-	iconViewBox = "0 0 24 24",
-	iconFill = "currentColor",
-	iconStyle = "--sl-icon-size: 1em;",
-	iconPathD = "",
-	class: extraClass = "",
+	iconViewBox = '0 0 24 24',
+	iconFill = 'currentColor',
+	iconStyle = '--sl-icon-size: 1em;',
+	iconPathD = '',
+	class: extraClass = '',
 } = Astro.props;
 
-const resolvedIconPath = iconPathD || modeIcons[mode] || "";
+const resolvedIconPath = iconPathD || modeIcons[mode] || '';
 ---
+
 <div class={`mode-block ${mode}-block ${extraClass}`}>
-	{icon ? (
-		<div class="custom-icon-wrapper" set:html={icon}></div>
-	) : resolvedIconPath ? (
-		<div class="icon-wrapper"><svg 
-			aria-hidden="true" 
-			class="icon label-icon" 
-			width={iconWidth} 
-			height={iconHeight} 
-			viewBox={iconViewBox} 
-			fill={iconFill}
-			style={iconStyle}
-		>
-				<path d={resolvedIconPath} />
-			</svg></div>
-	) : null}	
-	<div class="mode-block-content"><slot /></div>	
+	{
+		icon ? (
+			<div class="custom-icon-wrapper" set:html={icon} />
+		) : resolvedIconPath ? (
+			<div class="icon-wrapper">
+				<svg
+					aria-hidden="true"
+					class="icon label-icon"
+					width={iconWidth}
+					height={iconHeight}
+					viewBox={iconViewBox}
+					fill={iconFill}
+					style={iconStyle}
+				>
+					<path d={resolvedIconPath} />
+				</svg>
+			</div>
+		) : null
+	}
+	<div class="mode-block-content"><slot /></div>
 </div>
 
-<style lang="css" scoped>	
+<style lang="css" scoped>
 	.mode-block {
 		/* Theme */
 		--border-padding: 0.6rem;
-		--border-opacity: 0.3;				
- 		--icon-size: 1rem;
-  	--icon-top: 0rem;
+		--border-opacity: 0.3;
+		--icon-size: 1rem;
+		--icon-top: 0rem;
 		--icon-left: -0.55rem;
 		--icon-opacity: 0.3;
 	}
@@ -73,7 +78,7 @@ const resolvedIconPath = iconPathD || modeIcons[mode] || "";
 	.mode-block {
 		display: none; /* derived components set to flex */
 		align-items: flex-start;
-		
+
 		border-left: 2px solid var(--mode-border-color);
 		margin-left: calc(-1 * var(--border-padding));
 		padding-left: var(--border-padding);
@@ -82,19 +87,19 @@ const resolvedIconPath = iconPathD || modeIcons[mode] || "";
 	}
 
 	.icon-wrapper {
-		position: absolute;		
+		position: absolute;
 		left: var(--icon-left);
 		top: var(--icon-top);
-		flex-shrink: 0;		
+		flex-shrink: 0;
 		background-color: var(--sl-color-bg);
 		padding-bottom: 0.15rem;
 	}
 
-	.icon {				
+	.icon {
 		width: var(--icon-size);
-		height: var(--icon-size);		
+		height: var(--icon-size);
 		pointer-events: none;
-		color: var(--mode-icon-color);		
+		color: var(--mode-icon-color);
 	}
 
 	.mode-block-content {

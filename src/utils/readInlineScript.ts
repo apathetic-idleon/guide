@@ -21,7 +21,7 @@ import { fileURLToPath } from 'url';
 
 /**
  * Read a JavaScript file into a string for use as inline <script> content.
- * 
+ *
  * @param relativePath Path to the file relative to the src directory.
  */
 export function readInlineScript(relativePath: string): string {
@@ -30,6 +30,6 @@ export function readInlineScript(relativePath: string): string {
 	const __dirname = path.dirname(__filename);
 
 	// Absolute path to your script file
-	const filePath = path.resolve(__dirname, "..", relativePath);
+	const filePath = path.resolve(__dirname, '..', relativePath);
 	return fs.readFileSync(filePath, 'utf-8');
 }

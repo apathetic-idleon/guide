@@ -13,8 +13,8 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 */
 
 // blog
-export const blogName =  'Updates';
-export const author =  'Core Team';
+export const blogName = 'Updates';
+export const author = 'Core Team';
 export const blogLicense = 'CC BY';
 export const blogLicenseUrl = 'https://creativecommons.org/licenses/by/4.0/';
 

@@ -17,10 +17,10 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 export type FileEntry = string | { src: string; dest: string };
 
 export const files: FileEntry[] = [
-  ".gitignore",
-  "CODE_OF_CONDUCT.md",
-  "CONTENT-LICENSE",
-  "NOAI-CONTENT-LICENSE",
-  "NOTICE",
-  { src: "README-SITE-REPO.md", dest: "README.md" },
+	'.gitignore',
+	'CODE_OF_CONDUCT.md',
+	'CONTENT-LICENSE',
+	'NOAI-CONTENT-LICENSE',
+	'NOTICE',
+	{ src: 'README-SITE-REPO.md', dest: 'README.md' },
 ];

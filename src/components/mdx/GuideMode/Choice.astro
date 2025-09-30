@@ -14,20 +14,22 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 */
 
 import BaseMode from './BaseMode.astro';
-
 ---
+
 <BaseMode mode="choice" {...Astro.props}><slot /></BaseMode>
 
 <style lang="css" scoped>
 	.choice-block {
-		--mode-border-color: rgba(0, 204, 255, var(--border-opacity));		
+		--mode-border-color: rgba(0, 204, 255, var(--border-opacity));
 		--mode-icon-color: rgba(0, 204, 255, var(--icon-opacity));
 	}
 
 	/* Show blocks for the current mode */
-	:global(.guide-mode-state-choice) .choice-block { display: flex; }
+	:global(.guide-mode-state-choice) .choice-block {
+		display: flex;
+	}
 
-		/* Promoted blocks added by server */
+	/* Promoted blocks added by server */
 	:global(.guide-mode-state-instruct .promote-choice-to-instruct) .choice-block {
 		display: flex;
 	}
