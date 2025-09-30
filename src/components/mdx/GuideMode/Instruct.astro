@@ -1,0 +1,14 @@
+---
+import BaseMode from './BaseMode.astro';
+---
+<BaseMode mode="instruct" {...Astro.props}><slot /></BaseMode>
+
+<style lang="css" scoped>
+	.instruct-block {
+		--mode-border-color: rgba(255, 204, 0, var(--border-opacity));
+		--mode-icon-color: rgba(255, 204, 0, var(--icon-opacity));		
+	}
+
+	/* Show blocks for the current mode */
+	:global(.guide-mode-state-instruct) .instruct-block { display: flex; }
+</style>

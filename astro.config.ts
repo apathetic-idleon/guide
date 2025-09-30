@@ -20,6 +20,7 @@ import isWsl from 'is-wsl';
 
 
 // can't use tsconfig aliases yet...
+import remarkValidateGuideBlocks from './src/plugins/remark/validate-guide-blocks';
 import devServerFileWatcher from './config/integrations/dev-server-file-watcher';
 import starlightWorkAfterPlugins from './config/integrations/starlight-work-after-plugins';
 import {
@@ -29,53 +30,55 @@ import {
   author, authorSlug, blogName, blogSlug
 } from './config';
 import {
-	readInlineScript
+    readInlineScript
 } from './src/utils/readInlineScript';
+
+import mdx from '@astrojs/mdx';
 
 // ─── Starlight plugins ─────────────────────────────────────────
 const starlightPlugins = [		
   starlightAutoSidebar(), // must come before starlightSidebarTopics() 
-	starlightSidebarTopics(sidebarConfig, sidebarOptions),				
-	starlightBlog({
-			prefix: blogSlug,
-			title: blogName,
-			authors: {
-					[authorSlug]: {
-							name: author,
-					}
-			},
-	}),
-	starlightHeadingBadges(),
-	starlightMarkdownBlocks({
-		blocks: {			
-		},
-	}),
-	starlightAutoDrafts({
-		highlights: {
-			badges: true,
-		},
-	}), // does not hot reload, rerun pnpm run dev
-	starlightScrollToTop({
-		position: 'right',
-		tooltipText: 'Back to Top',
-		showTooltip: true,
-		smoothScroll: true,
-		threshold: 30,
-		showProgressRing: true,
-		progressRingColor: 'white',
-		showOnHomepage: true,
-	}),
-	viewTransitions(),
-	inoxToolsStarWarp(),
-	...(process.env.CHECK_LINKS
-					? [
-													starlightLinksValidator({
-																	errorOnFallbackPages: false,
-																	errorOnInconsistentLocale: true,
-													}),
-									]
-					: []),
-	starlightWorkAfterPlugins(), // must come last
+    starlightSidebarTopics(sidebarConfig, sidebarOptions),				
+    starlightBlog({
+            prefix: blogSlug,
+            title: blogName,
+            authors: {
+                    [authorSlug]: {
+                            name: author,
+                    }
+            },
+    }),
+    starlightHeadingBadges(),
+    starlightMarkdownBlocks({
+        blocks: {			
+        },
+    }),
+    starlightAutoDrafts({
+        highlights: {
+            badges: true,
+        },
+    }), // does not hot reload, rerun pnpm run dev
+    starlightScrollToTop({
+        position: 'right',
+        tooltipText: 'Back to Top',
+        showTooltip: true,
+        smoothScroll: true,
+        threshold: 30,
+        showProgressRing: true,
+        progressRingColor: 'white',
+        showOnHomepage: true,
+    }),
+    viewTransitions(),
+    inoxToolsStarWarp(),
+    ...(process.env.CHECK_LINKS
+                    ? [
+                                                    starlightLinksValidator({
+                                                                    errorOnFallbackPages: false,
+                                                                    errorOnInconsistentLocale: true,
+                                                    }),
+                                    ]
+                    : []),
+    starlightWorkAfterPlugins(), // must come last
 ] satisfies StarlightUserConfig['plugins'];
 
 // ─── Starlight config ──────────────────────────────────────────
@@ -92,23 +95,23 @@ const starlightConfig : StarlightUserConfig = {
                     content: 'noai, noimageai',
             },
         },
-				{
-					"tag": "link",
-					"attrs": {
-						"rel": "search",
-						"type": "application/opensearchdescription+xml",
-						"href": "/warp.xml",
-						"title": siteName,
-					},
-				},
-				{
-					"tag": "script",
-					"content": readInlineScript("components/sidebar-toggles/sidebarStateHeadScript.js"),
-				},
-				{
-					"tag": "script",
-					"content": readInlineScript("components/guide-mode-selector/guideModeStateHeadScript.js"),
-				},
+                {
+                    "tag": "link",
+                    "attrs": {
+                        "rel": "search",
+                        "type": "application/opensearchdescription+xml",
+                        "href": "/warp.xml",
+                        "title": siteName,
+                    },
+                },
+                {
+                    "tag": "script",
+                    "content": readInlineScript("components/sidebar-toggles/sidebarStateHeadScript.js"),
+                },
+                {
+                    "tag": "script",
+                    "content": readInlineScript("components/guide-mode-selector/guideModeStateHeadScript.js"),
+                },
     ],
     locales,
     social,
@@ -120,8 +123,8 @@ const starlightConfig : StarlightUserConfig = {
         Footer: './src/overrides/starlight/Footer.astro',
         Search: './src/overrides/starlight/Search.astro',
         Sidebar:  './src/overrides/starlight/Sidebar.astro',
-				SocialIcons: './src/overrides/starlight/SocialIcons.astro',
-				TableOfContents:  './src/overrides/starlight/TableOfContents.astro',
+                SocialIcons: './src/overrides/starlight/SocialIcons.astro',
+                TableOfContents:  './src/overrides/starlight/TableOfContents.astro',
     },
     plugins: starlightPlugins,
     customCss: [
@@ -136,26 +139,40 @@ export default defineConfig({
     site,
     base,
     trailingSlash: 'ignore',
-    integrations: [devServerFileWatcher([
-    './config/**', // Custom plugins and integrations
-]), starlight(starlightConfig), // generates a warning about order after mdx that can safely be disregarded
-    sitemap(), icon(), // https://github.com/delucis/astro-auto-import/issues/46
-    AutoImport({
-				imports: [
-            './src/components/mdx/AsOf.astro',		
-            './src/components/mdx/Def.astro',						
-            './src/components/mdx/Stress.astro',								
-						'./src/components/mdx/GuideBlock.astro',								
-            {
-                    '@astrojs/starlight/components': [
-                            ['Icon', 'SIcon'],
-                    ],
-                    "astro-icon/components": [
-                            'Icon',
-                    ],
-            },
-				],				
-    })],
+    integrations: [
+			devServerFileWatcher([
+					'./config/**', // Custom plugins and integrations
+			]), // generates a warning about order after mdx that can safely be disregarded
+			starlight(starlightConfig), 
+			sitemap(), // https://github.com/delucis/astro-auto-import/issues/46
+			icon(), 
+			AutoImport({
+									imports: [
+							'./src/components/mdx/AsOf.astro',		
+							'./src/components/mdx/Def.astro',						
+							'./src/components/mdx/Stress.astro',								
+													'./src/components/mdx/GuideMode/GuideBlock.astro',				
+													'./src/components/mdx/GuideMode/Hint.astro',
+													'./src/components/mdx/GuideMode/Choice.astro',				
+													'./src/components/mdx/GuideMode/Instruct.astro',				
+							{
+											'@astrojs/starlight/components': [
+															['Icon', 'SIcon'],
+											],
+											"astro-icon/components": [
+															'Icon',
+											],
+							},
+									],				
+			}), 
+			mdx(),
+		],
+
+		markdown: {
+				remarkPlugins: [
+						// remarkValidateGuideBlocks,
+				],
+		},
 
     vite: {
         server: {

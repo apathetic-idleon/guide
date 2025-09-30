@@ -1,0 +1,39 @@
+---
+const html = await Astro.slots.render('default');
+
+console.log(html)
+
+// Utility to count occurrences of a tag in the HTML
+function countClass(className: string) {
+  const regex = new RegExp(`class="[^"]*\\b${className}\\b[^"]*"`, 'g');
+  return (html.match(regex) || []).length;
+}
+
+const hintCount = countClass('hint-block');
+const choiceCount = countClass('choice-block');
+const instructCount = countClass('instruct-block');
+
+// Compute promotion classes
+const promoteClasses: string[] = [];
+
+if (hintCount > 0) {
+  if (choiceCount === 0) {
+		promoteClasses.push('promote-hint-to-choice');
+		
+		if (instructCount === 0) {
+			promoteClasses.push('promote-hint-to-instruct');
+		} 
+	}
+}
+
+if (choiceCount > 0 && instructCount === 0) {
+  promoteClasses.push('promote-choice-to-instruct');
+}
+---
+
+<div class={`guide-block ${promoteClasses.join(' ')}`}>
+  <slot />
+</div>
+
+<style lang="css" scoped>
+</style>

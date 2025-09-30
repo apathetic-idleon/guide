@@ -23,7 +23,10 @@
   "devDependencies": {
     "@eslint/js": "^9.36.0",
     "@textlint-rule/textlint-rule-no-unmatched-pair": "^2.0.4",
+    "@types/mdast": "^4.0.4",
+    "@types/mdx": "^2.0.13",
     "@types/node": "^24.5.2",
+    "@types/unist": "^3.0.3",
     "@typescript-eslint/parser": "^8.44.1",
     "alex": "^11.0.1",
     "astro-eslint-parser": "^1.2.2",
@@ -60,6 +63,7 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
+    "@astrojs/mdx": "^4.3.6",
     "@astrojs/sitemap": "^3.6.0",
     "@astrojs/starlight": "^0.35.3",
     "@astrojs/starlight-tailwind": "^4.0.1",
@@ -73,7 +77,8 @@
     "astro-vtbot": "^2.1.8",
     "fast-glob": "^3.3.3",
     "is-wsl": "^3.1.0",
-    "mdx": "^0.3.1",
+    "remark": "^15.0.1",
+    "remark-parse": "^11.0.0",
     "sharp": "^0.34.4",
     "starlight-auto-drafts": "^0.2.0",
     "starlight-auto-sidebar": "^0.1.2",
@@ -86,7 +91,9 @@
     "starlight-sidebar-topics": "^0.6.1",
     "tailwindcss": "^4.1.13",
     "tsx": "^4.20.6",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.2",
+    "unified": "^11.0.5",
+    "vfile": "^6.0.3"
   },
   "engines": {
     "node": ">=22.0.0 <23.0.0"

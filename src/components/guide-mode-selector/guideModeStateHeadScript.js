@@ -10,6 +10,6 @@
         // Fail silently if sessionStorage is not available (e.g., privacy mode)
         console.warn("Guide mode state could not be read from sessionStorage:", e);
     }
-		if (!savedGuideMode) savedGuideMode = "hints";
+		if (!savedGuideMode) savedGuideMode = "hint";
 		document.documentElement.classList.add(`guide-mode-state-${savedGuideMode}`);
 })();

@@ -39,7 +39,7 @@ These are needed for the site to be generated.
 - `astro` base framework
   - `sharp`: image resizer
 - `@astrojs/starlight` docs integration/theme
-- `mdx`: markdown with component support
+- `@astrojs/mdx`: markdown with component support
 - `typescript`: general support
 - Tailwind CSS
   - `@astrojs/starlight-tailwind`
@@ -70,6 +70,11 @@ These are needed for the site to be generated.
     - for `config/integrations/dev-server-file-watcher.ts` to hot reload on config files 
     - for `scripts/build-site-repo.ts` to copy files
   - `tsx`: to run `scripts` → `build:site-repo`
+- for remark plugin:
+  - `unified`
+  - `vfile`
+  - `remark`
+  - `remark-parse`
 
 #### Configs
 
@@ -154,6 +159,10 @@ These are optional commands and their dependencies to do work on the project cod
     - `textlint-rule-write-good`
 - For Typescript types:
     - `@types/node`
+- For mdx types (`/src/plugins/remark`)
+    - `@types/mdx`
+    - `@types/mdast`
+    - `@types/unist`
 
 #### Configs
 

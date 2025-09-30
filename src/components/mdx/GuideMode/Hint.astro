@@ -1,0 +1,21 @@
+---
+import BaseMode from './BaseMode.astro';
+---
+<BaseMode mode="hint" {...Astro.props}><slot /></BaseMode>
+
+<style lang="css" scoped>
+	.hint-block {
+		--mode-border-color: rgba(255, 0, 204, var(--border-opacity));
+		--mode-icon-color: rgba(255, 0, 204, var(--icon-opacity));		
+	}
+
+	/* Show blocks for the current mode */
+	:global(.guide-mode-state-hint) .hint-block { display: flex; }
+
+		/* Promoted blocks added by server */
+	:global(.guide-mode-state-choice .promote-hint-to-choice) .hint-block,
+	:global(.guide-mode-state-instruct .promote-hint-to-instruct) .hint-block {
+		display: flex;
+	}
+</style>
+
