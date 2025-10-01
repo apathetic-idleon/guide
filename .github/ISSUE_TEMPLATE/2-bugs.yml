@@ -14,7 +14,7 @@
 # https://github.com/withastro/starlight/blob/main/.github/ISSUE_TEMPLATE/---01-bug-report.yml
 
 name: "🐛 Bug Report"
-description: "Report an issue or possible bug with the functionality of the guide website (not related to guide content)."
+description: "   Report an issue or possible bug with the functionality of the guide website (not related to guide content)."
 labels: [
   "bug"
 ]
