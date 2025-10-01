@@ -14,7 +14,7 @@
 # This project is unaffiliated with or endorsed by Lavaflame2.
 
 title: Usage
-descrption: How can you use the guide content?
+description: How you can use the guide content
 topic: reference
 ---
 
@@ -32,117 +32,127 @@ import {
   source,
 } from '@config/hosting';
 
-*Not affiliated in any way with <a href={affilGameUrl} class="text-inherit">{affilGame}</a> &copy; <a href={affilDevUrl} class="text-inherit">{affilDev}</a>. Images used for commentary only.*
+**We're an unofficial fan-made guide.**  
+This project is maintained by [Apathetic Tools](https://github.com/apathetic-tools) and contributions from the community.  
+*Not affiliated in any way with <a href={affilGameUrl} class="text-inherit">{affilGame}</a> &copy; <a href={affilDevUrl} class="text-inherit">{affilDev}</a>. Images and content from the game are used for commentary, instruction, and informational purposes only.*
 
-> Looking to contribute to the guide? See our <a href="/site/contribute/">contributing instructions.</a>.
+:::tip
+Looking to contribute to the guide? See our <a href="/site/contribute/">contributing instructions</a>.  
+Wondering who helped so far? See our <a href="/site/credits/">credits</a>.
+:::
 
-> Want to know who contributed so far? See <a href="/site/credits/">our credits</a>.
-
-**We're an unofficial fan-made guide.**
 
 ## For the player
 
-You're free to master IdleOn with the help from the *Apathetic Guide to IdleOn*. 
-
+You're free to master IdleOn with the help of the *Apathetic Guide to IdleOn*.  
 We made this for you.
+
 
 ## For content creators
 
-You can use the guide while playing too! 
+You can use the guide while you play, stream, or record!  
 
-Your content should focus on you playing the game.
+Your content should focus on **you playing the game**, not just reading from the guide.
 
-- ✅ Use the guide while you play IdleOn on *stream* or *video* series.
-- ❌ Don't create tutorials using the guide as your script.<br /><small>*That would be commercial use on almost any platform.*</small>
+- ✅ Use the guide while you play IdleOn on stream or in a video series.  
+- ❌ Don’t create tutorials that just copy the guide word-for-word. <br /><small>*That would be commercial use on almost any platform.*</small>
+
 
 ## Content License
 
-The guide content itself is licensed <a href={licenseUrl}>{license}</a>, with an additional terms NO AI rider explained below. 
+The guide content is dual-licensed under <a href={licenseUrl}>{license}</a>, with **additional “No AI” terms** (see below).  
 
-* You must give us credit. *Please link.*
-* You must license your *entire work* with these same terms.
-* You cannot use the content for commercial purposes.
+**Summary of the license:**
+- You must **credit us**. Please link back to this site.  
+- You may **not** use the content for commercial purposes.  
+- You must license your **entire work** under the same terms (share-alike). 
+
+If you need a more permissive license,  
+<a href={"mailto:"+orgEmail+"?subject=Idleon Guide Content License"}>talk to us about your project</a>.
+
 
 ### What counts as commercial purposes?
 
-Commercial purposes includes things you may not have thought of; 
+Our interpretation of **"commercial use"** includes (but isn’t limited to) any content that:
 
-* Donations; e.g. Twitch Bits, Paypal.
-* Subscriptions; e.g. Twitch Subs, Patreon, Youtube Membership
-* Ads / Sponsors; e.g. Sponsored segments, or any ads.<br /><small>*Even if around, before, or after the content, even if only the platform makes money.*</small>
-* Self-promotion for other projects that are commercial in nature
+- Is considered commercial in your jurisdiction.  
+- Involves **donations** (Twitch Bits, PayPal, Ko-fi, etc.).  
+- Involves **subscriptions** (Patreon, Twitch subs, YouTube membership).  
+- Contains **ads or sponsorships** (even if placed by the platform, around or after your content).  
+- Contains **self-promotion of other commercial projects**.  
 
-If you'd like a more permissive custom license, <a href={"mailto:"+orgEmail+"?subject=idleon guide content license"}>talk to us about your project</a>.
 
 ### Can I copy into my own doc or sheet?
 
-As long as you follow the Content License rules outlined above, yes. 
+Yes, as long as you follow the Content License rules.  
 
-That means you have to distribute your content in a form that *can be examined, and duplicated*. 
+When you distribute your copy or give access to others, Share-Alike means:
+- You must provide a copy that is **publicly viewable in its original form**, so others can inspect and duplicate it.  
+- Restricted-access copies or disabling copying is **not allowed**.  
 
-You can still Google Publish a spreadsheet or document, but you have to provide a link to the raw document within the published version and ensure people have free access to it.
+You can still publish your content (e.g., via Google Docs or Sheets), but you must:
+- Include a link to the **raw document**, and  
+- Ensure anyone can freely access and make a copy of it.
 
-### Additional Terms — No AI Use Rider
 
-In addition to the terms of <a href={licenseUrl}>{license}</a>:
+## Additional Terms — No AI Use Rider
 
-- You may **not** use the contents of this project, in whole or in part, to train, fine-tune, or improve any machine learning or artificial intelligence (AI) system.
-- You may **not** include the contents of this project in any dataset used for AI/ML training.
-- You may **not** provide access to the contents of this project for the purpose of AI/ML training.
+In addition to the <a href={licenseUrl}>{license}</a> content license, the following rules apply:
 
-These restrictions apply to commercial and non-commercial use alike.
+- You may **not** use this project’s content, in whole or in part, to train, fine-tune, or improve any machine learning or AI system.  
+- You may **not** include this content in any dataset intended for AI/ML training.  
+- You may **not** provide access to this content for AI/ML training purposes.  
 
-If you'd like a more permissive custom license, <a href={"mailto:"+orgEmail+"?subject=idleon guide ai license"}>talk to us about your project</a>.
+These restrictions apply **whether your use is commercial or non-commercial**.  
+
+If you would like a more permissive license for AI purposes, you can contact us:  
+<a href={"mailto:"+orgEmail+"?subject=idleon guide ai license"}>talk to us about your project</a>.
+
 
 ## Code License
 
-The code that runs the guide website is licensed <a href="https://www.gnu.org/licenses/agpl-3.0.en.html">GNU AFFERO GENERAL PUBLIC LICENSE 3.0</a>. It does *not* have a NO AI additional terms rider.
+The code that runs this site is licensed under <a href="https://www.gnu.org/licenses/agpl-3.0.en.html">AGPLv3</a>.  
 
-You can find the source code on <a href={source}>{sourcePlat}</a>.
+**Summary of the license:**
+- You must give credit (please link).  
+- You must share your entire source code under the same license — including server-side changes.  
 
-It is similar to the content license above, but for code.
-
-- You must provide full read-access to your code.<br /><small>Including any modifications, even if only run server-side.</small>
-- You must give us credit. *Please link.*
-- You must license your *entire code work* with these same terms.
-- You can use the code for commercial use (*but without our content which does not*).
-
-If you'd like a more permissive custom license, <a href={"mailto:"+orgEmail+"?subject=idleon guide code license"}>talk to us about your project</a>.
+If you need a more permissive license, <a href={"mailto:"+orgEmail+"?subject=Idleon Guide Code License"}>talk to us about your project</a>.
 
 ## FAQ
 
 ### Why non-commercial?
 
-We don't want our guide used as a script for someone else to make money. 
+As noted above in our [commercial use section](#what-counts-as-commercial-purposes), “commercial use” includes, but is not limited to, donations, subscriptions, ads, sponsorships, and other revenue-generating activities.  
 
-We don't want a commercial (wiki) company to copy and paste it then slap ads on it.
+Essentially, **any activity that could generate money for you or others counts as commercial use**.  
 
-We don't want our efforts used by someone else to start or bolster their own business.
+We don’t want others to profit from the guide — whether through ad-supported wikis or creators using the guide as a paid script.  
 
-### Why Share-Alike?
+The **CC BY-NC-SA** license ensures the guide remains a free and open resource for everyone.
 
-We specifically and carefully chose the `CC-SA` variant (*instead of just `CC-BY-NC`*) and the `Affero GNU license` (*instead of `MIT`*).
 
-It's because we want the guide to have a chance to exist long after we're gone.
+### Why share-alike?
 
-> If one day we're no longer around to keep the guide relevant in a timely maner, we want our fans to be able to continue the guide elsewhere.
+We chose **CC BY-NC-SA** (instead of CC BY-NC) for content and **AGPLv3** (instead of MIT) for code so that:
 
-But what if those fans, after improving the guide for awhile, in turn, go away?
+- If *Apathetic Tools* ever stops hosting the guide, fans can continue it elsewhere.  
+- If those fans eventually stop hosting, their improvements can still be shared.  
+- Every generation of contributors must **share alike** to help the guide survive over time.
 
-> We want them to make the same pledge to their fans. 
+This ensures continuity, collaboration, and long-term accessibility for the community.
 
-That they will give all their improvements and updates to their fans to do the same.
-
-> We want them to *share alike*. So that the guide can live on.
 
 ### Why No AI on content?
 
-As human beings, we're not opposed to AI specifically. However this guide and project is, as much as we can, opting out from becoming part of AI, AI Chatbots, and AI Search engines. In these early days we are concerned how the traditional website ecosystem will correctly function in an AI workflow. 
+We are **not opposed to AI in principle**, but we do **opt out of AI training** for now.  
 
-* Attribution; How will the AI attribute our contributors, if at all?
-* Community; How will the AI direct users to contribute to the guide so it becomes more accurate in the future? 
-* Financial Support; Since most AI are commercial and will be generating revenue from their users, how will those companies share revenue with content creators so that we can continue to support creating and maintaining the guides?
+Until we are satisfied that we can ensure:
 
-Until these are answered to our satisfaction, as much as we can, we will opt out of AI Chatbots operated by others.
+- Proper **attribution** for content creators,  
+- Communities can **contribute back** to the guide, and  
+- Revenue sharing for creators exists,  
 
-If you'd like a more permissive custom license, <a href={"mailto:"+orgEmail+"?subject=idleon guide ai license"}>talk to us about your project</a>.
+the content of this guide may **not be used to train or improve AI systems**.  
+
+This restriction applies to both commercial and non-commercial use.
