@@ -55,6 +55,7 @@ body:
     attributes:
       label: "Describe the Bug"
       description: "A clear and concise description of what the issue is."
+      placeholder: "Include the text, images, or instructions here..."
     validations:
       required: true
   - type: input
