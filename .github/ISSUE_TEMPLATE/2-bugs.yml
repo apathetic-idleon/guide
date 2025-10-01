@@ -78,7 +78,6 @@ body:
     attributes:
       label: "Screenshots (optional)"
       description: "If applicable, add screenshots to help illustrate the problem."
-      placeholder: ""
     validations:
       required: false
   - type: textarea
@@ -86,7 +85,6 @@ body:
     attributes:
       label: "📄 Additional Information (optional)"
       description: "Any additional information that may be relevant for the issue."
-      placeholder: ""
     validations:
       required: false
   - type: input
