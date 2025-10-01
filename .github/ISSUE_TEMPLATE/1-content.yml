@@ -10,76 +10,85 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-name: "Incorrect Content Report 📄"
-description: "Report a correction to the guide content."
+name: "Content Contribution / Correction Report 📄"
+description: "Submit new content or corrections to the guide."
 labels: [
   "improve or update guide"
 ]
 body:
   - type: markdown
     attributes:
-      value: "# Reminder: If reporting a minor correction (e.g. typo), feel free to submit a PR directly!"
+      value: "<!-- Reminder: If reporting a minor correction (e.g. typo), feel free to submit a PR directly! -->"
   - type: checkboxes
     id: license
     attributes:
       label: "Thread License (required)"
       description: |
-        *Thread Licenses do not override the IdleOn game or project licenses.*
-        - Any diff, additions, changes, deletions, or contributions to code within this thread is licensed under the [MIT License](https://opensource.org/license/mit).
-        - Any diff, additions, changes, deletions, or contributions of text, animations, images, videos, or other assets within this thread is licensed under the [Creative Commons Attribution 4.0 Internaltion](https://creativecommons.org/licenses/by/4.0/deed.en) license.      
+        By submitting or commenting in this thread, you assert that you have followed the guidelines in [CONTRIBUTING.md](../CONTRIBUTING.md) and agree to the project licensing terms:
+        - Your contributions are your own work (or you have the right to contribute them).
+        - Your contributions are licensed to the project under the same terms used by *Apathetic Tools*:
+          - **Code:** [AGPL v3](../LICENSE-CODE)
+          - **Content:** [CC BY-NC-SA 4.0](../LICENSE) with [No AI Use Rider](../LICENSE-NOAI-CONTENT)
+        - You grant *Apathetic Tools* a perpetual, worldwide, royalty-free license to use, modify, and relicense your contribution.
       options:
         - label: "I agree to and understand the thread licensing"
           required: true
+  - type: markdown
+    attributes:
+      value: "<!-- ⚠️ Note: Only *Apathetic Tools* may offer alternative licensing; all other uses must follow the licenses above. -->"
   - type: input
     id: subject
     attributes:
-      label: 📚 Subject area/topic
-      description: Guide area/topic
+      label: "📚 Subject area/topic"
+      description: "Area of the guide or topic your contribution affects"
       placeholder: "..."
     validations:
       required: true
   - type: textarea
     id: page
     attributes:
-      label: "📋 Page(s) affected (or suggested, for new content)"
-      description: Please provide the URL of the page(s) affected.
-      placeholder: https://apathetic-idleon.github.io/journey/getting-started/
+      label: "📋 Page(s) affected (or proposed for new content)"
+      description: "Please provide the URL of the page(s) affected or the suggested location for new content."
+      placeholder: "https://apathetic-idleon.github.io/walkthrough/getting-started/"
     validations:
-        required: true
+      required: true
   - type: textarea
     id: generalDesc
     attributes:
-      label: "📋 Description of content that is out-of-date or incorrect"
-      description: Let us know what's wrong!
-      placeholder: "..."
+      label: "📋 Description of contribution or correction"
+      description: "Describe the correction or provide the new content you want to add"
+      placeholder: "Include the text, images, or instructions here..."
     validations:
-        required: true
+      required: true
   - type: textarea
     id: source
     attributes:
-      label: "Steps to obtain the information to verify your correction"
-      description: Let us know how we can verify your information for ourselves!
-      placeholder: "..."
+      label: "Source / Verification"
+      description: "How can we verify this correction or content is accurate?"
+      placeholder: "Include references, screenshots, or steps if applicable"
     validations:
-        required: true
+      required: false
   - type: textarea
     id: screenshots
     attributes:
       label: "Screenshots (optional)"
-      description: If applicable, add screenshots to help corroborate your source.
+      description: "If applicable, add screenshots to help corroborate your submission"
+      placeholder: ""
     validations:
-        required: false
+      required: false
   - type: textarea
     id: additional
     attributes:
       label: "📄 Additional Information (optional)"
-      description: Any additional information that may be relevant for the issue.
+      description: "Any additional information that may be relevant for your submission."
+      placeholder: ""
     validations:
-      required: false  
+      required: false      
   - type: input
     id: contact
     attributes:
-      label: Discord Contact (optional)
-      description: If you are a member of the Apathetic Tools Discord (https://discord.gg/PW6GahZ7), please add your username bellow so we can welcome you there!
+      label: "Discord Contact (optional)"
+      description: "If you are a member of the Apathetic Tools Discord (https://discord.gg/PW6GahZ7), please add your username below so we can welcome you there!"
+      placeholder: "Username"
     validations:
       required: false

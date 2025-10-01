@@ -10,8 +10,20 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
+# This file is part of the Apathetic Guide to IdleOn project.
+#
+# Apathetic Tools © 2025 (https://github.com/apathetic-tools)
+#
+# This source code is dual-licensed:
+#  - Under the GNU Affero General Public License v3.0 (AGPLv3).
+#  - Under alternative licensing terms by the copyright holder.
+#
+# See `LICENSE-CODE` for details.
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 name: "Bug Report 🐛"
-description: Report an issue or possible bug with the functionality of the guide website. (Not related to the content of the guide.)
+description: "Report an issue or possible bug with the functionality of the guide website (not related to guide content)."
 labels: [
   "bug"
 ]
@@ -21,70 +33,79 @@ body:
     attributes:
       label: "Thread License (required)"
       description: |
-        *Thread Licenses do not override the IdleOn game or project licenses.*
-        - Any diff, additions, changes, deletions, or contributions to code within this thread is licensed under the [MIT License](https://opensource.org/license/mit).
-        - Any diff, additions, changes, deletions, or contributions of text, animations, images, videos, or other assets within this thread is licensed under the [Creative Commons Attribution 4.0 Internaltion](https://creativecommons.org/licenses/by/4.0/deed.en) license.      
+        By submitting or commenting in this thread, you assert that you have followed the guidelines in [CONTRIBUTING.md](../CONTRIBUTING.md) and agree to the project licensing terms:
+        - Your contributions are your own work (or you have the right to contribute them).
+        - Your contributions are licensed to the project under the same terms used by *Apathetic Tools*:
+          - **Code:** [AGPL v3](../LICENSE-CODE)
+          - **Content:** [CC BY-NC-SA 4.0](../LICENSE) with [No AI Use Rider](../LICENSE-NOAI-CONTENT)
+        - You grant *Apathetic Tools* a perpetual, worldwide, royalty-free license to use, modify, and relicense your contribution.
       options:
         - label: "I agree to and understand the thread licensing"
           required: true
+  - type: markdown
+    attributes:
+      value: "<!-- ⚠️ Note: Only *Apathetic Tools* may offer alternative licensing; all other uses must follow the licenses above. -->"
   - type: textarea
     id: description
     attributes:
       label: "📝 Issue Description"
-      description: Please describe the issue you are experiencing while using the guide website.
-      placeholder: Description of your observation...
+      description: "Please describe the issue you are experiencing while using the guide website."
+      placeholder: "Description of your observation..."
     validations:
       required: true
   - type: textarea
     id: page
     attributes:
-      label: "📋 On which page(s) it occurs"
-      description: Please indicate on which page(s) the issue occurs.
-      placeholder: https://apathetic-idleon.github.io/journey/getting-started/
+      label: "📋 Page(s) affected"
+      description: "Please indicate on which page(s) the issue occurs."
+      placeholder: "https://apathetic-idleon.github.io/journey/getting-started/"
     validations:
-        required: true
-  - type: textarea
-    id: screenshots
-    attributes:
-      label: "Screenshots (optional)"
-      description: If applicable, add screenshots to help illustrate the problem.
-    validations:
-        required: false        
+      required: true
   - type: textarea
     id: expected
     attributes:
       label: "🤔 Expected Behavior"
-      description: Please describe what the expected behavior should be.
-      placeholder: When on this page, I expected . . . 
+      description: "Please describe what the expected behavior should be."
+      placeholder: "When on this page, I expected..."
     validations:
       required: true
   - type: textarea
     id: current
     attributes:
       label: "👀 Current Behavior"
-      description: Please describe what the current behavior is.
-      placeholder: But instead, on this page I'm noticing . . . 
+      description: "Please describe what the current behavior is."
+      placeholder: "But instead, on this page I noticed..."
     validations:
-      required: true
+      required: false
   - type: input
     id: browser
     attributes:
-      label: 🖥️ Browser
-      description: Indicate which browser and version you are using.
-      placeholder: Chrome X
+      label: "🖥️ Browser"
+      description: "Indicate which browser and version you are using."
+      placeholder: "Chrome X"
     validations:
       required: true
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: "Screenshots (optional)"
+      description: "If applicable, add screenshots to help illustrate the problem."
+      placeholder: ""
+    validations:
+      required: false
   - type: textarea
     id: additional
     attributes:
       label: "📄 Additional Information (optional)"
-      description: Any additional information that may be relevant for the issue.
+      description: "Any additional information that may be relevant for the issue."
+      placeholder: ""
     validations:
       required: false
   - type: input
     id: contact
     attributes:
-      label: Discord Contact (optional)
-      description: If you are a member of the Apathetic Tools Discord (https://discord.gg/PW6GahZ7), please add your username bellow so we can welcome you there!
+      label: "Discord Contact (optional)"
+      description: "If you are a member of the Apathetic Tools Discord (https://discord.gg/PW6GahZ7), please add your username below so we can welcome you there!"
+      placeholder: "Username"
     validations:
       required: false
