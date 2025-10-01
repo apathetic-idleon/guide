@@ -14,7 +14,7 @@
 # https://github.com/withastro/starlight/blob/main/.github/ISSUE_TEMPLATE/---01-bug-report.yml
 
 name: "📄 Content Contribution or Correction Report"
-description: "   Submit new content or corrections to the guide."
+description: "    Submit new content or corrections to the guide."
 labels: [
   "improve or update guide"
 ]
