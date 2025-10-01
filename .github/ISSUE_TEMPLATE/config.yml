@@ -11,6 +11,3 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 blank_issues_enabled: false
-contact_links:
-  - name: "💁 Community"
-    url: "https://discord.gg/PW6GahZ7"

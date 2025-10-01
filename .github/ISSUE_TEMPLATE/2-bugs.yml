@@ -16,6 +16,13 @@ labels: [
   "bug"
 ]
 body:
+  - type: markdown
+    attributes:
+      value: |
+        <!--          
+          ## 💁 Community
+          Join our Discord: https://discord.gg/PW6GahZ7
+        -->
   - type: checkboxes
     id: license
     attributes:
