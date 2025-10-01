@@ -23,9 +23,6 @@ body:
     attributes:
       value: |
           Thank you for taking the time to file a bug report! Please fill out this form as completely as possible.
-
-          ### Community
-          Join our Discord: https://discord.gg/PW6GahZ7
   - type: checkboxes
     id: license
     attributes:
