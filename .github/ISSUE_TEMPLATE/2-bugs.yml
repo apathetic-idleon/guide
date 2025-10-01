@@ -18,11 +18,9 @@ labels: [
 body:
   - type: markdown
     attributes:
-      value: |
-        <!--          
+      value: |    
           ## 💁 Community
           Join our Discord: https://discord.gg/PW6GahZ7
-        -->
   - type: checkboxes
     id: license
     attributes:
@@ -39,7 +37,7 @@ body:
           required: true
   - type: markdown
     attributes:
-      value: "<!-- ⚠️ Note: Only *Apathetic Tools* may offer alternative licensing; all other uses must follow the licenses above. -->"
+      value: "⚠️ Note: Only *Apathetic Tools* may offer alternative licensing; all other uses must follow the licenses above."
   - type: textarea
     id: description
     attributes:

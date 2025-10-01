@@ -19,12 +19,10 @@ body:
   - type: markdown
     attributes:
       value: |
-        <!-- 
-          Reminder: If reporting a minor correction (e.g. typo), feel free to submit a PR directly!
+          # Reminder: If reporting a minor correction (e.g. typo), feel free to submit a PR directly!
           
           ## 💁 Community
           Join our Discord: https://discord.gg/PW6GahZ7
-        -->
   - type: checkboxes
     id: license
     attributes:
@@ -41,7 +39,7 @@ body:
           required: true
   - type: markdown
     attributes:
-      value: "<!-- ⚠️ Note: Only *Apathetic Tools* may offer alternative licensing; all other uses must follow the licenses above. -->"
+      value: "⚠️ Note: Only *Apathetic Tools* may offer alternative licensing; all other uses must follow the licenses above."
   - type: input
     id: subject
     attributes:
