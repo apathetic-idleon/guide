@@ -37,12 +37,11 @@ body:
           - **Code:** [AGPL v3](../LICENSE-CODE)
           - **Content:** [CC BY-NC-SA 4.0](../LICENSE) with [No AI Use Rider](../LICENSE-NOAI-CONTENT)
         - You grant *Apathetic Tools* a perpetual, worldwide, royalty-free license to use, modify, and relicense your contribution.
+
+        **Note:** Only *Apathetic Tools* may offer alternative licensing; all other uses must follow the licenses above.
       options:
         - label: "I agree to and understand the thread licensing"
           required: true
-  - type: markdown
-    attributes:
-      value: "**Note:** Only *Apathetic Tools* may offer alternative licensing; all other uses must follow the licenses above."
   - type: textarea
     id: page
     attributes:
@@ -75,7 +74,7 @@ body:
   - type: textarea
     id: screenshots
     attributes:
-      label: "Screenshots (optional)"
+      label: "Screenshots *(optional)*"
       description: "If applicable, add screenshots to help illustrate the problem."
     validations:
       required: false
@@ -89,7 +88,7 @@ body:
   - type: input
     id: contact
     attributes:
-      label: "Discord Contact (optional)"
+      label: "Discord Contact *(optional)*"
       description: "If you are a member of the 👾 [*Apathetic Tools Discord*](https://discord.gg/PW6GahZ7), please add your username below so we can welcome you there!"
       placeholder: "Username"
     validations:
