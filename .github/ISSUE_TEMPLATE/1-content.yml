@@ -10,7 +10,7 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-name: "Content Contribution / Correction Report 📄"
+name: "Content Contribution or Correction Report 📄"
 description: "Submit new content or corrections to the guide."
 labels: [
   "improve or update guide"
