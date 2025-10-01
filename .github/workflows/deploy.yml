@@ -9,7 +9,7 @@
 # See `LICENSE-CODE` for details.
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
-
+#
 # https://docs.astro.build/en/guides/deploy/github/
 # https://github.com/peaceiris/actions-gh-pages
 name: Deploy to GitHub Pages

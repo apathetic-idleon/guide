@@ -1,0 +1,49 @@
+# This file is part of the Apathetic Guide to IdleOn project.
+#
+# Apathetic Tools © 2025 (https://github.com/apathetic-tools)
+#
+# This source code is dual-licensed:
+#  - Under the GNU Affero General Public License v3.0 (AGPLv3).
+#  - Under alternative licensing terms by the copyright holder.
+#
+# See `LICENSE-CODE` for details.
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+#
+# Inspired by withastro/starlight · MIT
+# https://raw.githubusercontent.com/withastro/starlight/refs/heads/main/.github/labeler.yml
+
+# See https://github.com/actions/labeler
+'🚨 action':
+  - changed-files:
+      - any-glob-to-any-file:
+          - .github/workflows/**
+
+i18n:
+  - changed-files:
+      - any-glob-to-any-file:
+          - src/content/docs/de/**/*
+          - src/content/docs/es/**/*
+          - src/content/docs/fr/**/*
+          - src/content/docs/it/**/*
+          - src/content/docs/ja/**/*
+          - src/content/docs/zh-cn/**/*
+          - src/content/docs/pt-br/**/*
+          - src/content/docs/pt-pt/**/*
+          - src/content/docs/ko/**/*
+          - src/content/docs/ru/**/*
+          - src/content/docs/id/**/*
+          - src/content/docs/tr/**/*
+          - src/content/docs/hi/**/*
+          - src/content/docs/da/**/*
+          - src/content/docs/uk/**/*
+
+'📚 guide':
+  - changed-files:
+      - any-glob-to-any-file:
+          - src/content/**
+
+'🌟 core':
+  - changed-files:
+      - any-glob-to-any-file:
+          - src/**

@@ -9,6 +9,9 @@
 # See `LICENSE-CODE` for details.
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
+#
+# Inspired by withastro/starlight · MIT
+# https://github.com/withastro/starlight/blob/main/.github/ISSUE_TEMPLATE/---01-bug-report.yml
 
 name: "Bug Report 🐛"
 description: "Report an issue or possible bug with the functionality of the guide website (not related to guide content)."
@@ -18,8 +21,10 @@ labels: [
 body:
   - type: markdown
     attributes:
-      value: |    
-          ## 💁 Community
+      value: |
+          Thank you for taking the time to file a bug report! Please fill out this form as completely as possible.
+
+          ## 👾 Community
           Join our Discord: https://discord.gg/PW6GahZ7
   - type: checkboxes
     id: license
@@ -39,43 +44,33 @@ body:
     attributes:
       value: "⚠️ Note: Only *Apathetic Tools* may offer alternative licensing; all other uses must follow the licenses above."
   - type: textarea
-    id: description
-    attributes:
-      label: "📝 Issue Description"
-      description: "Please describe the issue you are experiencing while using the guide website."
-      placeholder: "Description of your observation..."
-    validations:
-      required: true
-  - type: textarea
     id: page
     attributes:
-      label: "📋 Page(s) affected"
-      description: "Please indicate on which page(s) the issue occurs."
-      placeholder: "https://apathetic-idleon.github.io/journey/getting-started/"
+      label: "📋 What page of the guide did you find an issue on?"
+      description: "If this issue applies to multiple pages, include additional pages in your bug description."
+      placeholder: "https://apathetic-idleon.github.io/journey/getting-started/..."
     validations:
       required: true
   - type: textarea
-    id: expected
+    id: description
     attributes:
-      label: "🤔 Expected Behavior"
-      description: "Please describe what the expected behavior should be."
-      placeholder: "When on this page, I expected..."
+      label: "📝 Describe the Bug"
+      description: "A clear and concise description of what the issue is."
     validations:
       required: true
-  - type: textarea
-    id: current
+  - type: input
+    id: os
     attributes:
-      label: "👀 Current Behavior"
-      description: "Please describe what the current behavior is."
-      placeholder: "But instead, on this page I noticed..."
+      label: What operating system are you using?
+      placeholder: Mac, Windows, Linux
     validations:
-      required: false
+      required: true      
   - type: input
     id: browser
     attributes:
       label: "🖥️ Browser"
-      description: "Indicate which browser and version you are using."
-      placeholder: "Chrome X"
+      description: "What browser are you using?"
+      placeholder: "Chrome, Firefox, Safari"
     validations:
       required: true
   - type: textarea
@@ -85,18 +80,18 @@ body:
       description: "If applicable, add screenshots to help illustrate the problem."
     validations:
       required: false
-  - type: textarea
-    id: additional
+  - type: checkboxes
+    id: will-pr
     attributes:
-      label: "📄 Additional Information (optional)"
-      description: "Any additional information that may be relevant for the issue."
-    validations:
-      required: false
+      label: Participation
+      options:
+        - label: I am willing to submit a pull request for this issue.
+          required: false      
   - type: input
     id: contact
     attributes:
       label: "Discord Contact (optional)"
-      description: "If you are a member of the Apathetic Tools Discord (https://discord.gg/PW6GahZ7), please add your username below so we can welcome you there!"
+      description: "If you are a member of the 👾 *Apathetic Tools Discord* (https://discord.gg/PW6GahZ7), please add your username below so we can welcome you there!"
       placeholder: "Username"
     validations:
       required: false

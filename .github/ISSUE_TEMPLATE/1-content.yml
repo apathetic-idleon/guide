@@ -9,6 +9,9 @@
 # See `LICENSE-CODE` for details.
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
+#
+# Inspired by withastro/starlight · MIT
+# https://github.com/withastro/starlight/blob/main/.github/ISSUE_TEMPLATE/---01-bug-report.yml
 
 name: "Content Contribution or Correction Report 📄"
 description: "Submit new content or corrections to the guide."
@@ -19,9 +22,11 @@ body:
   - type: markdown
     attributes:
       value: |
+          Thank you for taking the time to share your contribution! Please fill out this form as completely as possible.
+
           ## Reminder: If reporting a minor correction (e.g. typo), feel free to submit a PR directly!
           
-          ## 💁 Community
+          ## 👾 Community
           Join our Discord: https://discord.gg/PW6GahZ7
   - type: checkboxes
     id: license
@@ -40,27 +45,19 @@ body:
   - type: markdown
     attributes:
       value: "⚠️ Note: Only *Apathetic Tools* may offer alternative licensing; all other uses must follow the licenses above."
-  - type: input
-    id: subject
-    attributes:
-      label: "📚 Subject area/topic"
-      description: "Area of the guide or topic your contribution affects"
-      placeholder: "..."
-    validations:
-      required: true
   - type: textarea
     id: page
     attributes:
-      label: "📋 Page(s) affected (or proposed for new content)"
-      description: "Please provide the URL of the page(s) affected or the suggested location for new content."
-      placeholder: "https://apathetic-idleon.github.io/walkthrough/getting-started/"
+      label: "📋 What page of the guide does this affect?"
+      description: "If this applies to multiple pages, include additional pages in your description."
+      placeholder: "https://apathetic-idleon.github.io/journey/getting-started/..."
     validations:
       required: true
   - type: textarea
-    id: generalDesc
+    id: description
     attributes:
-      label: "📋 Description of contribution or correction"
-      description: "Describe the correction or provide the new content you want to add"
+      label: "📋 Describe your contribution or correction"
+      description: "A clear and concise description of your contribution."
       placeholder: "Include the text, images, or instructions here..."
     validations:
       required: true
@@ -79,13 +76,13 @@ body:
       description: "If applicable, add screenshots to help corroborate your submission"
     validations:
       required: false
-  - type: textarea
-    id: additional
+  - type: checkboxes
+    id: will-pr
     attributes:
-      label: "📄 Additional Information (optional)"
-      description: "Any additional information that may be relevant for your submission."
-    validations:
-      required: false      
+      label: Participation
+      options:
+        - label: I am willing to submit a pull request for this issue.
+          required: false  
   - type: input
     id: contact
     attributes:

@@ -9,5 +9,12 @@
 # See `LICENSE-CODE` for details.
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
+#
+# Inspired by withastro/starlight · MIT
+# https://github.com/withastro/starlight/blob/main/.github/ISSUE_TEMPLATE/config.yml
 
 blank_issues_enabled: false
+contact_links:
+  - name: "👾 Community"
+    url: "https://discord.gg/PW6GahZ7"
+    about: Our Discord server is active, come join us!
