@@ -19,7 +19,9 @@ export type FileEntry = string | { src: string; dest: string };
 export const files: FileEntry[] = [
 	'.gitignore',
 	'CODE_OF_CONDUCT.md',
-	'`LICENSE`',
+	'CONTRIBUTING.md',
+	'LICENSE',
+	'LICENSE-CODE',
 	'LICENSE-NOAI-CONTENT',
 	'NOTICE',
 	{ src: 'README-SITE-REPO.md', dest: 'README.md' },
