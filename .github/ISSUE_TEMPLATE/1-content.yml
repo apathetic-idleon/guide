@@ -44,11 +44,11 @@ body:
           required: true
   - type: markdown
     attributes:
-      value: "⚠️ Note: Only *Apathetic Tools* may offer alternative licensing; all other uses must follow the licenses above."
+      value: "**Note:** Only *Apathetic Tools* may offer alternative licensing; all other uses must follow the licenses above."
   - type: textarea
     id: page
     attributes:
-      label: "📋 What page of the guide does this affect?"
+      label: "What page of the guide does this affect?"
       description: "If this applies to multiple pages, include additional pages in your description."
       placeholder: "https://apathetic-idleon.github.io/journey/getting-started/..."
     validations:
@@ -56,7 +56,7 @@ body:
   - type: textarea
     id: description
     attributes:
-      label: "📋 Describe your contribution or correction"
+      label: "Describe your contribution or correction"
       description: "A clear and concise description of your contribution."
       placeholder: "Include the text, images, or instructions here..."
     validations:
@@ -87,7 +87,7 @@ body:
     id: contact
     attributes:
       label: "Discord Contact (optional)"
-      description: "If you are a member of the Apathetic Tools Discord (https://discord.gg/PW6GahZ7), please add your username below so we can welcome you there!"
+      description: "If you are a member of the 👾 [*Apathetic Tools Discord*](https://discord.gg/PW6GahZ7), please add your username below so we can welcome you there!"
       placeholder: "Username"
     validations:
       required: false
