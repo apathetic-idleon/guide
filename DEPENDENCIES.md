@@ -1,233 +1,181 @@
-<!--
-This file is part of the IdleOn Guide project.
+# Project Dependencies Reference
 
-Apathetic Tools © 2025 (https://github.com/apathetic-tools)
-
-This content is dual-licensed:
- - Under Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0).
- - Under alternative licensing terms by the copyright holder.
-
-See LICENSE for details.
-
-SPDX-License-Identifier: CC-BY-NC-SA-4.0
-
-Note: Legends of IdleOn and related assets are © Lavaflame2.
-This project is unaffiliated with or endorsed by Lavaflame2.
--->
-
-# Technology
+This document explains *why* each dependency in the project (especially `package.json`) exists and what it’s used for.  
+(If something is removed, move it to retired instead of deleting so history is clear.)
 
 ## Development Environment
 
-#### [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install)
-- **Disto:** [Ubuntu-latest (via ms store)](https://apps.microsoft.com/detail/9pdxgncfsczv)
-- `package.json` → [is-wsl](https://www.npmjs.com/package/is-wsl):  WSL detection for vite
-- `astro.config.ts` → vite config → dev hot reload polling fix for windows drives ([astro](https://github.com/withastro/astro/issues/6043#issuecomment-1409498718), [ms](https://github.com/microsoft/WSL/issues/4739#issuecomment-2153546812))
+### [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install)
+- **Distro:** [Ubuntu-latest (via Microsoft Store)](https://apps.microsoft.com/detail/9pdxgncfsczv)  
+- **Package:** [is-wsl](https://www.npmjs.com/package/is-wsl): WSL detection for vite
+- Dev Hot reload WSL /mnt Polling Fix (`astro.config.ts` → vite config)  
+  See: [Snippet]((https://github.com/apathetic-tools/snippets/blob/main/docs/astro/wsl-mnt-polling-fix/)) | [Astro issue](https://github.com/withastro/astro/issues/6043#issuecomment-1409498718) | [MS WSL issue](https://github.com/microsoft/WSL/issues/4739#issuecomment-2153546812)
 
- #### [VSCode](https://apps.microsoft.com/detail/xp9khm4bk9fz7q)
-- `.vscode`, `workspace.code-workspace`:  default linting settings, recommended extensions
-- Recommended Extensions:
-  - [ms-vscode-remote.remote-wsl](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl): WSL remote editing / shells
-  - [editorconfig.editorconfig](https://marketplace.visualstudio.com/items?itemName=editorconfig.editorconfig): `/.editorconfig` consistent defaults
-  - [astro-build.astro-vscode](https://marketplace.visualstudio.com/items?itemName=astro-build.astro-vscode): `.astro` file support
-  - [unifiedjs.vscode-mdx](https://marketplace.visualstudio.com/items?itemName=unifiedjs.vscode-mdx): `.mdx` file support
-  - [bierner.github-markdown-preview](https://marketplace.visualstudio.com/items?itemName=bierner.github-markdown-preview): github markdown preview enhancer pack
-  - [3w36zj6.textlint](https://marketplace.visualstudio.com/items?itemName=3w36zj6.textlint): `textlint` content linter support
-  - [dbaeumer.vscode-eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint): `eslint` code linter support
-  - [esbenp.prettier-vscode](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode): `prettier` consistent code formatter support
-  - [github.vscode-github-actions](https://marketplace.visualstudio.com/items?itemName=github.vscode-github-actions): Remote github actions execution
-    
+ ### [VSCode](https://apps.microsoft.com/detail/xp9khm4bk9fz7q)
+ **Config Files:** `.vscode/`, `ws-idleon.code-workspace`: default linting settings & recommended extensions  
+
+**Recommended Extensions:**  
+
+| Purpose | Package | Notes |
+|---------|--------|------|
+| WSL remote editing | [ms-vscode-remote.remote-wsl](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl) | Official
+| Consistent editor defaults | [editorconfig.editorconfig](https://marketplace.visualstudio.com/items?itemName=editorconfig.editorconfig) | `.editorconfig` support
+| File type language support | `.astro` ([astro-build.astro-vscode](https://marketplace.visualstudio.com/items?itemName=astro-build.astro-vscode) Official),<br /> `.mdx` ([unifiedjs.vscode-mdx](https://marketplace.visualstudio.com/items?itemName=unifiedjs.vscode-mdx)) | |
+| GitHub Flavored Markdown (GFM) previews | [bierner.github-markdown-preview](https://marketplace.visualstudio.com/items?itemName=bierner.github-markdown-preview) |
+| `prettier` code formatter support | [esbenp.prettier-vscode](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) | |
+| `eslint` code linter support | [dbaeumer.vscode-eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) | | 
+| `textlint` content linter support | [3w36zj6.textlint](https://marketplace.visualstudio.com/items?itemName=3w36zj6.textlint) | |
+| Remote GitHub Actions execution | [github.vscode-github-actions](https://marketplace.visualstudio.com/items?itemName=github.vscode-github-actions) | |
 
 ## Building the project
 
 ### Scripts
 
-`package.json` → `scripts`.
-    
-- `build`: generate the static site
-- `build:site-repo`: generate the `main` branch for a github pages repo, if using `gh-pages` branch for the site files.
+`package.json` → `scripts`
 
-### Dependencies
+| Script | Purpose |
+|--------|---------|
+| `build` | Generate the static site |
+| `build:site-repo` | Generate `main` branch for GitHub Pages repo |
+| `clean` | Force full rebuild of dependencies and caches |
 
-`package.json` → `dependencies`.
+---    
 
-These are needed for the site to be generated.
+### 📦 Dependencies
 
-- `astro` base framework
-  - `sharp`: image resizer
-- `@astrojs/starlight` docs integration/theme
-- `@astrojs/mdx`: markdown with component support
-- `typescript`: general support
-- Tailwind CSS
-  - `@astrojs/starlight-tailwind`
-  - `@tailwindcss/vite`
-  - `tailwindcss`
-- [WSL mnt filesystem fix](https://github.com/apathetic-tools/snippets/blob/main/snippets/astro/wsl-polling-fix.md)
-  - `is-wsl`
-- Astro Integrations / Plugins
-  - `astro-auto-import`: make specified components available by default in .mdx files
-  - `@astrojs/sitemap`: auto-generate sitemap for search engines
-  - `@inox-tools/star-warp` browser search bar site search
-  - `astro-embed`: mainly for youtube videos
-  - `astro-icon`: extended iconify set
-  - `astro-vtbot`: view transitions for chromium
-- Starlight Integrations / Plugins
-  - `starlight-auto-drafts`: remove sidebar links to draft items in prod, add draft badge in dev
-  - `starlight-auto-sidebar`: modify autogenerated sidebar groups metadata
-  - `starlight-blog`: add a static blog engine
-  - `starlight-contributor-list`: pull github contributor list, for credits page
-  - `starlight-fullview-mode`: horizontally collapsible sidebar and toc
-  - `starlight-heading-badges`: allows badgets on headers and toc
-  - `starlight-links-validator`: ensure links work
-  - `starlight-markdown-blocks`: custom icons in asides, custom aside types
-  - `starlight-scroll-to-top`: back to top link
-  - `starlight-sidebar-topics` multiple sidebars by topic
-- file specfic:
-  - `fast-glob`:
-    - for `config/integrations/dev-server-file-watcher.ts` to hot reload on config files 
-    - for `scripts/build-site-repo.ts` to copy files
-  - `tsx`: to run `scripts` → `build:site-repo`
-- for remark plugin:
-  - `unified`
-  - `vfile`
-  - `remark`
-  - `remark-parse`
+`package.json` → `dependencies`
 
-#### Configs
+These are required for the site to be generated.
 
-- Dev Environment
-  - `.npmrc`: for `shell-emulator=true` which allows pnpm to run scripts on all platforms.
-  - `.nvmrc`: version of `NodeJS` the project expects.
-  - `.pnpm-workspace.yaml`: allowed compiled dependencies
-- Package management (via `pnpm`)
-  - `package.json`, `pnpm-lock.yaml`
-- Typescript
-  - `tsconfig.json`
-- Astro
-  - `astro.config.ts`
-  - `config/*.ts`
+| Purpose | Package | Notes |
+|---------|--------|------|
+| Static Site framework | `astro`, `sharp` | `sharp` for images |
+| Documentation theme / integration | `@astrojs/starlight` | |
+| Markdown + components | `@astrojs/mdx` | |
+| TypeScript support | `typescript` | |
+| Styling | Tailwind CSS (`tailwindcss`, `@tailwindcss/vite`, `@astrojs/starlight-tailwind`) | |
+| File operations | `fast-glob` | dev-server watcher, `build-site-repo` |
+| Run TS scripts (`build-site-repo`) | `tsx` | |
+| Markdown plugin processing | `unified`, `vfile`, `remark`, `remark-parse` | |
+| Dev Hot reload WSL /mnt Polling Fix | `is-wsl` | imported in `astro.config.ts`; [Snippet](https://github.com/apathetic-tools/snippets/blob/main/docs/astro/wsl-mnt-polling-fix/), [Astro issue](https://github.com/withastro/astro/issues/6043#issuecomment-1409498718), [MS WSL issue](https://github.com/microsoft/WSL/issues/4739#issuecomment-2153546812) |
+
+*Astro integrations:*
+
+| Purpose | Package | Notes |
+|---------|--------|------|
+| Auto-import components in MDX | `astro-auto-import` | `astro.config.ts` |
+| Auto-generate sitemap | `@astrojs/sitemap` | SEO |
+| Browser search bar | `@inox-tools/star-warp` | |
+| Embed external content  | `astro-embed` | YouTube |
+| Custom SVG icons | `astro-icon`, `@iconify-json/mdi` | Iconify |
+| View transitions | `astro-vtbot` | Chormium only |
+
+*Starlight Plugins:*
+
+| Purpose | Package | Notes |
+|---------|--------|------|
+| Remove drafts in prod | `starlight-auto-drafts` | Frontmatter flag |
+| Sidebar metadata modifications | `starlight-auto-sidebar` | |
+| Static blog engine | `starlight-blog` | Updates; `config/blog.ts` |
+| GitHub contributors list | `starlight-contributor-list` | `docs/site/credits.mdx` |
+| Header badges | `starlight-heading-badges` | |
+| Verify links | `starlight-links-validator` | `scripts` → `lint:linkcheck` |
+| Custom icons / asides | `starlight-markdown-blocks` | |
+| Back to top link | `starlight-scroll-to-top` | |
+| Multiple sidebars by topic | `starlight-sidebar-topics` | `config/sidebar.ts` |
+
+
+### Manual Site integrations
+
+| Purpose | Files | Note |
+|---------|--------|--------|
+| Config Pattern | `config/*` | [Snippet](https://github.com/apathetic-tools/snippets/blob/main/docs/javascript/config-pattern/)
+| Sidebar Toggles | astro integrations (`astro-icon`), packages (`@iconify-json/mdi`), `@components/sidebar-toggles/*`, `@styles/sidebar-toggles.css`   | [Snippet](https://github.com/apathetic-tools/snippets/blob/main/docs/astro-starlight/sidebar-toggles/) |
+| Sidebar Topics — Astro Docs theme | `@components/starlight-sidebar-topics/*` | [Snippet](https://github.com/apathetic-tools/snippets/blob/main/docs/astro-starlight/topics-astro-docs-theme/)
+| Dark Mode Theme Selector fix for Windows Firefox | `@styles/theme-menu-layer.css` | [Snippet](https://github.com/apathetic-tools/snippets/blob/main/docs/astro-starlight/theme-selector-firefox-windows-fix/)
+| GitHub Pages Deployments | `.github/workflows/deploy.yml` | [Snippet](https://github.com/apathetic-tools/snippets/blob/main/docs/github/github-pages-deploy/)
+
+### Build & Runtime Config Files
+
+| Purpose | Files | Note |
+|---------|---------|---------|
+| Astro | `astro.config.ts`, `config/*.ts` | |
+| Runtime Environment | `.npmrc`, `.nvmrc`, `.pnpm-workspace.yaml` |
+| Package Management | `package.json`, `pnpm-lock.yaml` | via `pnpm` | 
+| TypeScript | `tsconfig.json` | |
 
 ## Development on the Project
 
 ### Scripts
-  - `dev` / `start`: run hot reload dev environment
-  - `clean`: force a full rebuild of dependencies and caches
-  - `preview`: a prod like preview without building and hosting
-  - `astro`: allows `pnpm astro <command>`
-  - General Verification
-    - `check`: perform checks to ensure project works
-  - Formatting via Prettier
-    - `format`: format the code
-    - `format:ci`: ci specific format the code check
-    - `format:code`: format only code
-    - `format:imports`: format only imports
-  - Linting
-    - `lint:linkcheck`: verify links work
-    - `lint:eslint`: run code checks
-    - `lint:text`: suggest content changes
-    - `lint:text:fix`: attempt to auto-fix content
 
+`package.json` → `scripts`  
 
-### Dev Dependencies
+| Script | Purpose |
+|--------|---------|
+| `astro` | allows `pnpm astro <command>` |
+| `dev` / `start` | Run hot reload dev environment |
+| `clean` | Force full rebuild of dependencies and caches |
+| `preview` | Prod-like preview without full build |
+| `check` | Verify project integrity |
+| `format`, `format:ci`,<br />`format:code`, `format:imports` | Code & content formatting via Prettier |
+| `lint:linkcheck` | Verify links in content |
+| `lint:eslint` | Lint code via ESLint |
+| `lint:text`, `lint:text:fix` | Suggest writing advice in content
 
-`package.json` → `devDependencies`.
+### 🔧 Dev Dependencies
 
-These are optional commands and their dependencies to do work on the project code.
+`package.json` → `devDependencies`
 
-- For `scripts` → `check`
-  - `@astrojs/check`: Astro specific verification
-- For `scripts` → `format` / `format:ci`
-  - `prettier`
-  - `prettier-plugin-astro`
-- For `scripts` → `lint:eslint`  
-    - `@eslint/js`
-    - `astro-eslint-parser`
-    - `@typescript-eslint/parser`
-    - `typescript-eslint`
-    - `eslint`
-    - `eslint-import-resolver-typescript`
-    - `eslint-plugin-astro`
-    - `eslint-plugin-import`
-    - `eslint-plugin-jsx-a11y`
-    - `globals`: used in `eslint.config.mjs`    
-- For `scripts` → `lint:text` / `lint:text:fix`
-    - `textlint`
-    - `textlint-plugin-mdx`
-    - `@textlint-rule/textlint-rule-no-unmatched-pair`
-    - `alex`
-    - `dictionary-en`
-    - `textlint-rule-abbr-within-parentheses`
-    - `textlint-rule-alive-link`
-    - `textlint-rule-common-misspellings`
-    - `textlint-rule-diacritics`
-    - `textlint-rule-doubled-spaces`
-    - `textlint-rule-editorconfig`
-    - `textlint-rule-en-capitalization`
-    - `textlint-rule-footnote-order`
-    - `textlint-rule-no-start-duplicated-conjunction`
-    - `textlint-rule-no-todo`
-    - `textlint-rule-period-in-header`
-    - `textlint-rule-period-in-list-item`
-    - `textlint-rule-rousseau`
-    - `textlint-rule-spelling`
-    - `textlint-rule-stop-words`
-    - `textlint-rule-terminology`
-    - `textlint-rule-unexpanded-acronym`
-    - `textlint-rule-write-good`
-- For Typescript types:
-    - `@types/node`
-- For mdx types (`/src/plugins/remark`)
-    - `@types/mdx`
-    - `@types/mdast`
-    - `@types/unist`
-- For pre-commit hooks:
-    - `husky`
-    - `lint-staged`
+These are optional to do development work on the project.
 
-#### Configs
+| Purpose | Packages | Note |
+|---------|---------|---------|
+| Code formatting | `prettier`, `prettier-plugin-astro` | `scripts` → `format` / `format:ci` |
+| Code linting / formatting | `eslint`, `@eslint/js`, `@typescript-eslint/*`, `typescript-eslint`, `eslint-import-resolver-typescript`, `eslint-plugin-*` (`eslint-plugin-astro`, `eslint-plugin-import`, - `eslint-plugin-jsx-a11y`), `astro-eslint-parser`, `globals` (`eslint.config.mjs`) | `scripts` → `lint:eslint` |
+| Content linting | `textlint`, `textlint-plugin-*` (`textlint-plugin-mdx`), `textlint-rule-*` (`@textlint-rule/textlint-rule-no-unmatched-pair`, `textlint-rule-abbr-within-parentheses`, `textlint-rule-alive-link`, `textlint-rule-common-misspellings`, `textlint-rule-diacritics`, `textlint-rule-doubled-spaces`, `textlint-rule-editorconfig`, `textlint-rule-en-capitalization`, `textlint-rule-footnote-order`, `textlint-rule-no-start-duplicated-conjunction`, `textlint-rule-no-todo`, `textlint-rule-period-in-header`, `textlint-rule-period-in-list-item`, `textlint-rule-rousseau`, `textlint-rule-spelling`, `textlint-rule-stop-words`, `textlint-rule-terminology`, `textlint-rule-unexpanded-acronym`,`textlint-rule-write-good` ), `alex`, `dictionary-en` | `scripts` → `lint:text` |
+| TypeScript types | `@types/node`, `@types/mdx`, `@types/mdast`, `@types/unist` |
+| Pre-commit hooks | `husky`, `lint-staged` |
+| Astro verification | `@astrojs/check` |
 
-- `.gitignore`
-- `.editorconfig`
-- `.vscode/`
-- `.textlintrc.json`
-- `eslint.config.mjs`
-- `.prettierignore`, `.prettierrc`
+### Manual Dev integrations
+
+| Package | Files | Purpose |
+|---------|--------|--------|
+| Windows Development Setup |  `.gitignore`, `.vscode/*`, `idleon.code-workspace`, `.editorconfig` | [Snippet](https://github.com/apathetic-tools/snippets/blob/main/docs/windows/development-setup/)
+| Hot reload WSL `/mnt` Polling Fix | `astro.config.ts` → vite config | [Snippet](https://github.com/apathetic-tools/snippets/blob/main/docs/astro/wsl-mnt-polling-fix/)
+
+#### Dev & Tooling Config Files
+
+| Purpose | Files |
+|---------|---------|
+| git | `.gitignore` |
+| Consistent editor defaults | `.editorconfig` |
+| VSCode Editor Configuration | `.vscode/` |
+| `scripts` → `format` | `.prettierignore`, `.prettierrc` |
+| `scripts` → `lint:eslint` | `eslint.config.mjs` |
+| `scripts` → `lint:text` | `.textlintrc.json` |
+
 
 ## Other Repo files
 
-### GitHub Integration
-
-`.github/`
-
-## Meta Information
-
-- `CODE_OF_CONDUCT.md`
-- `LICENSE-CODE`
-- `LICENSE`
-- `LICENSE-NOAI-CONTENT`
-- `NOTICE`
-- `README.md`
-- `README-SITE-REPO.md`
+| Purpose | Files |
+|---------|---------|
+| Github Integration | `.github/*` |
+| Community Management | `CODE_OF_CONDUCT.md` |
+| Lincesing | `LICENSE`, `LICENSE-NOAI-CONTENT`, `LICENSE-CODE`, `NOTICE` |
+| Repo Documentation | `README.md`, `README-SITE-REPO.md` |
 
 ## Online Resources
 - [Starlight &lt;head&gt; Generator](https://starlight-head-generator.vercel.app/)
+- [Starlight Built-in Icons by Category Reference](https://github.com/apathetic-tools/snippets/blob/main/docs/astro-starlight/icons-by-category/)
+- [UTF-8 Emoji Icons by Category](https://github.com/apathetic-tools/snippets/blob/main/docs/text/utf8-emoji-icons-by-category/)
 
-## Current Issues
 
-- `starlight-fullview-mode` can't inject the collapse controls into `Sidebar` and `TableOfContents` due to override from other places, will have add them manually
-- `starlight-auto-sidebar-loader` complains of no `meta.yml` file in `src/content/docs`
+## 🗑 Retired / Removed
+*(Keep track of things we used before, for historical context.)*  
 
-## Roadmap
-- Collapsible Sections
-- Advice Picker; "How much help do you want?" -- `Hint`, `Options`, `Direct me`. Maybe tripple button group ala [bootstrap](https://getbootstrap.com/2.0.3/components.html) or [radio](https://stackoverflow.com/questions/16242980/making-radio-buttons-look-like-buttons-instead) ([fiddle](https://jsfiddle.net/YB8UW/8/))
+*Starlight Plugins:*
 
-## For immediate consideration
-- astro docs style footer icons for contribute and chat.
-- rounded corners like [starlight rapide](https://starlight-theme-rapide.vercel.app/examples/kitchen-sink/)?
-
-## For future consideration
-- [Astro Redesign UI Elements discussion](https://github.com/withastro/starlight/discussions/1701)
-- [Disgus](https://dragomano.github.io/starlight-giscus/) Page comments via GitHub Discussions
-- [FeelBack](https://www.feelback.dev/blog/new-astro-starlight-integration/) "Was this page useful?" cloud service Free Beta
-- [astro-d2](https://astro-d2.vercel.app/) plugin for creating diagrams using Markdown
-- GitHub integration to pull page commit message history as "version history"
+| Purpose | Package | Notes |
+|---------|--------|------|
+| Horizontal collapsible sidebar | `starlight-fullview-mode` | Retired; Manual integration instead |
