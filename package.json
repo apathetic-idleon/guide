@@ -21,7 +21,8 @@
     "lint:text:fix": "textlint --fix --cache src/content/docs/**/*.{md,mdx}",
     "lint:github": "pnpm run lint:github:yml",
     "lint:github:yml": "pnpm dlx yaml-lint .github/**/*.yml",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "depcheck": "pnpm dlx depcheck"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
